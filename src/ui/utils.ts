@@ -50,7 +50,7 @@ export const injectPalette = ({
 }: {
   palette: ColorPalette;
   prefix?: string;
-}): FlattenSimpleInterpolation =>
+}): FlattenSimpleInterpolation<DefaultTheme> =>
   css`
     ${keys(palette).reduce((colors, color) => {
       if (isObject(palette[color])) {

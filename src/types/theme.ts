@@ -14,13 +14,19 @@ export type ResponsiveSpacing =
       [key: string]: number;
     };
 
-type ResponsiveFlexDirection =
+export type ResponsiveFlexDirection =
   | Property.FlexDirection
   | {
       [key: string | number]: Property.FlexDirection;
     };
 
-type ResponsiveAlignItemsOrJustifyContent =
+export type CSSValue = string | number;
+
+export type ResponsiveCSSValue = {
+  [key: string]: CSSValue;
+};
+
+export type ResponsiveAlignItemsOrJustifyContent =
   | Property.AlignItems
   | Property.JustifyContent
   | {

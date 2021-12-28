@@ -1,9 +1,35 @@
-import styled, { css } from 'styled-components';
-import { find, findIndex, isPlainObject, keys, orderBy } from 'lodash';
-import { setProperty, entries, upperFirst } from '../utils';
-import Box from './Box';
+import styled, { css, DefaultTheme } from 'styled-components';
+import { Property } from 'csstype';
+import {
+  find,
+  findIndex,
+  isPlainObject,
+  keys,
+  orderBy,
+  entries,
+  upperFirst,
+} from 'lodash';
+import { setProperty } from '../utils';
+import Box, { BoxProps } from './Box';
+import {
+  ResponsiveAlignItemsOrJustifyContent,
+  ResponsiveFlexDirection,
+  ResponsiveSpacing,
+} from '../types';
 
-const generateAlign = ({ value, direction, theme, property, breakpoint }) => {
+const generateAlign = ({
+  value,
+  direction,
+  theme,
+  property,
+  breakpoint,
+}: {
+  breakpoint: string;
+  property: string;
+  direction: ResponsiveFlexDirection;
+  theme: DefaultTheme;
+  value: { [key: string]: Property.AlignItems | Property.JustifyContent };
+}) => {
   if (breakpoint === 'default') {
     return (direction?.default || 'row') === 'row'
       ? property === 'alignX'
@@ -91,7 +117,9 @@ const generateAligns = ({ value, direction, theme, property }) => {
   `;
 };
 
-const getStackGapSideFromDirection = direction => {
+const getStackGapSideFromDirection = (
+  direction: Property.AlignItems | Property.JustifyContent,
+): 'top' | 'bottom' | 'right' | 'left' => {
   switch (direction) {
     case 'column':
       return 'top';
@@ -105,7 +133,15 @@ const getStackGapSideFromDirection = direction => {
   }
 };
 
-const generateStackMargin = ({ theme, gap, direction }) => {
+const generateStackMargin = ({
+  theme,
+  gap,
+  direction,
+}: {
+  theme: DefaultTheme;
+  gap: ResponsiveSpacing;
+  direction: ResponsiveFlexDirection;
+}) => {
   if (typeof direction === 'string') {
     return setProperty({
       theme,
@@ -137,7 +173,7 @@ const generateStackMargin = ({ theme, gap, direction }) => {
       theme,
       property:
         'margin' + upperFirst(getStackGapSideFromDirection(direction?.default)),
-      value: isPlainObject(gap) ? gap?.default : gap,
+      value: typeof gap !== 'number' ? gap?.default : gap,
     })}
 
     ${[...new Set(keys(gap).concat(keys(direction)))]
@@ -194,22 +230,32 @@ const generateStackMargin = ({ theme, gap, direction }) => {
   `;
 };
 
-const Stack = styled(Box)`
+type StackProps = BoxProps & {
+  wrap: Property.FlexWrap;
+  gap: ResponsiveSpacing;
+  gutterSize: ResponsiveSpacing;
+  direction: ResponsiveFlexDirection;
+  alignX: ResponsiveAlignItemsOrJustifyContent;
+  alignY: ResponsiveAlignItemsOrJustifyContent;
+};
+
+const Stack = styled(Box)<StackProps>`
   display: flex;
   list-style-type: none;
+
   ${({ wrap }) =>
     wrap === 'wrap' &&
     css`
       flex-wrap: wrap;
     `}
 
-  ${({ gap, gutterSize, theme, direction }) =>
-    (gap !== undefined || gutterSize !== undefined) &&
+  ${({ gap, theme, direction }) =>
+    gap !== undefined &&
     css`
       > * + * {
         ${generateStackMargin({
           theme,
-          gap: gap || gutterSize,
+          gap,
           direction: direction || 'row',
         })};
       }

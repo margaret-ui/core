@@ -1,29 +1,33 @@
-import { css } from 'styled-components';
+import { css, DefaultTheme } from 'styled-components';
 import { isPlainObject } from 'lodash';
 
-export const upperFirst = (input = '') =>
-  input.charAt(0).toUpperCase() + input.slice(1);
+type FormatPropertyParams = {
+  property: string;
+  prefix?: string;
+};
 
-export const entries = input =>
-  Object.keys(input).map(key => [key, input[key]]);
-
-const formatProperty = ({ property, prefix = '' }) =>
+const formatProperty = ({
+  property,
+  prefix = '',
+}: FormatPropertyParams): string =>
   `${prefix}${Boolean(prefix) ? '-' : ''}${property}`
     .replace(/([a-z])([A-Z])/g, '$1-$2')
     .replace(/[\s_]+/g, '-')
     .toLowerCase();
 
-const setPropertyBreakpoint = ({
+export const setPropertyBreakpoint = ({
   theme,
   value,
   property,
   prefix,
-  multiplier = 1,
+}: FormatPropertyParams & {
+  theme: DefaultTheme;
+  value: any;
 }) => {
   switch (`${prefix}${property}`) {
     case 'marginAuto':
       if (!Boolean(value)) {
-        return null;
+        return css``;
       }
       return css`
         margin-left: auto;
@@ -31,24 +35,28 @@ const setPropertyBreakpoint = ({
       `;
 
     case 'marginVertical':
+      if (typeof value !== 'number') return css``;
       return css`
         margin-top: ${theme.spacing(value)};
         margin-bottom: ${theme.spacing(value)};
       `;
 
     case 'marginHorizontal':
+      if (typeof value !== 'number') return css``;
       return css`
         margin-left: ${theme.spacing(value)};
         margin-right: ${theme.spacing(value)};
       `;
 
     case 'paddingVertical':
+      if (typeof value !== 'number') return css``;
       return css`
         padding-top: ${theme.spacing(value)};
         padding-bottom: ${theme.spacing(value)};
       `;
 
     case 'paddingHorizontal':
+      if (typeof value !== 'number') return css``;
       return css`
         padding-left: ${theme.spacing(value)};
         padding-right: ${theme.spacing(value)};
@@ -58,9 +66,10 @@ const setPropertyBreakpoint = ({
     case 'backgroundColor':
       return css`
         ${formatProperty({ prefix, property })}: ${theme.colors?.[value] ||
-        isPlainObject(theme?.[value])
-          ? theme.value[theme.colorMode]
-          : theme.value};
+        (isPlainObject(theme?.[value])
+          ? theme[value][theme.colorMode]
+          : theme[value]) ||
+        '#bada55'};
       `;
 
     case 'borderRadius':
@@ -88,7 +97,7 @@ const setPropertyBreakpoint = ({
       return css`
         ${formatProperty({ prefix, property })}: ${value === 'unset'
           ? 'unset'
-          : theme.spacing(value * multiplier)};
+          : theme.spacing(Number(value))};
       `;
 
     case 'display':
@@ -130,7 +139,7 @@ const setPropertyBreakpoint = ({
       `;
 
     default:
-      return null;
+      return undefined;
   }
 };
 
@@ -139,7 +148,9 @@ export const setProperty = ({
   value,
   property,
   prefix = '',
-  multiplier,
+}: FormatPropertyParams & {
+  theme: DefaultTheme;
+  value: any;
 }) => {
   if (!isPlainObject(value)) {
     return setPropertyBreakpoint({
@@ -147,17 +158,15 @@ export const setProperty = ({
       value,
       property,
       prefix,
-      multiplier,
     });
   }
 
   return css`
     ${setPropertyBreakpoint({
       theme,
-      value: value?.default,
+      value: value!.default,
       property,
       prefix,
-      multiplier,
     })}
 
     ${Object.keys(value)
@@ -172,7 +181,6 @@ export const setProperty = ({
           value: value?.[breakpoint],
           property,
           prefix,
-          multiplier,
         })}
         `,
       )}

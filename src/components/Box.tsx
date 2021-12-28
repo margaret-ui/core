@@ -1,158 +1,150 @@
-import styled, { css } from 'styled-components';
-import { setProperty } from '../utils';
+import styled from 'styled-components';
 import { Property } from 'csstype';
+import { setProperty } from '../utils';
 import { ResponsiveSpacing } from '../types';
 
-export type BoxProps = {
-  size: string;
-  display: Property.Display;
+type BoxProps = {
+  display?: Property.Display;
 
-  position: Property.Position;
-  top: Property.Position;
-  right: Property.Position;
-  bottom: Property.Position;
-  left: Property.Position;
+  position?: Property.Position;
+  top?: Property.Position;
+  right?: Property.Position;
+  bottom?: Property.Position;
+  left?: Property.Position;
 
-  padding: ResponsiveSpacing;
-  paddingVertical: ResponsiveSpacing;
-  paddingHorizontal: ResponsiveSpacing;
-  paddingTop: ResponsiveSpacing;
-  paddingRight: ResponsiveSpacing;
-  paddingBottom: ResponsiveSpacing;
-  paddingLeft: ResponsiveSpacing;
+  padding?: ResponsiveSpacing;
+  paddingVertical?: ResponsiveSpacing;
+  paddingHorizontal?: ResponsiveSpacing;
+  paddingTop?: ResponsiveSpacing;
+  paddingRight?: ResponsiveSpacing;
+  paddingBottom?: ResponsiveSpacing;
+  paddingLeft?: ResponsiveSpacing;
 
-  margin: ResponsiveSpacing;
-  marginVertical: ResponsiveSpacing;
-  marginHorizontal: ResponsiveSpacing;
-  marginTop: ResponsiveSpacing;
-  marginRight: ResponsiveSpacing;
-  marginBottom: ResponsiveSpacing;
-  marginLeft: ResponsiveSpacing;
-  marginAuto: ResponsiveSpacing;
+  margin?: ResponsiveSpacing;
+  marginVertical?: ResponsiveSpacing;
+  marginHorizontal?: ResponsiveSpacing;
+  marginTop?: ResponsiveSpacing;
+  marginRight?: ResponsiveSpacing;
+  marginBottom?: ResponsiveSpacing;
+  marginLeft?: ResponsiveSpacing;
+  marginAuto?: ResponsiveSpacing;
 
-  color: string;
-  backgroundColor: string;
-  background: string;
-  backgroundImage: string;
+  gap?: ResponsiveSpacing;
 
-  flex: Property.Flex;
-  flexGrow: Property.FlexGrow;
-  flexShrink: Property.FlexShrink;
-  flexBasis: Property.FlexBasis;
-  order: Property.Order;
+  color?: string;
+  backgroundColor?: string;
+  background?: string;
+  backgroundImage?: string;
 
-  width: Property.Width;
-  height: Property.Height;
-  minWidth: Property.MinWidth;
-  minHeight: Property.MinHeight;
+  flex?: Property.Flex;
+  flexGrow?: Property.FlexGrow;
+  flexShrink?: Property.FlexShrink;
+  flexBasis?: Property.FlexBasis;
+  order?: Property.Order;
 
-  overflow: Property.Overflow;
-  overflowX: Property.Overflow;
-  overflowY: Property.Overflow;
+  width?: Property.Width;
+  height?: Property.Height;
+  minWidth?: Property.MinWidth;
+  minHeight?: Property.MinHeight;
 
-  textAlign: Property.TextAlign;
-  textDecoration: Property.TextDecoration;
-  fontWeight: Property.FontWeight;
-  fontStyle: Property.FontStyle;
+  overflow?: Property.Overflow;
+  overflowX?: Property.Overflow;
+  overflowY?: Property.Overflow;
 
-  boxShadow: Property.BoxShadow | string;
-  borderRadius: Property.BorderRadius | string;
+  textAlign?: Property.TextAlign;
+  textDecoration?: Property.TextDecoration;
+  fontWeight?: Property.FontWeight;
+  fontStyle?: Property.FontStyle;
 
-  gridArea: Property.GridArea;
-  gridColumnStart: Property.GridColumnStart;
-  gridColumnEnd: Property.GridColumnEnd;
-  gridRowStart: Property.GridRowStart;
-  gridRowEnd: Property.GridRowEnd;
+  boxShadow?: Property.BoxShadow | string;
+  borderRadius?: Property.BorderRadius | string;
 
-  transition: Property.Transition;
-  transform: Property.Transform;
+  gridArea?: Property.GridArea;
+  gridColumnStart?: Property.GridColumnStart;
+  gridColumnEnd?: Property.GridColumnEnd;
+  gridRowStart?: Property.GridRowStart;
+  gridRowEnd?: Property.GridRowEnd;
+
+  transition?: Property.Transition;
+  transform?: Property.Transform;
 };
 
 const Box = styled.div<BoxProps>`
   ${({ theme, ...props }) =>
-    [
-      'display',
+    (
+      (
+        [
+          'display',
 
-      'position',
-      'top',
-      'right',
-      'bottom',
-      'left',
+          'position',
+          'top',
+          'right',
+          'bottom',
+          'left',
 
-      'padding',
-      'paddingVertical',
-      'paddingHorizontal',
-      'paddingTop',
-      'paddingRight',
-      'paddingBottom',
-      'paddingLeft',
+          'padding',
+          'paddingVertical',
+          'paddingHorizontal',
+          'paddingTop',
+          'paddingRight',
+          'paddingBottom',
+          'paddingLeft',
 
-      'margin',
-      'marginVertical',
-      'marginHorizontal',
-      'marginTop',
-      'marginRight',
-      'marginBottom',
-      'marginLeft',
-      'marginAuto',
+          'margin',
+          'marginVertical',
+          'marginHorizontal',
+          'marginTop',
+          'marginRight',
+          'marginBottom',
+          'marginLeft',
+          'marginAuto',
 
-      'color',
-      'backgroundColor',
-      'background',
-      'backgroundImage',
+          'color',
+          'backgroundColor',
+          'background',
+          'backgroundImage',
 
-      'flex',
-      'flexGrow',
-      'flexShrink',
-      'flexBasis',
-      'order',
+          'flex',
+          'flexGrow',
+          'flexShrink',
+          'flexBasis',
+          'order',
+          'gap',
 
-      'width',
-      'height',
-      'minWidth',
-      'minHeight',
+          'width',
+          'height',
+          'minWidth',
+          'minHeight',
 
-      'overflow',
-      'overflowX',
-      'overflowY',
+          'overflow',
+          'overflowX',
+          'overflowY',
 
-      'textAlign',
-      'textDecoration',
-      'fontWeight',
-      'fontStyle',
+          'textAlign',
+          'textDecoration',
+          'fontWeight',
+          'fontStyle',
 
-      'boxShadow',
-      'borderRadius',
+          'boxShadow',
+          'borderRadius',
 
-      'gridArea',
-      'gridColumnStart',
-      'gridColumnEnd',
-      'gridRowStart',
-      'gridRowEnd',
+          'gridArea',
+          'gridColumnStart',
+          'gridColumnEnd',
+          'gridRowStart',
+          'gridRowEnd',
 
-      'transition',
-      'transform',
-    ]
-      .filter(property => props?.[property] !== undefined)
-      .map(property =>
-        setProperty({
-          theme,
-          property,
-          value: props?.[property],
-        }),
-      )}
-
-  ${({ size }) =>
-    size === 'full' &&
-    css`
-      width: 100%;
-    `}
-
-  ${({ size }) =>
-    size === 'fit-content' &&
-    css`
-      width: fit-content;
-    `}
+          'transition',
+          'transform',
+        ] as const
+      ).filter(property => props[property] !== undefined) as string[]
+    ).map(property =>
+      setProperty({
+        property,
+        theme,
+        value: props[property as keyof BoxProps],
+      }),
+    )}
 `;
 
 export default Box;
