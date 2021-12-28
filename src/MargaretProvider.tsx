@@ -1,27 +1,21 @@
-import { createContext, useState, useContext } from 'react';
-import { ThemeProvider, createGlobalStyle } from 'styled-components';
+import { useState, FC } from 'react';
+import {
+  ThemeProvider,
+  createGlobalStyle,
+  DefaultTheme,
+} from 'styled-components';
+import { createBreakpoint } from 'react-use';
 import {
   injectPalette,
   injectMargaret,
   theme as defaultTheme,
   colors as defaultColors,
 } from './ui';
-import { createBreakpoint } from 'react-use';
 import 'sanitize.css';
 import 'sanitize.css/typography.css';
 import 'sanitize.css/forms.css';
-
-const AppContext = createContext();
-
-export const useMargaret = () => {
-  const context = useContext(AppContext);
-
-  if (context === undefined) {
-    throw new Error(`useMargaret must be used within a MargaretProvider`);
-  }
-
-  return context;
-};
+import { ColorMode, ColorsOverride } from './types';
+import { AppContext } from './contexts';
 
 export const useBreakpoint = createBreakpoint({
   loading: 0,
@@ -36,9 +30,18 @@ export const GlobalVars = createGlobalStyle`
   }
 `;
 
-const MargaretProvider = ({ theme, children, colors }) => {
-  const [mainNavIsExpanded, setMainNavIsExpanded] = useState();
-  const [colorMode, setColorMode] = useState('light');
+export type MargaretProviderProps = {
+  theme?: DefaultTheme;
+  colors?: ColorsOverride;
+};
+
+const MargaretProvider: FC<MargaretProviderProps> = ({
+  theme,
+  children,
+  colors,
+}) => {
+  const [mainNavIsExpanded, setMainNavIsExpanded] = useState<boolean>(false);
+  const [colorMode, setColorMode] = useState<ColorMode>(ColorMode.Light);
   const breakpoint = useBreakpoint();
 
   const isMobile = breakpoint === 'mobile';
@@ -49,7 +52,9 @@ const MargaretProvider = ({ theme, children, colors }) => {
   const handleCollapseMainNav = () => setMainNavIsExpanded(false);
   const handleToggleMainNav = () => setMainNavIsExpanded(!mainNavIsExpanded);
   const handleSwitchColorMode = () =>
-    setColorMode(colorMode === 'light' ? 'dark' : 'light');
+    setColorMode(
+      colorMode === ColorMode.Light ? ColorMode.Dark : ColorMode.Light,
+    );
 
   return (
     <AppContext.Provider

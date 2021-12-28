@@ -152,9 +152,11 @@ export const colors = {
 export const theme = {
   borderRadius: {
     none: '0',
+    square: '0',
     small: '4px',
     default: '6px',
     large: '12px',
+    full: '999em',
   },
 
   buttonsDefaultAlignX: 'flex-start',
