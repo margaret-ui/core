@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Stack } from './components';
+import { Stack, Avatar } from './components';
 import MargaretProvider from './MargaretProvider';
 
 function App() {
@@ -8,6 +8,7 @@ function App() {
   return (
     <MargaretProvider>
       <Stack direction="column" gap={2}>
+        <Avatar name="Cynthia Henaff" shape="rounded" size="huge" />
         <div>Coucou</div>
         <div>Coucou</div>
         <div>Coucou</div>
