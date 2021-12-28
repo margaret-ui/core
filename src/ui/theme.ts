@@ -391,7 +391,7 @@ export const theme = {
   },
 
   avatar: {
-    background: 'primary',
+    background: 'var(--ui-primary)',
     color: '#fff',
     shape: {
       default: '100%',

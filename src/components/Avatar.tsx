@@ -3,13 +3,12 @@ import { trim } from 'lodash';
 
 type AvatarModel = {
   imageUrl?: string;
-  size?: number;
-  variant?: string;
-  icon?: any;
+  size?: string;
+  shape?: string;
   placeholder?: any;
   firstName?: string;
   lastName?: string;
-  name?: string; 
+  name?: string;
 }
 
 type WrapperProps = {
@@ -27,7 +26,7 @@ const Wrapper = styled.span<WrapperProps>`
   background-position: center center;
   text-transform: uppercase;
 
-  ${({theme} : {theme: any}) => css`
+  ${({ theme }: { theme: any }) => css`
     width: ${theme.avatar?.sizes?.default};
     height: ${theme.avatar?.sizes?.default};
     font-size: calc(${theme.avatar?.sizes?.default} / 2);
@@ -38,7 +37,7 @@ const Wrapper = styled.span<WrapperProps>`
     border-radius: ${theme?.avatar?.shape?.default};
   `};
   
-  ${({ size, theme }: {size: string, theme: any}) =>
+  ${({ size, theme }: { size: string, theme: any }) =>
     Boolean(size) &&
     Boolean(theme?.avatar?.sizes?.[size]) &&
     css`
@@ -47,26 +46,22 @@ const Wrapper = styled.span<WrapperProps>`
       font-size: calc(${theme?.avatar?.sizes?.[size]} / 2);
     `};
 
-  ${({ shape, theme } : {shape: string, theme: any}) =>
-  Boolean(shape) &&
-  Boolean(theme?.avatar?.shape?.[shape]) &&
+  ${({ shape, theme }: { shape: string, theme: any }) =>
+    Boolean(shape) &&
+    Boolean(theme?.avatar?.shape?.[shape]) &&
     css`
       border-radius: ${theme?.avatar?.shape?.[shape]};
     `}
 
 `;
 
-const getAvatarContent = ({ firstName = "", lastName= "", icon, placeholder, imageUrl, name }: AvatarModel) : any => {
+const getAvatarContent = ({ firstName = "", lastName = "", placeholder, imageUrl, name }: AvatarModel): any => {
   if (Boolean(imageUrl)) {
     return null;
   }
 
   if (Boolean(placeholder)) {
     return placeholder;
-  }
-
-  if (Boolean(icon)) {
-    return icon;
   }
 
   if (Boolean(firstName) || Boolean(lastName)) {
