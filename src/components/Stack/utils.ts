@@ -1,4 +1,4 @@
-import styled, { css, DefaultTheme } from 'styled-components';
+import { css, DefaultTheme } from 'styled-components';
 import { Property } from 'csstype';
 import {
   find,
@@ -9,15 +9,10 @@ import {
   entries,
   upperFirst,
 } from 'lodash';
-import { setProperty } from '../utils';
-import Box, { BoxProps } from './Box';
-import {
-  ResponsiveAlignItemsOrJustifyContent,
-  ResponsiveFlexDirection,
-  ResponsiveSpacing,
-} from '../types';
+import { setProperty } from '../../utils';
+import { Breakpoint, ResponsiveFlexDirection } from '../../types';
 
-const generateAlign = ({
+export const generateAlign = ({
   value,
   direction,
   theme,
@@ -26,12 +21,14 @@ const generateAlign = ({
 }: {
   breakpoint: string;
   property: string;
-  direction: ResponsiveFlexDirection;
+  direction: {
+    [key in Breakpoint]: Property.FlexDirection;
+  };
   theme: DefaultTheme;
   value: { [key: string]: Property.AlignItems | Property.JustifyContent };
 }) => {
   if (breakpoint === 'default') {
-    return (direction?.default || 'row') === 'row'
+    return (direction?.['default'] || 'row') === 'row'
       ? property === 'alignX'
         ? css`
             justify-content: ${value?.default};
@@ -48,20 +45,22 @@ const generateAlign = ({
         `;
   }
 
-  const breakpointSize = theme.breakpoints?.[breakpoint];
+  const breakpointSize = theme.breakpoints?.[breakpoint as Breakpoint];
   const sortedBreakpoints = entries(theme.breakpoints)
     .sort((a, b) => b[1] - a[1])
     .filter(breakpoint => breakpoint[1] <= breakpointSize);
+
   const directionBreakpoint =
     sortedBreakpoints.filter(
-      breakpoint => direction?.[breakpoint?.[0]] !== undefined,
+      breakpoint => direction?.[breakpoint?.[0] as Breakpoint] !== undefined,
     )?.[0]?.[0] || 'default';
+
   const alignBreakpoint =
     sortedBreakpoints.filter(
       breakpoint => value?.[breakpoint?.[0]] !== undefined,
     )?.[0]?.[0] || 'default';
 
-  return (direction?.[directionBreakpoint] || 'row') === 'row'
+  return (direction?.[directionBreakpoint as Breakpoint] || 'row') === 'row'
     ? property === 'alignX'
       ? css`
           justify-content: ${value?.[alignBreakpoint]};
@@ -78,35 +77,45 @@ const generateAlign = ({
       `;
 };
 
-const generateAligns = ({ value, direction, theme, property }) => {
-  if (!isPlainObject(value)) {
-    value = { default: value };
-  }
-  if (!isPlainObject(direction)) {
-    direction = { default: direction };
-  }
+export const generateAligns = ({
+  value,
+  direction,
+  theme,
+  property,
+}: {
+  value: any;
+  direction: any;
+  theme: DefaultTheme;
+  property: 'alignX' | 'alignY';
+}) => {
+  const correctedValue = isPlainObject(value) ? value : { default: value };
+  const correctedDirection = isPlainObject(direction)
+    ? direction
+    : { default: direction };
 
   return css`
     ${generateAlign({
       breakpoint: 'default',
-      value,
+      value: correctedValue,
       direction,
       theme,
       property,
     })}
+
     ${[...new Set(keys(value).concat(keys(direction)))]
       .sort(
         (breakpointA, breakpointB) =>
-          theme.breakpoints?.[breakpointA] - theme.breakpoints?.[breakpointB],
+          theme.breakpoints?.[breakpointA as Breakpoint] -
+          theme.breakpoints?.[breakpointB as Breakpoint],
       )
       .filter(
         breakpoint =>
           breakpoint !== 'default' && Boolean(theme.media?.[breakpoint]),
       )
       .map(
-        breakpoint => theme.media[breakpoint]`
+        breakpoint => theme.media[breakpoint as Breakpoint]`
           ${generateAlign({
-            value,
+            value: correctedValue,
             breakpoint,
             direction,
             theme,
@@ -117,9 +126,9 @@ const generateAligns = ({ value, direction, theme, property }) => {
   `;
 };
 
-const getStackGapSideFromDirection = (
-  direction: Property.AlignItems | Property.JustifyContent,
-): 'top' | 'bottom' | 'right' | 'left' => {
+export const getStackGapSideFromDirection = (
+  direction?: Property.FlexDirection,
+) => {
   switch (direction) {
     case 'column':
       return 'top';
@@ -133,13 +142,13 @@ const getStackGapSideFromDirection = (
   }
 };
 
-const generateStackMargin = ({
+export const generateStackMargin = ({
   theme,
   gap,
   direction,
 }: {
   theme: DefaultTheme;
-  gap: ResponsiveSpacing;
+  gap: any;
   direction: ResponsiveFlexDirection;
 }) => {
   if (typeof direction === 'string') {
@@ -159,7 +168,7 @@ const generateStackMargin = ({
     ...orderBy(
       keys(theme.breakpoints ?? {}).map(breakpoint => ({
         breakpoint,
-        value: theme.breakpoints?.[breakpoint],
+        value: theme.breakpoints?.[breakpoint as Breakpoint],
       })),
       'value',
       'asc',
@@ -179,11 +188,13 @@ const generateStackMargin = ({
     ${[...new Set(keys(gap).concat(keys(direction)))]
       .sort(
         (breakpointA, breakpointB) =>
-          theme.breakpoints?.[breakpointA] - theme.breakpoints?.[breakpointB],
+          theme.breakpoints?.[breakpointA as Breakpoint] -
+          theme.breakpoints?.[breakpointB as Breakpoint],
       )
       .filter(
         breakpoint =>
-          breakpoint !== 'default' && Boolean(theme.media?.[breakpoint]),
+          breakpoint !== 'default' &&
+          Boolean(theme.media?.[breakpoint as Breakpoint]),
       )
       .map(breakpoint => {
         const closestDirectionBreakpoint = find(
@@ -208,75 +219,28 @@ const generateStackMargin = ({
             orderedBreakpoints.indexOf(gapBreakpoint) >=
             orderedBreakpoints.indexOf(breakpoint),
         );
-        return theme.media[breakpoint]`
+
+        return theme.media[breakpoint as Breakpoint]`
           ${setProperty({
             theme,
             property: 'margin',
             value: 'unset',
           })}
+
           ${setProperty({
             theme,
             property:
               'margin' +
               upperFirst(
                 getStackGapSideFromDirection(
-                  direction[closestDirectionBreakpoint],
+                  direction[closestDirectionBreakpoint as Breakpoint],
                 ),
               ),
-            value: isPlainObject(gap) ? gap?.[closestGapBreakpoint] : gap,
+            value: isPlainObject(gap)
+              ? gap?.[closestGapBreakpoint as string]
+              : gap,
           })}
         `;
       })}
   `;
 };
-
-type StackProps = BoxProps & {
-  wrap: Property.FlexWrap;
-  gap: ResponsiveSpacing;
-  gutterSize: ResponsiveSpacing;
-  direction: ResponsiveFlexDirection;
-  alignX: ResponsiveAlignItemsOrJustifyContent;
-  alignY: ResponsiveAlignItemsOrJustifyContent;
-};
-
-const Stack = styled(Box)<StackProps>`
-  display: flex;
-  list-style-type: none;
-
-  ${({ wrap }) =>
-    wrap === 'wrap' &&
-    css`
-      flex-wrap: wrap;
-    `}
-
-  ${({ gap, theme, direction }) =>
-    gap !== undefined &&
-    css`
-      > * + * {
-        ${generateStackMargin({
-          theme,
-          gap,
-          direction: direction || 'row',
-        })};
-      }
-    `}
-
-  ${({ theme, direction }) =>
-    Boolean(direction) &&
-    setProperty({
-      theme,
-      property: 'Direction',
-      value: direction,
-      prefix: 'flex',
-    })}
-
-  ${({ alignX, direction, theme }) =>
-    alignX !== undefined &&
-    generateAligns({ value: alignX, direction, theme, property: 'alignX' })}
-
-  ${({ alignY, direction, theme }) =>
-    alignY !== undefined &&
-    generateAligns({ value: alignY, direction, theme, property: 'alignY' })}
-`;
-
-export default Stack;
