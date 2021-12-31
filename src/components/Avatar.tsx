@@ -1,5 +1,4 @@
 import styled, { css } from 'styled-components';
-import { trim } from 'lodash';
 
 type AvatarModel = {
   imageUrl?: string;
@@ -9,12 +8,12 @@ type AvatarModel = {
   firstName?: string;
   lastName?: string;
   name?: string;
-}
+};
 
-type WrapperProps = {
-  size: string;
-  shape: string;
-}
+type WrapperProps = AvatarModel & {
+  size?: string;
+  shape?: string;
+};
 
 const Wrapper = styled.span<WrapperProps>`
   position: relative;
@@ -32,43 +31,48 @@ const Wrapper = styled.span<WrapperProps>`
     font-size: calc(${theme.avatar?.sizes?.default} / 2);
     background: ${theme.avatar?.background};
     border: ${theme.avatar?.border};
-    boxShadow: ${theme.avatar?.boxShadow};
+    boxshadow: ${theme.avatar?.boxShadow};
     color: ${theme.avatar?.color};
     border-radius: ${theme?.avatar?.shape?.default};
   `};
-  
-  ${({ size, theme }: { size: string, theme: any }) =>
-    Boolean(size) &&
-    Boolean(theme?.avatar?.sizes?.[size]) &&
+
+  ${({ size, theme }) =>
+    size &&
+    theme?.avatar?.sizes?.[size] &&
     css`
       width: ${theme?.avatar?.sizes?.[size]};
       height: ${theme?.avatar?.sizes?.[size]};
       font-size: calc(${theme?.avatar?.sizes?.[size]} / 2);
     `};
 
-  ${({ shape, theme }: { shape: string, theme: any }) =>
-    Boolean(shape) &&
-    Boolean(theme?.avatar?.shape?.[shape]) &&
+  ${({ shape, theme }) =>
+    shape &&
+    theme?.avatar?.shape?.[shape] &&
     css`
       border-radius: ${theme?.avatar?.shape?.[shape]};
     `}
-
 `;
 
-const getAvatarContent = ({ firstName = "", lastName = "", placeholder, imageUrl, name }: AvatarModel): any => {
-  if (Boolean(imageUrl)) {
+const getAvatarContent = ({
+  firstName = '',
+  lastName = '',
+  placeholder,
+  imageUrl,
+  name,
+}: AvatarModel): any => {
+  if (imageUrl) {
     return null;
   }
 
-  if (Boolean(placeholder)) {
+  if (placeholder) {
     return placeholder;
   }
 
-  if (Boolean(firstName) || Boolean(lastName)) {
+  if (firstName || lastName) {
     return (
       <span>
-        {trim(firstName).charAt(0)}
-        {trim(lastName).charAt(0)}
+        {(firstName || '').trim().charAt(0)}
+        {(lastName || '').trim().charAt(0)}
       </span>
     );
   }
@@ -87,7 +91,9 @@ const getAvatarContent = ({ firstName = "", lastName = "", placeholder, imageUrl
 const Avatar = (props: AvatarModel) => (
   <Wrapper
     style={{
-      backgroundImage: Boolean(props.imageUrl) ? `url(${encodeURI(props.imageUrl)})` : undefined,
+      backgroundImage: props.imageUrl
+        ? `url(${encodeURI(props.imageUrl)})`
+        : undefined,
     }}
     {...props}
   >
@@ -96,7 +102,7 @@ const Avatar = (props: AvatarModel) => (
 );
 
 Avatar.defaultProps = {
-  imageUrl: "",
-}
+  imageUrl: '',
+};
 
 export default Avatar;

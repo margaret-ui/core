@@ -1,5 +1,5 @@
 import { css, DefaultTheme } from 'styled-components';
-import { isPlainObject } from 'lodash';
+import { isPlainObject } from 'lodash-es';
 
 type FormatPropertyParams = {
   property: string;
@@ -10,7 +10,7 @@ const formatProperty = ({
   property,
   prefix = '',
 }: FormatPropertyParams): string =>
-  `${prefix}${Boolean(prefix) ? '-' : ''}${property}`
+  `${prefix}${prefix ? '-' : ''}${property}`
     .replace(/([a-z])([A-Z])/g, '$1-$2')
     .replace(/[\s_]+/g, '-')
     .toLowerCase();
@@ -26,7 +26,7 @@ export const setPropertyBreakpoint = ({
 }) => {
   switch (`${prefix}${property}`) {
     case 'marginAuto':
-      if (!Boolean(value)) {
+      if (!value) {
         return css``;
       }
       return css`
@@ -171,8 +171,7 @@ export const setProperty = ({
 
     ${Object.keys(value)
       .filter(
-        breakpoint =>
-          breakpoint !== 'default' && Boolean(theme.media?.[breakpoint]),
+        breakpoint => breakpoint !== 'default' && theme.media?.[breakpoint],
       )
       .map(
         breakpoint => theme.media[breakpoint]`

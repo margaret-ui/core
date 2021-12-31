@@ -49,7 +49,7 @@ const StackBase = styled(Box)<StackBaseProps>`
     })}
 
   ${({ theme, direction }) =>
-    Boolean(direction) &&
+    direction &&
     setProperty({
       theme,
       property: 'Direction',
@@ -71,11 +71,11 @@ const Stack: FC<StackProps> = ({ children, divider, direction, ...props }) => {
   const hasDivider = Boolean(divider);
 
   const dividerDirection = useMemo(() => {
-    if (!Boolean(direction)) {
+    if (!direction) {
       return undefined;
     }
     return generateResponsiveDividerDirectionFromResponsiveFlexDirection(
-      direction as ResponsiveFlexDirection,
+      direction,
     );
   }, [direction]);
 

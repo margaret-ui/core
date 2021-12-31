@@ -4,11 +4,10 @@ import {
   find,
   findIndex,
   isPlainObject,
-  keys,
   orderBy,
   entries,
   upperFirst,
-} from 'lodash';
+} from 'lodash-es';
 import { setProperty } from '../../utils';
 import { Breakpoint, ResponsiveFlexDirection } from '../../types';
 
@@ -102,15 +101,14 @@ export const generateAligns = ({
       property,
     })}
 
-    ${[...new Set(keys(value).concat(keys(direction)))]
+    ${[...new Set(Object.keys(value).concat(Object.keys(direction)))]
       .sort(
         (breakpointA, breakpointB) =>
           theme.breakpoints?.[breakpointA as Breakpoint] -
           theme.breakpoints?.[breakpointB as Breakpoint],
       )
       .filter(
-        breakpoint =>
-          breakpoint !== 'default' && Boolean(theme.media?.[breakpoint]),
+        breakpoint => breakpoint !== 'default' && theme.media?.[breakpoint],
       )
       .map(
         breakpoint => theme.media[breakpoint as Breakpoint]`
@@ -166,7 +164,7 @@ export const generateStackMargin = ({
   const orderedBreakpoints = [
     { breakpoint: 'default', value: 0 },
     ...orderBy(
-      keys(theme.breakpoints ?? {}).map(breakpoint => ({
+      Object.keys(theme.breakpoints ?? {}).map(breakpoint => ({
         breakpoint,
         value: theme.breakpoints?.[breakpoint as Breakpoint],
       })),
@@ -188,20 +186,18 @@ export const generateStackMargin = ({
       })}
     }
 
-    ${[...new Set([...keys(gap), ...keys(direction)])]
+    ${[...new Set([...Object.keys(gap), ...Object.keys(direction)])]
       .sort(
         (breakpointA, breakpointB) =>
           theme.breakpoints?.[breakpointA as Breakpoint] -
           theme.breakpoints?.[breakpointB as Breakpoint],
       )
       .filter(
-        breakpoint =>
-          breakpoint !== 'default' &&
-          Boolean(theme.media?.[breakpoint as Breakpoint]),
+        breakpoint => breakpoint !== 'default' && theme.media?.[breakpoint],
       )
       .map(breakpoint => {
         const closestDirectionBreakpoint = find(
-          orderBy(keys(direction), targetBreakpoint =>
+          orderBy(Object.keys(direction), targetBreakpoint =>
             findIndex(
               orderedBreakpoints,
               breakpoint => breakpoint === targetBreakpoint,
@@ -212,7 +208,7 @@ export const generateStackMargin = ({
             orderedBreakpoints.indexOf(breakpoint),
         );
         const closestGapBreakpoint = find(
-          orderBy(keys(gap), targetBreakpoint =>
+          orderBy(Object.keys(gap), targetBreakpoint =>
             findIndex(
               orderedBreakpoints,
               breakpoint => breakpoint === targetBreakpoint,

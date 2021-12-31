@@ -1,27 +1,32 @@
 {
-  "name": "margaret-ui",
-  "version": "0.0.0",
+  "name": "@margaret-ui/core",
+  "version": "0.0.1",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview"
   },
   "dependencies": {
-    "@types/styled-components": "^5.1.19",
-    "csstype": "^3.0.10",
-    "lodash": "^4.17.21",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "sanitize.css": "^13.0.0",
-    "styled-components": "^5.3.3"
+    "lodash-es": "^4.17.21",
+    "sanitize.css": "^13.0.0"
   },
   "devDependencies": {
-    "@types/lodash": "^4.14.178",
+    "@types/styled-components": "^5.1.19",
+    "@types/lodash-es": "^4.17.5",
     "@types/node": "^17.0.5",
     "@types/react": "^17.0.33",
     "@types/react-dom": "^17.0.10",
     "@vitejs/plugin-react": "^1.0.7",
+    "csstype": "^3.0.10",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "styled-components": "^5.3.3",
     "typescript": "^4.4.4",
     "vite": "^2.7.2"
+  },
+  "peerDependencies": {
+    "react": ">=16.8",
+    "react-dom": ">=16.8",
+    "styled-components": ">=5.0"
   }
 }

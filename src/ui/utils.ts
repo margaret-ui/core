@@ -1,11 +1,7 @@
-import {
-  css,
-  DefaultTheme,
-  FlattenSimpleInterpolation,
-} from 'styled-components';
-import { keys, isObject, kebabCase } from 'lodash';
+import { css, DefaultTheme } from 'styled-components';
+import { keys, isObject, kebabCase } from 'lodash-es';
 import { colors as defaultColors } from './theme';
-import { Breakpoint, ColorPalette } from '../types';
+import { Breakpoint } from '../types';
 
 export const BASE = 1;
 export const spacing = (input = 1) => `${input}rem`;
@@ -163,16 +159,16 @@ export const injectMargaret = ({
       [style]: css`
         ${theme.fontSize[style]}
         ${theme.lineHeight[style]}
-        ${Boolean(theme.fontStacks?.[style]?.fontWeight) &&
+        ${theme.fontStacks?.[style]?.fontWeight &&
         css`
           font-weight: ${theme.fontStacks[style]?.fontWeight};
         `}
-        ${Boolean(theme.fontStacks?.[style]?.color) &&
+        ${theme.fontStacks?.[style]?.color &&
         css`
           color: ${theme.colors?.[theme.fontStacks[style].color] ||
           theme?.[theme.fontStacks[style].color]};
         `}
-        ${Boolean(theme.fontStacks?.[style]?.fontFamily) &&
+        ${theme.fontStacks?.[style]?.fontFamily &&
         css`
           font-family: ${theme.fonts?.[theme.fontStacks[style].fontFamily]};
         `}

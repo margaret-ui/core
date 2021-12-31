@@ -45,8 +45,7 @@ const generateResponsiveBorder = ({
     ${Object.keys(direction as Breakpoint)
       .filter(
         breakpoint =>
-          breakpoint !== 'default' &&
-          Boolean(theme.media?.[breakpoint as Breakpoint]),
+          breakpoint !== 'default' && theme.media?.[breakpoint as Breakpoint],
       )
       .map(
         breakpoint => theme.media[breakpoint as Breakpoint]`
