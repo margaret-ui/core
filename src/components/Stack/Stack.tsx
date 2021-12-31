@@ -42,15 +42,11 @@ const StackBase = styled(Box)<StackBaseProps>`
 
   ${({ gap, theme, direction }) =>
     gap !== undefined &&
-    css`
-      > * + * {
-        ${generateStackMargin({
-          theme,
-          gap,
-          direction: direction || 'row',
-        })};
-      }
-    `}
+    generateStackMargin({
+      theme,
+      gap,
+      direction: direction || 'row',
+    })}
 
   ${({ theme, direction }) =>
     Boolean(direction) &&

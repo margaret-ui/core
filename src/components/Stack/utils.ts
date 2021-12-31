@@ -178,14 +178,17 @@ export const generateStackMargin = ({
     .reverse();
 
   return css`
-    ${setProperty({
-      theme,
-      property:
-        'margin' + upperFirst(getStackGapSideFromDirection(direction?.default)),
-      value: typeof gap !== 'number' ? gap?.default : gap,
-    })}
+    > * + * {
+      ${setProperty({
+        theme,
+        property:
+          'margin' +
+          upperFirst(getStackGapSideFromDirection(direction?.default)),
+        value: typeof gap !== 'number' ? gap?.default : gap,
+      })}
+    }
 
-    ${[...new Set(keys(gap).concat(keys(direction)))]
+    ${[...new Set([...keys(gap), ...keys(direction)])]
       .sort(
         (breakpointA, breakpointB) =>
           theme.breakpoints?.[breakpointA as Breakpoint] -
@@ -221,25 +224,27 @@ export const generateStackMargin = ({
         );
 
         return theme.media[breakpoint as Breakpoint]`
-          ${setProperty({
-            theme,
-            property: 'margin',
-            value: 'unset',
-          })}
+          > * + * {
+            ${setProperty({
+              theme,
+              property: 'margin',
+              value: 'unset',
+            })}
 
-          ${setProperty({
-            theme,
-            property:
-              'margin' +
-              upperFirst(
-                getStackGapSideFromDirection(
-                  direction[closestDirectionBreakpoint as Breakpoint],
+            ${setProperty({
+              theme,
+              property:
+                'margin' +
+                upperFirst(
+                  getStackGapSideFromDirection(
+                    direction[closestDirectionBreakpoint as Breakpoint],
+                  ),
                 ),
-              ),
-            value: isPlainObject(gap)
-              ? gap?.[closestGapBreakpoint as string]
-              : gap,
-          })}
+              value: isPlainObject(gap)
+                ? gap?.[closestGapBreakpoint as string]
+                : gap,
+            })}
+          }
         `;
       })}
   `;
