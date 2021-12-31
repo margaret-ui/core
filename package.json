@@ -10,15 +10,16 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@changesets/cli": "^2.19.0",
     "lodash-es": "^4.17.21",
     "sanitize.css": "^13.0.0"
   },
   "devDependencies": {
-    "@types/styled-components": "^5.1.19",
     "@types/lodash-es": "^4.17.5",
     "@types/node": "^17.0.5",
     "@types/react": "^17.0.33",
     "@types/react-dom": "^17.0.10",
+    "@types/styled-components": "^5.1.19",
     "@vitejs/plugin-react": "^1.0.7",
     "csstype": "^3.0.10",
     "react": "^17.0.2",
