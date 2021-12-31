@@ -1,3 +1,5 @@
+import { dividerTheme } from '../components';
+
 export const colors = {
   palette: {
     white: '#ffffff',
@@ -408,4 +410,6 @@ export const theme = {
       huge: '8rem',
     },
   },
+
+  divider: dividerTheme,
 };

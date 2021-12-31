@@ -1,20 +1,27 @@
-import { useState } from 'react';
-import { Stack, Avatar } from './components';
+import { Stack, Avatar, Divider } from './components';
 import MargaretProvider from './MargaretProvider';
 
-function App() {
-  const [count, setCount] = useState(0);
-
+const App = () => {
   return (
     <MargaretProvider>
-      <Stack direction="column" gap={2}>
-        <Avatar name="Cynthia Henaff" shape="rounded" size="huge" />
-        <div>Coucou</div>
-        <div>Coucou</div>
-        <div>Coucou</div>
+      <Stack
+        alignX="center"
+        alignY="center"
+        direction={{
+          default: 'row',
+          tablet: 'column',
+          medium: 'row',
+          desktop: 'column',
+        }}
+        padding={2}
+        gap={1}
+        divider={<Divider />}
+      >
+        <Avatar name="Cynthia Henaff" size="medium" />
+        <Avatar name="Henri Michel" />
       </Stack>
     </MargaretProvider>
   );
-}
+};
 
 export default App;

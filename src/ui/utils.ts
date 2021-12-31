@@ -5,25 +5,17 @@ import {
 } from 'styled-components';
 import { keys, isObject, kebabCase } from 'lodash';
 import { colors as defaultColors } from './theme';
-import { ColorPalette } from '../types';
+import { Breakpoint, ColorPalette } from '../types';
 
 export const BASE = 1;
 export const spacing = (input = 1) => `${input}rem`;
 
-export const breakpoints = {
-  desktop: 1200,
-  medium: 1000,
-  tablet: 750,
-};
-
-export const viewportSizes = { ...breakpoints };
-
-const mediaQuery =
-  (...query) =>
-  (...rules) =>
+const mediaQuery: any =
+  (...query: any[]): any =>
+  (...rules: any[]): any =>
     css`
-      @media ${css(...query)} {
-        ${css(...rules)};
+      @media ${css.apply(null, query as any)} {
+        ${css.apply(null, rules as any)})};
       }
     `;
 
@@ -34,7 +26,7 @@ const cssLock = ({
   lowerBreakpoint,
   higherBreakpoint,
 }: {
-  valueUnit: string;
+  valueUnit?: string;
   minValue: string | number;
   maxValue: string | number;
   lowerBreakpoint: number;
@@ -48,19 +40,20 @@ export const injectPalette = ({
   palette,
   prefix,
 }: {
-  palette: ColorPalette;
+  palette: any;
   prefix?: string;
-}): FlattenSimpleInterpolation<DefaultTheme> =>
+}) =>
   css`
-    ${keys(palette).reduce((colors, color) => {
+    ${keys(palette).reduce((colors: any, color: any) => {
       if (isObject(palette[color])) {
         return [
           ...colors,
           ...keys(palette[color]).reduce(
-            (shades, shade) => [
-              ...shades,
-              `--${prefix}-${color}-${shade}: ${palette[color][shade]};`,
-            ],
+            (shades, shade) =>
+              [
+                ...shades,
+                `--${prefix}-${color}-${shade}: ${palette[color][shade]};`,
+              ] as any,
             [],
           ),
         ];
@@ -69,33 +62,28 @@ export const injectPalette = ({
     }, [])}
   `;
 
-export type SpacingHelper = (a: number) => string;
-
 export const injectMargaret = ({
   theme,
   colors = {},
 }: {
   theme: DefaultTheme;
-  colors: ColorPalette;
+  colors: any;
 }): DefaultTheme => {
   theme.colors = {
     ...defaultColors?.palette,
-    ...colors?.palette,
+    ...(colors?.palette as {}),
   };
 
   theme.ui = {};
 
-  const uiColors = { ...defaultColors?.ui, ...colors?.ui };
+  const uiColors = { ...defaultColors?.ui, ...(colors?.ui as {}) };
 
   keys(uiColors).forEach(colorName => {
-    theme.ui[colorName] = isObject(colors.ui?.[colorName])
-      ? colors.ui?.[colorName]?.[theme.colorMode || 'light']
+    (theme.ui as any)[colorName] = isObject(colors.ui?.[colorName])
+      ? colors.ui?.[colorName]?.[(theme.colorMode || 'light') as any]
       : colors.ui?.[colorName];
-    theme[colorName] = theme.ui[colorName];
+    (theme as any)[colorName] = theme.ui[colorName];
   });
-
-  theme.breakpoints =
-    theme.breakpoints || theme.viewportSizes || breakpoints || {};
 
   theme.spacing = (input = 1) => `${input * 1}rem`;
 
@@ -103,7 +91,7 @@ export const injectMargaret = ({
     (media, breakpoint) => ({
       ...media,
       [breakpoint]: mediaQuery`(min-width: ${
-        theme.breakpoints?.[breakpoint] / 16
+        (theme.breakpoints?.[breakpoint as Breakpoint] as number) / 16
       }em)`,
     }),
     {},
@@ -121,13 +109,17 @@ export const injectMargaret = ({
             minValue: theme.fontStacks?.[breakpoint]?.sizeMinRem,
             maxValue: theme.fontStacks?.[breakpoint]?.sizeMaxRem,
             lowerBreakpoint:
-              theme.breakpoints?.[theme.cssLockLowerBreakpoint || 'tablet'],
+              theme.breakpoints[
+                theme.cssLockLowerBreakpoint as keyof typeof theme.breakpoints
+              ],
             higherBreakpoint:
-              theme.breakpoints?.[theme.cssLockHigherBreakpoint || 'desktop'],
+              theme.breakpoints[
+                theme.cssLockHigherBreakpoint as keyof typeof theme.breakpoints
+              ],
           })};
         `}
 
-        ${theme.media[theme.cssLockHigherBreakpoint || 'desktop']`
+        ${theme.media[theme.cssLockHigherBreakpoint]`
           font-size: ${theme.fontStacks?.[breakpoint]?.sizeMaxRem}rem;
         `}
       `,
@@ -141,14 +133,19 @@ export const injectMargaret = ({
       [breakpoint]: css`
         line-height: ${theme.fontStacks?.[breakpoint]?.lineHeightMin}em;
 
-        ${theme.media[theme.cssLockLowerBreakpoint || 'tablet']`
+        ${theme.media[
+          (theme.cssLockLowerBreakpoint ||
+            'tablet') as keyof typeof theme.breakpoints
+        ]`
           line-height: ${cssLock({
             minValue: theme.fontStacks?.[breakpoint]?.lineHeightMin,
             maxValue: theme.fontStacks?.[breakpoint]?.lineHeightMax,
             lowerBreakpoint:
-              theme.breakpoints?.[theme.cssLockLowerBreakpoint || 'tablet'],
+              theme.breakpoints?.[
+                theme.cssLockLowerBreakpoint as keyof typeof theme.breakpoints
+              ],
             higherBreakpoint:
-              theme.breakpoints?.[theme.cssLockHigherBreakpoint || 'desktop'],
+              theme.breakpoints?.[theme.cssLockHigherBreakpoint as Breakpoint],
           })};
         `}
 

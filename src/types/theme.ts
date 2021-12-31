@@ -1,36 +1,54 @@
 import { Property } from 'csstype';
+import {
+  DefaultTheme,
+  FlattenInterpolation,
+  ThemeProps,
+} from 'styled-components';
 
-type Size = string | number;
-type ResponsiveSize =
+export enum Breakpoint {
+  Default = 'default',
+  Tablet = 'tablet',
+  Medium = 'medium',
+  Desktop = 'desktop',
+}
+
+export enum Fonts {
+  Title = 'title',
+  Body = 'body',
+  Ui = 'ui',
+}
+
+export type Size = string | number;
+export type ResponsiveSize =
   | Size
   | {
-      [key: string]: Size;
+      [key in Breakpoint]: Size;
     };
 
 export type Spacing = number;
 export type ResponsiveSpacing =
   | number
   | {
-      [key: string]: number;
+      [key in Breakpoint]: number;
     };
 
-export type ResponsiveFlexDirection =
-  | Property.FlexDirection
-  | {
-      [key: string | number]: Property.FlexDirection;
-    };
+export type FlexDirection = Property.FlexDirection;
+export type BreakpointDirection = {
+  [key in Breakpoint]?: FlexDirection;
+};
+export type ResponsiveFlexDirection = FlexDirection | BreakpointDirection;
 
 export type CSSValue = string | number;
-
-export type ResponsiveCSSValue = {
-  [key: string]: CSSValue;
+export type BreakpointCSSValue = {
+  [key in Breakpoint]: CSSValue;
 };
+export type ResponsiveCSSValue = CSSValue | BreakpointCSSValue;
 
 export type ResponsiveAlignItemsOrJustifyContent =
   | Property.AlignItems
   | Property.JustifyContent
   | {
-      [key: string]: Property.AlignItems | Property.JustifyContent;
+      [key in Breakpoint]: string;
     };
 
 export type ThemeBorderRadii = {
@@ -42,7 +60,7 @@ export type ThemeFonts = {
 };
 
 export type ThemeBreakpoints = {
-  [key: string]: number;
+  [key in Breakpoint]: number;
 };
 
 export type ThemeSizes = {
@@ -74,9 +92,15 @@ export type ThemeFontStacks = {
   [key: string]: ThemeFontStack;
 };
 
-export type ColorPalette = {
-  [key: string]: string | ColorPalette;
+export type ThemeLineHeights = {
+  [key: string]: ThemeFontStack;
 };
+
+export type ColorPalette =
+  | string
+  | {
+      [key: string]: string;
+    };
 
 export type ColorPaletteWrapper = {
   [key: string]: ColorPalette;
@@ -121,4 +145,12 @@ export type TabsTheme = {
   alignY: ResponsiveAlignItemsOrJustifyContent;
   alignX: ResponsiveAlignItemsOrJustifyContent;
   tab: TabTheme;
+};
+
+export type SpacingHelper = (a: number) => string;
+
+export type MediaHelper = any;
+
+export type ThemeFontSize = {
+  [key: string]: FlattenInterpolation<ThemeProps<DefaultTheme>>;
 };

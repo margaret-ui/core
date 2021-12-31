@@ -1,4 +1,5 @@
 import 'styled-components';
+import { DividerTheme } from './components';
 import {
   ThemeBorderRadii,
   ThemeFonts,
@@ -6,20 +7,24 @@ import {
   ThemeBreakpoints,
   ThemeSizes,
   ColorMode,
-  ColorPaletteWrapper,
+  MediaHelper,
+  SpacingHelper,
+  ThemeLineHeights,
+  ThemeFontSize,
 } from './types';
-import { SpacingHelper } from './ui';
 
 declare module 'styled-components' {
   export interface DefaultTheme {
     colorMode: ColorMode;
 
-    borderRadius: ThemeBorderRadii;
-    ui: ColorPaletteWrapper;
-    colors: ColorPaletteWrapper;
+    borderRadius?: ThemeBorderRadii;
+    ui: any;
+    colors: any;
     fonts: ThemeFonts;
-    fontsStacks: ThemeFontStacks;
+    fontStacks: ThemeFontStacks;
     breakpoints: ThemeBreakpoints;
+    lineHeight: ThemeLineHeights;
+    fontSize: ThemeFontSize;
     containerSizes: ThemeSizes;
     avatarSize: ThemeSizes;
     cssLockLowerBreakpoint: string;
@@ -27,8 +32,13 @@ declare module 'styled-components' {
 
     // Helpers
     spacing: SpacingHelper;
+    media: MediaHelper;
+    fontStyles: any;
+    viewportSizes: any;
 
-    // Colors
-    [key: string]: string;
+    // Components
+    divider: DividerTheme;
+
+    [key: string]: any;
   }
 }
