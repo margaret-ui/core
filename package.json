@@ -7,9 +7,14 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "postbuild": "cp package.json dist/",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "changeset": "changeset",
+    "version": "changeset version",
+    "prerelease": "npm run build && cp package.json dist/",
+    "release": "changeset publish"
   },
   "dependencies": {
+    "@changesets/changelog-github": "^0.4.2",
     "@changesets/cli": "^2.19.0",
     "lodash-es": "^4.17.21",
     "sanitize.css": "^13.0.0"
@@ -32,5 +37,8 @@
     "react": ">=16.8",
     "react-dom": ">=16.8",
     "styled-components": ">=5.0"
+  },
+  "publishConfig": {
+    "directory": "dist"
   }
 }

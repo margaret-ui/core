@@ -295,6 +295,15 @@
     "@manypkg/get-packages" "^1.1.3"
     semver "^5.4.1"
 
+"@changesets/changelog-github@^0.4.2":
+  version "0.4.2"
+  resolved "https://registry.yarnpkg.com/@changesets/changelog-github/-/changelog-github-0.4.2.tgz#359eb4b7485eddc55855f8793811817d5124dfab"
+  integrity sha512-qq8lJcq91ki7UT0fIfIcn5Yy7GJj19TmkLmGZ24/wEfxcD/nHHoTNRoi6nPt+Htf7qEudKxXLzQLi41B7Mt2vg==
+  dependencies:
+    "@changesets/get-github-info" "^0.5.0"
+    "@changesets/types" "^4.0.2"
+    dotenv "^8.1.0"
+
 "@changesets/cli@^2.19.0":
   version "2.19.0"
   resolved "https://registry.yarnpkg.com/@changesets/cli/-/cli-2.19.0.tgz#fb1f20816ba6e505b78dbe10f698035df3258314"
@@ -362,6 +371,14 @@
     chalk "^2.1.0"
     fs-extra "^7.0.1"
     semver "^5.4.1"
+
+"@changesets/get-github-info@^0.5.0":
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/@changesets/get-github-info/-/get-github-info-0.5.0.tgz#b91ceb2d82edef78ae1598ea9fc335a012250295"
+  integrity sha512-vm5VgHwrxkMkUjFyn3UVNKLbDp9YMHd3vMf1IyJoa/7B+6VpqmtAaXyDS0zBLfN5bhzVCHrRnj4GcZXXcqrFTw==
+  dependencies:
+    dataloader "^1.4.0"
+    node-fetch "^2.5.0"
 
 "@changesets/get-release-plan@^3.0.4":
   version "3.0.4"
@@ -895,6 +912,11 @@ csv@^5.3.1:
     csv-stringify "^5.6.5"
     stream-transform "^2.1.3"
 
+dataloader@^1.4.0:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/dataloader/-/dataloader-1.4.0.tgz#bca11d867f5d3f1b9ed9f737bd15970c65dff5c8"
+  integrity sha512-68s5jYdlvasItOJnCuI2Q9s4q98g0pCyL3HrcKJu8KNugUl8ahgmZYg38ysLTgQjjXX3H8CJLkAvWrclWfcalw==
+
 debug@^4.1.0:
   version "4.3.3"
   resolved "https://registry.yarnpkg.com/debug/-/debug-4.3.3.tgz#04266e0b70a98d4462e6e288e38259213332b664"
@@ -933,6 +955,11 @@ dir-glob@^3.0.1:
   integrity sha512-WkrWp9GR4KXfKGYzOLmTuGVi1UWFfws377n9cc55/tb6DuqyF6pcQ5AbiHEshaDpY9v6oaSr2XCDidGmMwdzIA==
   dependencies:
     path-type "^4.0.0"
+
+dotenv@^8.1.0:
+  version "8.6.0"
+  resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-8.6.0.tgz#061af664d19f7f4d8fc6e4ff9b584ce237adcb8b"
+  integrity sha512-IrPdXQsk2BbzvCBGBOTmmSH5SodmqZNt4ERAZDmW4CT+tL8VtvinqywuANaFu4bOMWki16nqf0e4oC0QIaDr/g==
 
 electron-to-chromium@^1.4.17:
   version "1.4.28"
@@ -1543,6 +1570,13 @@ nanoid@^3.1.30:
   resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-3.1.30.tgz#63f93cc548d2a113dc5dfbc63bfa09e2b9b64362"
   integrity sha512-zJpuPDwOv8D2zq2WRoMe1HsfZthVewpel9CAvTfc/2mBD1uUT/agc5f7GHGWXlYkFvi1mVxe4IjvP2HNrop7nQ==
 
+node-fetch@^2.5.0:
+  version "2.6.6"
+  resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.6.6.tgz#1751a7c01834e8e1697758732e9efb6eeadfaf89"
+  integrity sha512-Z8/6vRlTUChSdIgMa51jxQ4lrw/Jy5SOW10ObaA47/RElsAN2c5Pn8bTgFGWn/ibwzXTE8qwr1Yzx28vsecXEA==
+  dependencies:
+    whatwg-url "^5.0.0"
+
 node-releases@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/node-releases/-/node-releases-2.0.1.tgz#3d1d395f204f1f2f29a54358b9fb678765ad2fc5"
@@ -2078,6 +2112,11 @@ to-regex-range@^5.0.1:
   dependencies:
     is-number "^7.0.0"
 
+tr46@~0.0.3:
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/tr46/-/tr46-0.0.3.tgz#8184fd347dac9cdc185992f3a6622e14b9d9ab6a"
+  integrity sha1-gYT9NH2snNwYWZLzpmIuFLnZq2o=
+
 trim-newlines@^3.0.0:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/trim-newlines/-/trim-newlines-3.0.1.tgz#260a5d962d8b752425b32f3a7db0dcacd176c144"
@@ -2146,6 +2185,19 @@ wcwidth@^1.0.1:
   integrity sha1-8LDc+RW8X/FSivrbLA4XtTLaL+g=
   dependencies:
     defaults "^1.0.3"
+
+webidl-conversions@^3.0.0:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/webidl-conversions/-/webidl-conversions-3.0.1.tgz#24534275e2a7bc6be7bc86611cc16ae0a5654871"
+  integrity sha1-JFNCdeKnvGvnvIZhHMFq4KVlSHE=
+
+whatwg-url@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/whatwg-url/-/whatwg-url-5.0.0.tgz#966454e8765462e37644d3626f6742ce8b70965d"
+  integrity sha1-lmRU6HZUYuN2RNNib2dCzotwll0=
+  dependencies:
+    tr46 "~0.0.3"
+    webidl-conversions "^3.0.0"
 
 which-module@^2.0.0:
   version "2.0.0"
