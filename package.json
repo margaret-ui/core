@@ -1,17 +1,17 @@
 {
   "name": "@margaret-ui/core",
   "version": "0.0.2",
-  "main": "./index.umd.js",
-  "module": "./index.es.js",
+  "main": "dist/index.umd.js",
+  "module": "dist/index.es.js",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build && cp package.json dist/",
+    "build": "tsc && vite build",
     "postbuild": "cp package.json dist/",
     "preview": "vite preview",
     "changeset": "changeset",
     "version": "changeset version",
     "prerelease": "npm run build",
-    "changeset publish": "npm run build && cp package.json dist/"
+    "release": "changeset publish"
   },
   "dependencies": {
     "@changesets/changelog-github": "^0.4.2",
@@ -37,8 +37,5 @@
     "react": ">=16.8",
     "react-dom": ">=16.8",
     "styled-components": ">=5.0"
-  },
-  "publishConfig": {
-    "directory": "dist"
   }
 }
