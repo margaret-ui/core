@@ -5,13 +5,13 @@
   "module": "./index.es.js",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "tsc && vite build && cp package.json dist/",
     "postbuild": "cp package.json dist/",
     "preview": "vite preview",
     "changeset": "changeset",
     "version": "changeset version",
-    "prerelease": "npm run build && cp package.json dist/",
-    "release": "changeset publish"
+    "prerelease": "npm run build",
+    "changeset publish": "npm run build && cp package.json dist/"
   },
   "dependencies": {
     "@changesets/changelog-github": "^0.4.2",
