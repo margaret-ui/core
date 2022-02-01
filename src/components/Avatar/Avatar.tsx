@@ -1,19 +1,6 @@
 import styled, { css } from 'styled-components';
+import { WrapperProps, AvatarModel } from './types'
 
-type AvatarModel = {
-  imageUrl?: string;
-  size?: string;
-  shape?: string;
-  placeholder?: any;
-  firstName?: string;
-  lastName?: string;
-  name?: string;
-};
-
-type WrapperProps = AvatarModel & {
-  size?: string;
-  shape?: string;
-};
 
 const Wrapper = styled.span<WrapperProps>`
   position: relative;
@@ -21,18 +8,14 @@ const Wrapper = styled.span<WrapperProps>`
   align-items: center;
   justify-content: center;
 
-  background-size: cover;
-  background-position: center center;
-  text-transform: uppercase;
-
-  ${({ theme }: { theme: any }) => css`
-    width: ${theme.avatar?.sizes?.default};
-    height: ${theme.avatar?.sizes?.default};
-    font-size: calc(${theme.avatar?.sizes?.default} / 2);
-    background: ${theme.avatar?.background};
-    border: ${theme.avatar?.border};
-    boxshadow: ${theme.avatar?.boxShadow};
-    color: ${theme.avatar?.color};
+  ${({ theme }) => css`
+    width: ${theme?.avatar?.sizes?.default};
+    height: ${theme?.avatar?.sizes?.default};
+    font-size: calc(${theme?.avatar?.sizes?.default} / 2);
+    background: ${theme?.avatar?.background};
+    border: ${theme?.avatar?.border};
+    box-shadow: ${theme?.avatar?.boxShadow};
+    color: ${theme?.avatar?.color};
     border-radius: ${theme?.avatar?.shape?.default};
   `};
 
@@ -90,15 +73,15 @@ const getAvatarContent = ({
 
 const Avatar = (props: AvatarModel) => (
   <Wrapper
-    style={{
-      backgroundImage: props.imageUrl
-        ? `url(${encodeURI(props.imageUrl)})`
-        : undefined,
-    }}
+    style={props.imageUrl ? {
+      backgroundImage: `url(${encodeURI(props.imageUrl)})`,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center center'
+    } : {}}
     {...props}
   >
     {getAvatarContent(props)}
-  </Wrapper>
+  </Wrapper >
 );
 
 Avatar.defaultProps = {
