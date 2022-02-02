@@ -1,8 +1,8 @@
+import { FC, ReactNode } from 'react';
 import styled, { css } from 'styled-components';
-import { WrapperProps, AvatarModel } from './types'
+import { AvatarProps } from './types';
 
-
-const Wrapper = styled.span<WrapperProps>`
+const Wrapper = styled.span<AvatarProps>`
   position: relative;
   display: flex;
   align-items: center;
@@ -12,7 +12,7 @@ const Wrapper = styled.span<WrapperProps>`
     width: ${theme?.avatar?.sizes?.default};
     height: ${theme?.avatar?.sizes?.default};
     font-size: calc(${theme?.avatar?.sizes?.default} / 2);
-    background: ${theme?.avatar?.background};
+    background-color: ${theme?.avatar?.background};
     border: ${theme?.avatar?.border};
     box-shadow: ${theme?.avatar?.boxShadow};
     color: ${theme?.avatar?.color};
@@ -42,7 +42,7 @@ const getAvatarContent = ({
   placeholder,
   imageUrl,
   name,
-}: AvatarModel): any => {
+}: AvatarProps): ReactNode => {
   if (imageUrl) {
     return null;
   }
@@ -71,17 +71,21 @@ const getAvatarContent = ({
   );
 };
 
-const Avatar = (props: AvatarModel) => (
+const Avatar: FC<AvatarProps> = props => (
   <Wrapper
-    style={props.imageUrl ? {
-      backgroundImage: `url(${encodeURI(props.imageUrl)})`,
-      backgroundSize: 'cover',
-      backgroundPosition: 'center center'
-    } : {}}
+    style={
+      props.imageUrl
+        ? {
+            backgroundImage: `url(${encodeURI(props.imageUrl)})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center center',
+          }
+        : {}
+    }
     {...props}
   >
     {getAvatarContent(props)}
-  </Wrapper >
+  </Wrapper>
 );
 
 Avatar.defaultProps = {

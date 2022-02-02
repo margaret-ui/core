@@ -1,14 +1,11 @@
-export type AvatarModel = {
+import { ReactNode } from 'react';
+
+export type AvatarProps = {
   imageUrl?: string;
   size?: string;
   shape?: string;
-  placeholder?: any;
+  placeholder?: ReactNode;
   firstName?: string;
   lastName?: string;
   name?: string;
-};
-
-export type WrapperProps = AvatarModel & {
-  size?: string;
-  shape?: string;
 };
