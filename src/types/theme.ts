@@ -26,11 +26,10 @@ export type ResponsiveSize =
     };
 
 export type Spacing = number;
-export type ResponsiveSpacing =
-  | number
-  | {
-      [key in Breakpoint]: number;
-    };
+export type BreakpointSpacing = {
+  [key in Breakpoint]?: Spacing;
+};
+export type ResponsiveSpacing = Spacing | BreakpointSpacing;
 
 export type FlexDirection = Property.FlexDirection;
 export type BreakpointDirection = {

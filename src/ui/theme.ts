@@ -291,8 +291,10 @@ export const theme = {
   fonts: {
     title:
       '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif',
-    body: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif',
-    ui: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif',
+    body:
+      '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif',
+    ui:
+      '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif',
   },
 
   cssLockLowerBreakpoint: 'tablet',
@@ -394,6 +396,8 @@ export const theme = {
 
   avatar: {
     background: 'var(--ui-primary)',
+    backgroundLight: 'var(--ui-primary-light)',
+    border: '2px solid #fff',
     color: '#fff',
     shape: {
       default: '100%',

@@ -1,4 +1,4 @@
-import { Stack, Avatar, Divider } from './components';
+import { Stack, Avatar, ButtonReset, Divider } from './components';
 import MargaretProvider from './MargaretProvider';
 
 const App = () => {
@@ -18,12 +18,28 @@ const App = () => {
         divider={<Divider />}
       >
         <Avatar
-          name="Cynthia Henaff"
           size="medium"
           imageUrl="https://images.unsplash.com/photo-1640622843377-6b5af9417e70?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
         />
-        <Avatar name="Cynthia Henaff" />
+        <Avatar>CH</Avatar>
+        <ButtonReset onClick={() => console.log('click')}>
+          <Avatar>{Avatar.getInitials('Henri Michel')}</Avatar>
+        </ButtonReset>
       </Stack>
+      <Avatar.Group size="medium" showBorder spacing={-2}>
+        <Avatar
+          size="medium"
+          imageUrl="https://images.unsplash.com/photo-1640622843377-6b5af9417e70?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
+        />
+        <Avatar bg="tomato">CH</Avatar>
+        <Avatar bg="rebeccapurple" name="Henri Michel"></Avatar>
+        <Avatar bg="blue">{Avatar.getInitials('Henri Michel')}</Avatar>
+        <Avatar bg="blue">{Avatar.getInitials('Henri Michel')}</Avatar>
+        <Avatar bg="blue">{Avatar.getInitials('Henri Michel')}</Avatar>
+        <Avatar bg="blue">{Avatar.getInitials('Henri Michel')}</Avatar>
+        <Avatar bg="blue">{Avatar.getInitials('Henri Michel')}</Avatar>
+        <Avatar bg="blue">{Avatar.getInitials('Henri Michel')}</Avatar>
+      </Avatar.Group>
     </MargaretProvider>
   );
 };

@@ -66,10 +66,10 @@ export const setPropertyBreakpoint = ({
     case 'backgroundColor':
       return css`
         ${formatProperty({ prefix, property })}: ${theme.colors?.[value] ||
-        (isPlainObject(theme?.[value])
-          ? theme[value][theme.colorMode]
-          : theme[value]) ||
-        '#bada55'};
+          (isPlainObject(theme?.[value])
+            ? theme[value][theme.colorMode]
+            : theme[value]) ||
+          '#bada55'};
       `;
 
     case 'borderRadius':

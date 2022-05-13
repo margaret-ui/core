@@ -1,6 +1,8 @@
 import { FC, ReactNode } from 'react';
 import styled, { css } from 'styled-components';
-import { AvatarProps } from './types';
+import { AvatarProps, AvatarGroupProps } from './types';
+import AvatarGroup from './AvatarGroup';
+import { getInitials } from './utils';
 
 const Wrapper = styled.span<AvatarProps>`
   position: relative;
@@ -8,12 +10,13 @@ const Wrapper = styled.span<AvatarProps>`
   align-items: center;
   justify-content: center;
 
-  ${({ theme }) => css`
+  ${({ theme, variant }) => css`
     width: ${theme?.avatar?.sizes?.default};
     height: ${theme?.avatar?.sizes?.default};
     font-size: calc(${theme?.avatar?.sizes?.default} / 2);
-    background-color: ${theme?.avatar?.background};
-    border: ${theme?.avatar?.border};
+    background-color: ${variant === 'last'
+      ? theme?.avatar?.backgroundLight
+      : theme?.avatar?.background};
     box-shadow: ${theme?.avatar?.boxShadow};
     color: ${theme?.avatar?.color};
     border-radius: ${theme?.avatar?.shape?.default};
@@ -34,44 +37,59 @@ const Wrapper = styled.span<AvatarProps>`
     css`
       border-radius: ${theme?.avatar?.shape?.[shape]};
     `}
+
+    ${({ zIndex }) =>
+      Boolean(zIndex) &&
+      css`
+        z-index: ${zIndex};
+      `}
+
+    ${({ bg }) =>
+      Boolean(bg) &&
+      css`
+        background: ${bg};
+      `}
+
+    ${({ fontSize }) =>
+      Boolean(fontSize) &&
+      css`
+        font-size: ${fontSize}rem;
+      `}
+
+    ${({ showBorder, theme }) =>
+      Boolean(showBorder) &&
+      css`
+        border: ${theme?.avatar?.border};
+      `}
 `;
 
 const getAvatarContent = ({
-  firstName = '',
-  lastName = '',
   placeholder,
   imageUrl,
+  children,
   name,
 }: AvatarProps): ReactNode => {
   if (imageUrl) {
     return null;
   }
 
+  if (children) {
+    return children;
+  }
+
+  if (name) {
+    return getInitials(name);
+  }
+
   if (placeholder) {
     return placeholder;
   }
-
-  if (firstName || lastName) {
-    return (
-      <span>
-        {(firstName || '').trim().charAt(0)}
-        {(lastName || '').trim().charAt(0)}
-      </span>
-    );
-  }
-
-  return (
-    <span>
-      {(name || '')
-        .split(' ')
-        .map(chunk => chunk.charAt(0))
-        .slice(0, 2)
-        .join('')}
-    </span>
-  );
 };
 
-const Avatar: FC<AvatarProps> = props => (
+const Avatar: FC<AvatarProps> & {
+  Group: FC<AvatarGroupProps>;
+  getInitials: (name: string) => string;
+} = props => (
   <Wrapper
     style={
       props.imageUrl
@@ -91,5 +109,8 @@ const Avatar: FC<AvatarProps> = props => (
 Avatar.defaultProps = {
   imageUrl: '',
 };
+
+Avatar.Group = AvatarGroup;
+Avatar.getInitials = getInitials;
 
 export default Avatar;
