@@ -1,6 +1,19 @@
 import { ReactNode } from 'react';
 import { ResponsiveSpacing } from '../../types';
 
+export type AvatarTheme = {
+  background?: string;
+  backgroundLight?: string;
+  border?: string;
+  color?: string;
+  shape: {
+    [key: string]: string | number;
+  };
+  sizes: {
+    [key: string]: string | number;
+  };
+};
+
 export type AvatarProps = {
   imageUrl?: string;
   size?: string;
