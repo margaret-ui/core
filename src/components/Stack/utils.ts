@@ -149,16 +149,29 @@ export const generateStackMargin = ({
   gap: any;
   direction: ResponsiveFlexDirection;
 }) => {
-  if (typeof direction === 'string') {
+  if (hasFlexGapSupport()) {
     return setProperty({
       theme,
-      property: 'margin' + upperFirst(getStackGapSideFromDirection(direction)),
+      property: 'gap',
       value: gap,
     });
   }
 
+  if (typeof direction === 'string') {
+    return css`
+      > * + * {
+        ${setProperty({
+          theme,
+          property:
+            'margin' + upperFirst(getStackGapSideFromDirection(direction)),
+          value: gap,
+        })};
+      }
+    `;
+  }
+
   if (!isPlainObject(direction)) {
-    return;
+    return '';
   }
 
   const orderedBreakpoints = [
@@ -244,4 +257,20 @@ export const generateStackMargin = ({
         `;
       })}
   `;
+};
+
+export const hasFlexGapSupport = () => {
+  const flex = document.createElement('div');
+  flex.style.display = 'flex';
+  flex.style.flexDirection = 'column';
+  flex.style.rowGap = '1px';
+
+  flex.appendChild(document.createElement('div'));
+  flex.appendChild(document.createElement('div'));
+
+  document.body.appendChild(flex);
+  var isSupported = flex.scrollHeight === 1;
+  flex.parentNode?.removeChild(flex);
+
+  return isSupported;
 };

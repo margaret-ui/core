@@ -1,4 +1,2 @@
-import { default as Box } from './Box';
-
+export { default as Box } from './Box';
 export * from './types';
-export default Box;

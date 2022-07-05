@@ -65,4 +65,6 @@ export type BoxProps = {
 
   transition?: Property.Transition;
   transform?: Property.Transform;
+
+  visuallyHidden?: boolean;
 };
