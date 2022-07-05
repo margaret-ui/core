@@ -11,9 +11,9 @@ import { Breakpoint } from '../../types';
 const generateResponsiveBorder = ({
   theme,
   direction = 'horizontal',
-}: DividerProps & { theme: DefaultTheme }): FlattenInterpolation<
-  ThemeProps<DefaultTheme>
-> => {
+}: DividerProps & { theme: DefaultTheme }): FlattenInterpolation<ThemeProps<
+  DefaultTheme
+>> => {
   if (typeof direction === 'string') {
     switch (direction) {
       case 'vertical': {

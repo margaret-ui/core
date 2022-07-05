@@ -1,15 +1,13 @@
 import { css, DefaultTheme } from 'styled-components';
 import { keys, isObject, kebabCase } from 'lodash-es';
-import { colors as defaultColors } from './theme';
+import { colors as defaultColors } from './colors';
 import { Breakpoint } from '../types';
 
 export const BASE = 1;
 export const spacing = (input = 1) => `${input}rem`;
 
-const mediaQuery: any =
-  (...query: any[]): any =>
-  (...rules: any[]): any =>
-    css`
+const mediaQuery: any = (...query: any[]): any => (...rules: any[]): any =>
+  css`
       @media ${css.apply(null, query as any)} {
         ${css.apply(null, rules as any)})};
       }
@@ -28,9 +26,8 @@ const cssLock = ({
   lowerBreakpoint: number;
   higherBreakpoint: number;
 }): string =>
-  `calc((${minValue} * 1${valueUnit}) + (${maxValue} - ${minValue}) * ((100vw - ${
-    lowerBreakpoint / 16
-  }rem) / (${higherBreakpoint / 16} - ${lowerBreakpoint / 16})))`;
+  `calc((${minValue} * 1${valueUnit}) + (${maxValue} - ${minValue}) * ((100vw - ${lowerBreakpoint /
+    16}rem) / (${higherBreakpoint / 16} - ${lowerBreakpoint / 16})))`;
 
 export const injectPalette = ({
   palette,
@@ -86,9 +83,9 @@ export const injectMargaret = ({
   theme.media = keys(theme.breakpoints).reduce(
     (media, breakpoint) => ({
       ...media,
-      [breakpoint]: mediaQuery`(min-width: ${
-        (theme.breakpoints?.[breakpoint as Breakpoint] as number) / 16
-      }em)`,
+      [breakpoint]: mediaQuery`(min-width: ${(theme.breakpoints?.[
+        breakpoint as Breakpoint
+      ] as number) / 16}em)`,
     }),
     {},
   );
@@ -160,18 +157,18 @@ export const injectMargaret = ({
         ${theme.fontSize[style]}
         ${theme.lineHeight[style]}
         ${theme.fontStacks?.[style]?.fontWeight &&
-        css`
-          font-weight: ${theme.fontStacks[style]?.fontWeight};
-        `}
+          css`
+            font-weight: ${theme.fontStacks[style]?.fontWeight};
+          `}
         ${theme.fontStacks?.[style]?.color &&
-        css`
-          color: ${theme.colors?.[theme.fontStacks[style].color] ||
-          theme?.[theme.fontStacks[style].color]};
-        `}
+          css`
+            color: ${theme.colors?.[theme.fontStacks[style].color] ||
+              theme?.[theme.fontStacks[style].color]};
+          `}
         ${theme.fontStacks?.[style]?.fontFamily &&
-        css`
-          font-family: ${theme.fonts?.[theme.fontStacks[style].fontFamily]};
-        `}
+          css`
+            font-family: ${theme.fonts?.[theme.fontStacks[style].fontFamily]};
+          `}
       `,
     }),
     {},
