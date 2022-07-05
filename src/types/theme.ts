@@ -22,14 +22,17 @@ export type Size = string | number;
 export type ResponsiveSize =
   | Size
   | {
-      [key in Breakpoint]: Size;
+      [key in Breakpoint]?: Size;
     };
 
 export type Spacing = number;
-export type BreakpointSpacing = {
-  [key in Breakpoint]?: Spacing;
-};
+export type ResponsiveSpacing =
+  | number
+  | {
+      [key in Breakpoint]?: number;
+    };
 export type ResponsiveSpacing = Spacing | BreakpointSpacing;
+
 
 export type FlexDirection = Property.FlexDirection;
 export type BreakpointDirection = {
@@ -39,7 +42,7 @@ export type ResponsiveFlexDirection = FlexDirection | BreakpointDirection;
 
 export type CSSValue = string | number;
 export type BreakpointCSSValue = {
-  [key in Breakpoint]: CSSValue;
+  [key in Breakpoint]?: CSSValue;
 };
 export type ResponsiveCSSValue = CSSValue | BreakpointCSSValue;
 
@@ -47,7 +50,7 @@ export type ResponsiveAlignItemsOrJustifyContent =
   | Property.AlignItems
   | Property.JustifyContent
   | {
-      [key in Breakpoint]: string;
+      [key in Breakpoint]?: string;
     };
 
 export type ThemeBorderRadii = {
@@ -59,7 +62,7 @@ export type ThemeFonts = {
 };
 
 export type ThemeBreakpoints = {
-  [key in Breakpoint]: number;
+  [key in Breakpoint]?: number;
 };
 
 export type ThemeSizes = {
@@ -146,7 +149,7 @@ export type TabsTheme = {
   tab: TabTheme;
 };
 
-export type SpacingHelper = (a: number) => string;
+export type SpacingHelper = (a?: number) => string;
 
 export type MediaHelper = any;
 
