@@ -23,11 +23,12 @@ const cssLock = ({
   valueUnit?: string;
   minValue: string | number;
   maxValue: string | number;
-  lowerBreakpoint: number;
-  higherBreakpoint: number;
+  lowerBreakpoint?: number;
+  higherBreakpoint?: number;
 }): string =>
-  `calc((${minValue} * 1${valueUnit}) + (${maxValue} - ${minValue}) * ((100vw - ${lowerBreakpoint /
-    16}rem) / (${higherBreakpoint / 16} - ${lowerBreakpoint / 16})))`;
+  `calc((${minValue} * 1${valueUnit}) + (${maxValue} - ${minValue}) * ((100vw - ${(lowerBreakpoint ||
+    0) / 16}rem) / (${(higherBreakpoint || 0) / 16} - ${(lowerBreakpoint || 0) /
+    16})))`;
 
 export const injectPalette = ({
   palette,

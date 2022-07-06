@@ -6,39 +6,19 @@ import {
   cloneElement,
   ReactElement,
 } from 'react';
-import { Property } from 'csstype';
-import styled, { css } from 'styled-components';
-import Box, { BoxProps } from '../Box';
+import styled from 'styled-components';
+import { injectLayoutHelpers, injectVisuallyHiddenHelper } from '../Box';
 import { generateAligns, generateStackMargin } from './utils';
 import { setProperty } from '../../utils';
-import {
-  ResponsiveAlignItemsOrJustifyContent,
-  ResponsiveFlexDirection,
-  ResponsiveSpacing,
-} from '../../types';
 import { generateResponsiveDividerDirectionFromResponsiveFlexDirection } from '../Divider';
+import { StackBaseProps, StackProps } from './types';
 
-type StackBaseProps = BoxProps & {
-  wrap?: Property.FlexWrap;
-  gap?: ResponsiveSpacing;
-  direction?: ResponsiveFlexDirection;
-  alignX?: ResponsiveAlignItemsOrJustifyContent;
-  alignY?: ResponsiveAlignItemsOrJustifyContent;
-};
-
-type StackProps = StackBaseProps & {
-  divider?: ReactElement;
-};
-
-const StackBase = styled(Box)<StackBaseProps>`
+const StackBase = styled.div<StackBaseProps>`
   display: flex;
   list-style-type: none;
 
-  ${({ wrap }) =>
-    wrap === 'wrap' &&
-    css`
-      flex-wrap: wrap;
-    `}
+  ${injectLayoutHelpers}
+  ${injectVisuallyHiddenHelper}
 
   ${({ gap, theme, direction }) =>
     gap !== undefined &&
@@ -66,14 +46,16 @@ const StackBase = styled(Box)<StackBaseProps>`
     generateAligns({ value: alignY, direction, theme, property: 'alignY' })}
 `;
 
-const Stack: FC<StackProps> = ({ children, divider, direction, ...props }) => {
+const Stack: FC<StackProps> = ({
+  children,
+  divider,
+  direction = 'row',
+  ...props
+}) => {
   const childrenArray = Children.toArray(children);
   const hasDivider = Boolean(divider);
 
   const dividerDirection = useMemo(() => {
-    if (!direction) {
-      return undefined;
-    }
     return generateResponsiveDividerDirectionFromResponsiveFlexDirection(
       direction,
     );

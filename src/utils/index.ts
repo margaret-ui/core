@@ -1,5 +1,5 @@
 import { css, DefaultTheme } from 'styled-components';
-import { isPlainObject } from 'lodash-es';
+import { isPlainObject, get } from 'lodash-es';
 
 type FormatPropertyParams = {
   property: string;
@@ -34,6 +34,7 @@ export const setPropertyBreakpoint = ({
         margin-right: auto;
       `;
 
+    case 'marginY':
     case 'marginVertical':
       if (typeof value !== 'number') return css``;
       return css`
@@ -41,6 +42,7 @@ export const setPropertyBreakpoint = ({
         margin-bottom: ${theme.spacing(value)};
       `;
 
+    case 'marginX':
     case 'marginHorizontal':
       if (typeof value !== 'number') return css``;
       return css`
@@ -48,6 +50,7 @@ export const setPropertyBreakpoint = ({
         margin-right: ${theme.spacing(value)};
       `;
 
+    case 'paddingY':
     case 'paddingVertical':
       if (typeof value !== 'number') return css``;
       return css`
@@ -55,6 +58,7 @@ export const setPropertyBreakpoint = ({
         padding-bottom: ${theme.spacing(value)};
       `;
 
+    case 'paddingX':
     case 'paddingHorizontal':
       if (typeof value !== 'number') return css``;
       return css`
@@ -65,11 +69,11 @@ export const setPropertyBreakpoint = ({
     case 'color':
     case 'backgroundColor':
       return css`
-        ${formatProperty({ prefix, property })}: ${theme.colors?.[value] ||
-          (isPlainObject(theme?.[value])
-            ? theme[value][theme.colorMode]
-            : theme[value]) ||
-          '#bada55'};
+        ${formatProperty({ prefix, property })}: ${get(theme.colors, value) ||
+          (isPlainObject(get(theme, value))
+            ? get(theme, value)[theme.colorMode]
+            : get(theme, value)) ||
+          value};
       `;
 
     case 'borderRadius':
@@ -94,6 +98,7 @@ export const setPropertyBreakpoint = ({
     case 'gridGap':
     case 'gridRowGap':
     case 'gridColumnGap':
+    case 'gap':
       return css`
         ${formatProperty({ prefix, property })}: ${value === 'unset'
           ? 'unset'
@@ -124,6 +129,7 @@ export const setPropertyBreakpoint = ({
     case 'flexGrow':
     case 'flexShrink':
     case 'flexBasis':
+    case 'flexWrap':
     case 'order':
     case 'gridColumn':
     case 'gridRow':
