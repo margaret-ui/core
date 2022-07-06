@@ -13,4 +13,4 @@ const ButtonReset = styled.button`
   text-align: inherit;
 `;
 
-export default ButtonReset
+export default ButtonReset;

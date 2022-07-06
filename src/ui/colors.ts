@@ -127,8 +127,10 @@ export const colors = {
     primary: 'var(--colors-red-400)',
     primaryLight: 'var(--colors-red-300)',
     primaryBackground: 'var(--colors-red-50)',
+
     secondary: 'var(--colors-blue-500)',
     secondaryLight: 'var(--colors-blue--400)',
+
     disabled: 'var(--colors-gray-200)',
     disabledBackground: 'var(--colors-gray-100)',
     separator: 'var(--colors-gray-200)',
