@@ -6,33 +6,19 @@ import {
   cloneElement,
   ReactElement,
 } from 'react';
-import { Property } from 'csstype';
 import styled from 'styled-components';
-import { Box, BoxProps } from '../Box';
+import { injectLayoutHelpers, injectVisuallyHiddenHelper } from '../Box';
 import { generateAligns, generateStackMargin } from './utils';
 import { setProperty } from '../../utils';
-import {
-  ResponsiveAlignItemsOrJustifyContent,
-  ResponsiveFlexDirection,
-  ResponsiveSpacing,
-} from '../../types';
 import { generateResponsiveDividerDirectionFromResponsiveFlexDirection } from '../Divider';
+import { StackBaseProps, StackProps } from './types';
 
-type StackBaseProps = BoxProps & {
-  wrap?: Property.FlexWrap;
-  gap?: ResponsiveSpacing;
-  direction?: ResponsiveFlexDirection;
-  alignX?: ResponsiveAlignItemsOrJustifyContent;
-  alignY?: ResponsiveAlignItemsOrJustifyContent;
-};
-
-type StackProps = StackBaseProps & {
-  divider?: ReactElement;
-} & any;
-
-const StackBase = styled(Box)<StackBaseProps>`
+const StackBase = styled.div<StackBaseProps>`
   display: flex;
   list-style-type: none;
+
+  ${injectLayoutHelpers}
+  ${injectVisuallyHiddenHelper}
 
   ${({ gap, theme, direction }) =>
     gap !== undefined &&

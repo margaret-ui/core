@@ -1,4 +1,5 @@
 import { Property } from 'csstype';
+import { DefaultTheme } from 'styled-components';
 import { ResponsiveSpacing } from '../../types';
 
 export type BoxProps = {
@@ -38,6 +39,7 @@ export type BoxProps = {
   flexGrow?: Property.FlexGrow;
   flexShrink?: Property.FlexShrink;
   flexBasis?: Property.FlexBasis;
+  flexWrap?: Property.FlexWrap;
   order?: Property.Order;
 
   width?: Property.Width;
@@ -67,4 +69,6 @@ export type BoxProps = {
   transform?: Property.Transform;
 
   visuallyHidden?: boolean;
+
+  theme: DefaultTheme;
 };
