@@ -1,4 +1,11 @@
-import { Stack, Avatar, ButtonReset, Divider, Container } from './components';
+import {
+  Stack,
+  Avatar,
+  ButtonReset,
+  Button,
+  Divider,
+  Container,
+} from './components';
 import MargaretProvider from './MargaretProvider';
 
 const App = () => {
@@ -41,6 +48,35 @@ const App = () => {
           <Avatar bg="blue">{Avatar.getInitials('Henri Michel')}</Avatar>
           <Avatar bg="blue">{Avatar.getInitials('Henri Michel')}</Avatar>
         </Avatar.Group>
+        <Stack gap={2} paddingTop={2}>
+          <Button>Hello</Button>
+          <Button variant="outline">Hello</Button>
+          <Button variant="ghost">Hello</Button>
+          <Button variant="link">Hello</Button>
+        </Stack>
+        <Stack gap={2} paddingTop={2}>
+          <Button disabled>Hello</Button>
+          <Button variant="outline" disabled>
+            Hello
+          </Button>
+          <Button variant="ghost" disabled>
+            Hello
+          </Button>
+          <Button variant="link" disabled>
+            Hello
+          </Button>
+        </Stack>
+        <Stack gap={2} paddingTop={2}>
+          <Button variant="solid" size="small">
+            Hello
+          </Button>
+          <Button variant="solid" size="default">
+            Hello
+          </Button>
+          <Button variant="solid" size="large">
+            Hello
+          </Button>
+        </Stack>
       </Container>
     </MargaretProvider>
   );

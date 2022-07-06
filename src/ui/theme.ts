@@ -1,4 +1,9 @@
-import { dividerTheme, avatarTheme, containerTheme } from '../components';
+import {
+  dividerTheme,
+  avatarTheme,
+  containerTheme,
+  buttonTheme,
+} from '../components';
 
 export const theme = {
   borderRadius: {
@@ -13,44 +18,6 @@ export const theme = {
   buttonsDefaultAlignX: 'flex-start',
   boxShadowColor: 'var(--ui-separator)',
   boxShadowColorHover: 'var(--ui-separatorDark)',
-
-  button: {
-    transition: 'background 150ms ease',
-    borderRadius: '6px',
-    alignY: 'center',
-    alignX: 'center',
-    fontWeight: 600,
-    paddingHorizontal: 0,
-    paddingVertical: 0,
-    minWidth: 0,
-    color: 'var(--ui-primary)',
-    boxShadow: '',
-    colorHover: 'var(--ui-primary-light)',
-    boxShadowHover: '',
-    colorFocus: '',
-    boxShadowFocus: '',
-
-    primary: {
-      background: 'var(--ui-primary)',
-      color: 'var(--colors-white)',
-      boxShadow: '',
-
-      backgroundHover: 'var(--ui-primary-light)',
-      colorHover: '',
-      transformHover: '',
-      boxShadowHover: '',
-
-      backgroundDisabled: 'var(--ui-disabled)',
-      colorDisabled: 'var(--colors-gray-400)',
-      boxShadowDisabled: '',
-      transformDisabled: '',
-
-      paddingHorizontal: '24px',
-      paddingVertical: '12px',
-      borderRadius: '6px',
-      minWidth: '180px',
-    },
-  },
 
   tabs: {
     margin: '',
@@ -241,4 +208,5 @@ export const theme = {
   divider: dividerTheme,
 
   container: containerTheme,
+  button: buttonTheme,
 };
