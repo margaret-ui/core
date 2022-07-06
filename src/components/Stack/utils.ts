@@ -47,7 +47,7 @@ export const generateAlign = ({
   const breakpointSize = theme.breakpoints?.[breakpoint as Breakpoint];
   const sortedBreakpoints = entries(theme.breakpoints)
     .sort((a, b) => b[1] - a[1])
-    .filter(breakpoint => breakpoint[1] <= breakpointSize);
+    .filter(breakpoint => breakpoint[1] <= (breakpointSize || 0));
 
   const directionBreakpoint =
     sortedBreakpoints.filter(
@@ -104,8 +104,8 @@ export const generateAligns = ({
     ${[...new Set(Object.keys(value).concat(Object.keys(direction)))]
       .sort(
         (breakpointA, breakpointB) =>
-          theme.breakpoints?.[breakpointA as Breakpoint] -
-          theme.breakpoints?.[breakpointB as Breakpoint],
+          (theme.breakpoints?.[breakpointA as Breakpoint] || 0) -
+          (theme.breakpoints?.[breakpointB as Breakpoint] || 0),
       )
       .filter(
         breakpoint => breakpoint !== 'default' && theme.media?.[breakpoint],
@@ -202,8 +202,8 @@ export const generateStackMargin = ({
     ${[...new Set([...Object.keys(gap), ...Object.keys(direction)])]
       .sort(
         (breakpointA, breakpointB) =>
-          theme.breakpoints?.[breakpointA as Breakpoint] -
-          theme.breakpoints?.[breakpointB as Breakpoint],
+          (theme.breakpoints?.[breakpointA as Breakpoint] || 0) -
+          (theme.breakpoints?.[breakpointB as Breakpoint] || 0),
       )
       .filter(
         breakpoint => breakpoint !== 'default' && theme.media?.[breakpoint],

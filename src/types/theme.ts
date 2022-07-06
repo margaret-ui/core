@@ -31,8 +31,6 @@ export type ResponsiveSpacing =
   | {
       [key in Breakpoint]?: number;
     };
-export type ResponsiveSpacing = Spacing | BreakpointSpacing;
-
 
 export type FlexDirection = Property.FlexDirection;
 export type BreakpointDirection = {
