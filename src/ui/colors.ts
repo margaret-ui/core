@@ -133,6 +133,7 @@ export const colors = {
 
     disabled: 'var(--colors-gray-200)',
     disabledBackground: 'var(--colors-gray-100)',
+
     separator: 'var(--colors-gray-200)',
     separatorLight: 'var(--colors-gray-100)',
     separatorDark: 'var(--colors-gray-300)',
