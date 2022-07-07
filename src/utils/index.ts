@@ -152,6 +152,7 @@ export const setPropertyBreakpoint = ({
     case 'textDecoration':
     case 'fontWeight':
     case 'fontStyle':
+    case 'textTransform':
       if (isPlainObject(theme?.fontStyles?.[value])) {
         return css`
           ${formatProperty({ prefix, property })}: ${theme?.fontStyles?.[
