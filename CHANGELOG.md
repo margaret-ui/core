@@ -1,5 +1,13 @@
 # @margaret-ui/core
 
+## 0.1.0
+
+### Minor Changes
+
+- [`69753c0`](https://github.com/margaret-ui/core/commit/69753c021137c04f02432e3e3c1ee2260c7cb2c2) Thanks [@Uptip](https://github.com/Uptip)! - Add buttons and typography components
+
+* [`02d95b2`](https://github.com/margaret-ui/core/commit/02d95b292559ae669f30f206c28327ebade2ced4) Thanks [@Uptip](https://github.com/Uptip)! - Add buttons and typography components
+
 ## 0.0.4
 
 ### Patch Changes
