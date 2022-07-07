@@ -45,13 +45,24 @@ const ButtonWrapper = styled(ButtonReset)<ButtonProps>`
       text-decoration: ${theme.button?.variant?.[variant]?.textDecorationFocus};
     }
 
-    &:disabled {
-      background: ${theme.button?.variant?.[variant]?.backgroundDisabled};
-      color: ${theme.button?.variant?.[variant]?.colorDisabled};
-      box-shadow: ${theme.button?.variant?.[variant]?.boxShadowDisabled};
-      transform: ${theme.button?.variant?.[variant]?.transformDisabled};
-      text-decoration: ${theme.button?.variant?.[variant]?.textDecorationDisabled};
+    &:disabled,
+    &:disabled:hover,
+    &:disabled:focus {
+      cursor: not-allowed;
+      background: ${theme.button?.variant?.[variant]?.backgroundDisabled ||
+        theme.button?.variant?.[variant]?.background ||
+        'unset'};
+      color: ${theme.button?.variant?.[variant]?.colorDisabled ||
+        theme.button?.variant?.[variant]?.color ||
+        'unset'};
+      box-shadow: ${theme.button?.variant?.[variant]?.boxShadowDisabled ||
+        theme.button?.variant?.[variant]?.boxShadow ||
+        'unset'};
       opacity: ${theme.button?.variant?.[variant]?.opacityDisabled};
+      text-decoration: ${theme.button?.variant?.[variant]
+        ?.textDecorationDisabled ||
+        theme.button?.variant?.[variant]?.textDecoration ||
+        'unset'};
     }
   `}
 
@@ -73,10 +84,20 @@ const ButtonWrapper = styled(ButtonReset)<ButtonProps>`
       &:hover,
       &:focus {
         cursor: not-allowed;
-        background: ${theme.button?.variant?.[variant]?.backgroundDisabled};
-        color: ${theme.button?.variant?.[variant]?.colorDisabled};
-        box-shadow: ${theme.button?.variant?.[variant]?.boxShadowDisabled};
+        background: ${theme.button?.variant?.[variant]?.backgroundDisabled ||
+          theme.button?.variant?.[variant]?.background ||
+          'unset'};
+        color: ${theme.button?.variant?.[variant]?.colorDisabled ||
+          theme.button?.variant?.[variant]?.color ||
+          'unset'};
+        box-shadow: ${theme.button?.variant?.[variant]?.boxShadowDisabled ||
+          theme.button?.variant?.[variant]?.boxShadow ||
+          'unset'};
         opacity: ${theme.button?.variant?.[variant]?.opacityDisabled};
+        text-decoration: ${theme.button?.variant?.[variant]
+          ?.textDecorationDisabled ||
+          theme.button?.variant?.[variant]?.textDecoration ||
+          'unset'};
       }
     `}
 `;
