@@ -260,6 +260,10 @@ export const generateStackMargin = ({
 };
 
 export const hasFlexGapSupport = () => {
+  if (typeof window === 'undefined') {
+    return true;
+  }
+
   const flex = document.createElement('div');
   flex.style.display = 'flex';
   flex.style.flexDirection = 'column';
