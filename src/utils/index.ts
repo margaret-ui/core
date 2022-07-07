@@ -34,7 +34,6 @@ export const setPropertyBreakpoint = ({
         margin-right: auto;
       `;
 
-    case 'marginY':
     case 'marginVertical':
       if (typeof value !== 'number') return css``;
       return css`
@@ -42,7 +41,6 @@ export const setPropertyBreakpoint = ({
         margin-bottom: ${theme.spacing(value)};
       `;
 
-    case 'marginX':
     case 'marginHorizontal':
       if (typeof value !== 'number') return css``;
       return css`
@@ -50,7 +48,6 @@ export const setPropertyBreakpoint = ({
         margin-right: ${theme.spacing(value)};
       `;
 
-    case 'paddingY':
     case 'paddingVertical':
       if (typeof value !== 'number') return css``;
       return css`
@@ -58,7 +55,6 @@ export const setPropertyBreakpoint = ({
         padding-bottom: ${theme.spacing(value)};
       `;
 
-    case 'paddingX':
     case 'paddingHorizontal':
       if (typeof value !== 'number') return css``;
       return css`
@@ -90,11 +86,23 @@ export const setPropertyBreakpoint = ({
     case 'marginRight':
     case 'marginBottom':
     case 'marginLeft':
+    case 'marginBlock':
+    case 'marginBlockStart':
+    case 'marginBlockEnd':
+    case 'marginInline':
+    case 'marginInlineStart':
+    case 'marginInlineEnd':
     case 'padding':
     case 'paddingTop':
     case 'paddingRight':
     case 'paddingBottom':
     case 'paddingLeft':
+    case 'paddingBlock':
+    case 'paddingBlockStart':
+    case 'paddingBlockEnd':
+    case 'paddingInline':
+    case 'paddingInlineStart':
+    case 'paddingInlineEnd':
     case 'gridGap':
     case 'gridRowGap':
     case 'gridColumnGap':
@@ -119,9 +127,6 @@ export const setPropertyBreakpoint = ({
     case 'overflowX':
     case 'overflowY':
     case 'textAlign':
-    case 'textDecoration':
-    case 'fontWeight':
-    case 'fontStyle':
     case 'transition':
     case 'transform':
     case 'flex':
@@ -140,6 +145,66 @@ export const setPropertyBreakpoint = ({
     case 'gridTemplateRows':
     case 'gridTemplateColumns':
     case 'gridTemplateAreas':
+      return css`
+        ${formatProperty({ prefix, property })}: ${value};
+      `;
+
+    case 'textDecoration':
+    case 'fontWeight':
+    case 'fontStyle':
+    case 'textTransform':
+      if (isPlainObject(theme?.fontStyles?.[value])) {
+        return css`
+          ${formatProperty({ prefix, property })}: ${theme?.fontStyles?.[
+            value
+          ]?.[`${prefix}${property}`]};
+        `;
+      }
+      return css`
+        ${formatProperty({ prefix, property })}: ${value};
+      `;
+
+    case 'fontSize':
+      if (isPlainObject(theme?.fontStyles?.[value])) {
+        return css`
+          ${formatProperty({ prefix, property })}: ${theme?.fontStyles?.[value]
+            ?.fontSizeMax};
+          ${formatProperty({ prefix, property })}: clamp(
+            ${theme?.fontStyles?.[value]?.fontSizeMin},
+            ${theme?.fontStyles?.[value]?.fluidFontSize},
+            ${theme?.fontStyles?.[value]?.fontSizeMax}
+          );
+        `;
+      }
+      return css`
+        ${formatProperty({ prefix, property })}: ${value};
+      `;
+
+    case 'fontStyles':
+      return css`
+        ${[
+          'fontSize',
+          'lineHeight',
+          'fontWeight',
+          'fontFamily',
+          'textTransform',
+        ].map((property: any): any =>
+          setPropertyBreakpoint({ theme, value, property, prefix }),
+        )}
+      `;
+
+    case 'lineHeight':
+      if (isPlainObject(theme?.fontStyles?.[value])) {
+        return css`
+          ${formatProperty({ prefix, property })}: ${theme?.fontStyles?.[value]
+            ?.lineHeightMax};
+          ${formatProperty({ prefix, property })}: clamp(
+            ${theme?.fontStyles?.[value]?.lineHeightMin},
+            ${theme?.fontStyles?.[value]?.fluidLineHeight},
+            ${theme?.fontStyles?.[value]?.lineHeightMax}
+          );
+        `;
+      }
       return css`
         ${formatProperty({ prefix, property })}: ${value};
       `;
