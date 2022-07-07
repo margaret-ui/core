@@ -1,5 +1,11 @@
 # @margaret-ui/core
 
+## 0.1.1
+
+### Patch Changes
+
+- [`0bc6d44`](https://github.com/margaret-ui/core/commit/0bc6d441eae3a2c16dd1e0209b7b000c363190fe) Thanks [@Uptip](https://github.com/Uptip)! - fix: fix server-side call to document
+
 ## 0.1.0
 
 ### Minor Changes
