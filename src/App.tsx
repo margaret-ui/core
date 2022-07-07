@@ -5,6 +5,8 @@ import {
   Button,
   Divider,
   Container,
+  Heading,
+  Text,
 } from './components';
 import MargaretProvider from './MargaretProvider';
 
@@ -76,6 +78,29 @@ const App = () => {
           <Button variant="solid" size="large">
             Hello
           </Button>
+        </Stack>
+
+        <Stack direction="column" gap={1} marginTop={4}>
+          <Heading as="h1">Typographie</Heading>
+          <Heading as="h1" fontStyles="heading2">
+            Coucou
+          </Heading>
+          <Heading as="h2">Coucou</Heading>
+          <Heading as="h2" color="primary">
+            Coucou
+          </Heading>
+          <Text fontStyles="body2">
+            Coucou, coucou, coucou, coucou, coucou, coucou, coucou, coucou,
+            coucou, coucou, coucou.
+          </Text>
+          <Text color="primary" fontSize="footnote2">
+            Coucou, coucou, coucou, coucou, coucou, coucou, coucou, coucou,
+            coucou, coucou, coucou.
+          </Text>
+          <Text marginBottom={2} fontStyles="footnote2">
+            Coucou, coucou, coucou, coucou, coucou, coucou, coucou, coucou,
+            coucou, coucou, coucou.
+          </Text>
         </Stack>
       </Container>
     </MargaretProvider>

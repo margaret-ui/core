@@ -53,8 +53,12 @@ export const injectLayoutHelpers = ({ theme, ...props }: BoxProps & any) =>
 
     'textAlign',
     'textDecoration',
-    'fontWeight',
+    'textTransform',
+    'fontFamily',
+    'fontSize',
     'fontStyle',
+    'fontStyles',
+    'fontWeight',
 
     'boxShadow',
     'borderRadius',

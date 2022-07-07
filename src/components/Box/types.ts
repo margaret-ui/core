@@ -1,5 +1,5 @@
 import { Property } from 'csstype';
-import { DefaultTheme } from 'styled-components';
+import { ReactNode } from 'react';
 import { ResponsiveSpacing } from '../../types';
 
 export type BoxProps = {
@@ -52,9 +52,12 @@ export type BoxProps = {
   overflowY?: Property.Overflow;
 
   textAlign?: Property.TextAlign;
-  textDecoration?: Property.TextDecoration;
+  textDecoration?: Property.TextDecoration | any;
+  textTransform?: Property.TextTransform | any;
   fontWeight?: Property.FontWeight;
   fontStyle?: Property.FontStyle;
+  fontStyles?: any;
+  fontSize?: Property.FontSize | any;
 
   boxShadow?: Property.BoxShadow | string;
   borderRadius?: Property.BorderRadius | string;
@@ -70,5 +73,5 @@ export type BoxProps = {
 
   visuallyHidden?: boolean;
 
-  theme: DefaultTheme;
+  as?: string | ReactNode | any;
 };
