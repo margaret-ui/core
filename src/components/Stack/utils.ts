@@ -96,7 +96,7 @@ export const generateAligns = ({
     ${generateAlign({
       breakpoint: 'default',
       value: correctedValue,
-      direction,
+      direction: correctedDirection,
       theme,
       property,
     })}
@@ -115,7 +115,7 @@ export const generateAligns = ({
           ${generateAlign({
             value: correctedValue,
             breakpoint,
-            direction,
+            direction: correctedDirection,
             theme,
             property,
           })}
