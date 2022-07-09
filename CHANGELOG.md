@@ -1,5 +1,11 @@
 # @margaret-ui/core
 
+## 0.1.2
+
+### Patch Changes
+
+- [#12](https://github.com/margaret-ui/core/pull/12) [`a13a8f9`](https://github.com/margaret-ui/core/commit/a13a8f93b6909b6b51497579b218ff4a4c6f87b5) Thanks [@Uptip](https://github.com/Uptip)! - fix heading attributes overrides
+
 ## 0.1.1
 
 ### Patch Changes
