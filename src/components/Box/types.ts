@@ -73,5 +73,5 @@ export type BoxProps = {
 
   visuallyHidden?: boolean;
 
-  as?: string | ReactNode | any;
+  as?: any;
 };

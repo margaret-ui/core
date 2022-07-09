@@ -149,10 +149,15 @@ export const setPropertyBreakpoint = ({
         ${formatProperty({ prefix, property })}: ${value};
       `;
 
-    case 'textDecoration':
-    case 'fontWeight':
+    case 'fontFamily':
+    case 'fontStretch':
     case 'fontStyle':
+    case 'fontVariant':
+    case 'fontWeight':
+    case 'textDecoration':
+    case 'textShadow':
     case 'textTransform':
+    case 'letterSpacing':
       if (isPlainObject(theme?.fontStyles?.[value])) {
         return css`
           ${formatProperty({ prefix, property })}: ${theme?.fontStyles?.[
@@ -183,11 +188,17 @@ export const setPropertyBreakpoint = ({
     case 'fontStyles':
       return css`
         ${[
-          'fontSize',
-          'lineHeight',
-          'fontWeight',
           'fontFamily',
+          'fontSize',
+          'fontStretch',
+          'fontStyle',
+          'fontVariant',
+          'fontWeight',
+          'lineHeight',
           'textTransform',
+          'textDecoration',
+          'textShadow',
+          'letterSpacing',
         ].map((property: any): any =>
           setPropertyBreakpoint({ theme, value, property, prefix }),
         )}

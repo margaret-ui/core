@@ -1,12 +1,13 @@
-import { FC } from 'react';
-import styled, { useTheme } from 'styled-components';
+import styled, { DefaultTheme, StyledComponent } from 'styled-components';
 import {
   injectLayoutHelpers,
   injectVisuallyHiddenHelper,
   BoxProps,
 } from '../Box';
 
-export const Text = styled.p<BoxProps>`
+export const Text = styled.p.attrs<BoxProps>(({ theme, ...props }) => ({
+  fontStyles: props.as ? props.fontStyles : props.fontStyles || 'body',
+}))<BoxProps>`
   margin-top: 0;
   margin-bottom: 0;
 
@@ -14,9 +15,15 @@ export const Text = styled.p<BoxProps>`
   ${injectVisuallyHiddenHelper}
 `;
 
-export const Heading: FC<BoxProps> = ({ as = 'h2', ...props }) => {
-  const theme = useTheme();
-  const fontStyles = props.fontStyles || theme?.defaultStylesMapping?.[as];
+export const Heading: StyledComponent<
+  'h2',
+  DefaultTheme,
+  BoxProps,
+  any
+> = styled(Text).attrs<BoxProps>(({ theme, ...props }) => ({
+  fontStyles: props.fontStyles || theme?.defaultStylesMapping?.[props.as],
+}))<BoxProps>``;
 
-  return <Text as={as} fontStyles={fontStyles} {...props} />;
+Heading.defaultProps = {
+  as: 'h2',
 };

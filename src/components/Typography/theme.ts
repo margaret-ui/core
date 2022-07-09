@@ -147,8 +147,7 @@ export const typographyTheme = {
       fluidLineHeight: '2em - 1.5vw',
       fontStack: 'body',
       fontWeight: '400',
-      textDecoration: 'uppercase',
-      fontStyle: 'normal',
+      textTransform: 'uppercase',
     },
   },
 
