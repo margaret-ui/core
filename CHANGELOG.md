@@ -1,5 +1,11 @@
 # @margaret-ui/core
 
+## 0.1.3
+
+### Patch Changes
+
+- [#14](https://github.com/margaret-ui/core/pull/14) [`13186ed`](https://github.com/margaret-ui/core/commit/13186edefc75ccd0d1c8ddec419c139277a4d1d9) Thanks [@Uptip](https://github.com/Uptip)! - enhance theme defaults & overrides merging strategy
+
 ## 0.1.2
 
 ### Patch Changes
