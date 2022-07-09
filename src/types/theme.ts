@@ -67,33 +67,8 @@ export type ThemeSizes = {
   [key: string]: string;
 };
 
-export type ThemeFontStack = {
-  sizeMinRem: number;
-  sizeMaxRem: number;
-  lineHeightMin: number;
-  lineHeightMax: number;
-  fontFamily: Property.FontFamily;
-  fontWeight: Property.FontWeight;
-  color: string;
-  defaultTag:
-    | 'h1'
-    | 'h2'
-    | 'h3'
-    | 'h4'
-    | 'h5'
-    | 'h6'
-    | 'div'
-    | 'span'
-    | 'p'
-    | 'li';
-};
-
 export type ThemeFontStacks = {
-  [key: string]: ThemeFontStack;
-};
-
-export type ThemeLineHeights = {
-  [key: string]: ThemeFontStack;
+  [key: string]: string;
 };
 
 export type ColorPalette =
