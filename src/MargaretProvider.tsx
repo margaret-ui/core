@@ -15,6 +15,7 @@ import 'sanitize.css/typography.css';
 import 'sanitize.css/forms.css';
 import { ColorMode, ColorPaletteWrapper, ColorsOverride } from './types';
 import { AppContext } from './contexts';
+import { merge } from 'lodash-es';
 
 export const GlobalVars = createGlobalStyle`
   :root {
@@ -67,14 +68,10 @@ const MargaretProvider: FC<MargaretProviderProps> = ({
       <ThemeProvider
         theme={injectMargaret({
           theme: {
-            ...defaultTheme,
-            ...theme,
+            ...merge(defaultTheme, theme),
             colorMode,
           } as DefaultTheme,
-          colors: {
-            ...defaultColors,
-            ...colors,
-          },
+          colors: merge(defaultColors, colors),
         })}
       >
         <GlobalVars />

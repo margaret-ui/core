@@ -9,35 +9,29 @@ import {
   ColorMode,
   MediaHelper,
   SpacingHelper,
-  ThemeLineHeights,
   ThemeFontSize,
 } from './types';
 
 declare module 'styled-components' {
   export interface DefaultTheme {
-    colorMode: ColorMode;
+    colorMode?: ColorMode;
 
     borderRadius?: ThemeBorderRadii;
-    ui: any;
-    colors: any;
-    fonts: ThemeFonts;
-    fontStacks: ThemeFontStacks;
-    breakpoints: ThemeBreakpoints;
-    lineHeight: ThemeLineHeights;
-    fontSize: ThemeFontSize;
-    containerSizes: ThemeSizes;
-    avatarSize: ThemeSizes;
-    cssLockLowerBreakpoint: string;
-    cssLockHigherBreakpoint: string;
+    ui?: any;
+    colors?: any;
+    fonts?: ThemeFonts;
+    fontStacks?: ThemeFontStacks;
+    fontStyles?: any;
+    breakpoints?: ThemeBreakpoints;
+    fontSize?: ThemeFontSize;
+    containerSizes?: ThemeSizes;
+    avatarSize?: ThemeSizes;
 
-    // Helpers
-    spacing: SpacingHelper;
-    media: MediaHelper;
-    fontStyles: any;
-    viewportSizes: any;
+    spacing?: SpacingHelper;
+    media?: MediaHelper;
+    viewportSizes?: any;
 
-    // Components
-    divider: DividerTheme;
+    divider?: DividerTheme;
 
     [key: string]: any;
   }
