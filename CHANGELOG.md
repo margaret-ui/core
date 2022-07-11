@@ -1,5 +1,11 @@
 # @margaret-ui/core
 
+## 0.1.5
+
+### Patch Changes
+
+- [#18](https://github.com/margaret-ui/core/pull/18) [`4bc35dc`](https://github.com/margaret-ui/core/commit/4bc35dc1425814372db628971d1c2a5542336052) Thanks [@Uptip](https://github.com/Uptip)! - fix text default styles
+
 ## 0.1.4
 
 ### Patch Changes
