@@ -5,8 +5,14 @@ import {
   BoxProps,
 } from '../Box';
 
-export const Text = styled.p.attrs<BoxProps>(({ theme, ...props }) => ({
-  fontStyles: props.as ? props.fontStyles : props.fontStyles || 'body',
+export const Text: StyledComponent<
+  'p',
+  DefaultTheme,
+  BoxProps,
+  any
+> = styled.p.attrs<BoxProps>(({ theme, ...props }) => ({
+  fontStyles:
+    props.fontStyles || theme?.defaultStylesMapping?.[props.as] || 'body',
 }))<BoxProps>`
   margin-top: 0;
   margin-bottom: 0;
