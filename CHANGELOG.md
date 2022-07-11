@@ -1,5 +1,11 @@
 # @margaret-ui/core
 
+## 0.1.6
+
+### Patch Changes
+
+- [#20](https://github.com/margaret-ui/core/pull/20) [`12e27c6`](https://github.com/margaret-ui/core/commit/12e27c6d2c6abcb74a4329b99b76c3e0f8e97dd5) Thanks [@Uptip](https://github.com/Uptip)! - prevent fontStyles being applied when text props are specified
+
 ## 0.1.5
 
 ### Patch Changes
