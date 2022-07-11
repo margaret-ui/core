@@ -51,13 +51,19 @@ export type BoxProps = {
   overflowX?: Property.Overflow;
   overflowY?: Property.Overflow;
 
-  textAlign?: Property.TextAlign;
+  fontFamily?: Property.FontFamily | any;
+  fontStretch?: Property.FontStretch | any;
+  fontVariant?: Property.FontVariant | any;
+  fontWeight?: Property.FontWeight | any;
+  fontStyle?: Property.FontStyle | any;
+  fontSize?: Property.FontSize | any;
+  letterSpacing?: Property.LetterSpacing;
+  lineHeight?: Property.LineHeight | any;
+  textAlign?: Property.TextAlign | any;
   textDecoration?: Property.TextDecoration | any;
   textTransform?: Property.TextTransform | any;
-  fontWeight?: Property.FontWeight;
-  fontStyle?: Property.FontStyle;
+  textShadow?: Property.TextShadow | any;
   fontStyles?: any;
-  fontSize?: Property.FontSize | any;
 
   boxShadow?: Property.BoxShadow | string;
   borderRadius?: Property.BorderRadius | string;

@@ -12,7 +12,19 @@ export const Text: StyledComponent<
   any
 > = styled.p.attrs<BoxProps>(({ theme, ...props }) => ({
   fontStyles:
-    props.fontStyles || theme?.defaultStylesMapping?.[props.as] || 'body',
+    props.fontFamily ||
+    props.fontSize ||
+    props.fontStretch ||
+    props.fontStyle ||
+    props.fontVariant ||
+    props.fontWeight ||
+    props.lineHeight ||
+    props.textTransform ||
+    props.textDecoration ||
+    props.textShadow ||
+    props.letterSpacing
+      ? props.fontStyles
+      : props.fontStyles || theme?.defaultStylesMapping?.[props.as] || 'body',
 }))<BoxProps>`
   margin-top: 0;
   margin-bottom: 0;
