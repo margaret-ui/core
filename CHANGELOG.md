@@ -1,5 +1,11 @@
 # @margaret-ui/core
 
+## 0.1.4
+
+### Patch Changes
+
+- [#16](https://github.com/margaret-ui/core/pull/16) [`b1f97b0`](https://github.com/margaret-ui/core/commit/b1f97b09c519fe2df80cf3de4ee9f924aac1758e) Thanks [@Uptip](https://github.com/Uptip)! - fix theme typings
+
 ## 0.1.3
 
 ### Patch Changes
