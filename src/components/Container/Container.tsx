@@ -12,8 +12,7 @@ const Container = styled.div<ContainerProps>`
   padding: ${({ theme }) => (theme.spacing as SpacingHelper)(1)};
 
   ${({ theme }) =>
-    theme?.media?.tablet &&
-    `
+    theme.media.tablet`
       padding: ${(theme.spacing as SpacingHelper)(2)};
     `};
 
