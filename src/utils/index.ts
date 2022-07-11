@@ -1,5 +1,6 @@
 import { css, DefaultTheme } from 'styled-components';
 import { isPlainObject, get } from 'lodash-es';
+import { ColorMode, SpacingHelper } from '../types';
 
 type FormatPropertyParams = {
   property: string;
@@ -37,29 +38,29 @@ export const setPropertyBreakpoint = ({
     case 'marginVertical':
       if (typeof value !== 'number') return css``;
       return css`
-        margin-top: ${theme.spacing(value)};
-        margin-bottom: ${theme.spacing(value)};
+        margin-top: ${(theme.spacing as SpacingHelper)(value)};
+        margin-bottom: ${(theme.spacing as SpacingHelper)(value)};
       `;
 
     case 'marginHorizontal':
       if (typeof value !== 'number') return css``;
       return css`
-        margin-left: ${theme.spacing(value)};
-        margin-right: ${theme.spacing(value)};
+        margin-left: ${(theme.spacing as SpacingHelper)(value)};
+        margin-right: ${(theme.spacing as SpacingHelper)(value)};
       `;
 
     case 'paddingVertical':
       if (typeof value !== 'number') return css``;
       return css`
-        padding-top: ${theme.spacing(value)};
-        padding-bottom: ${theme.spacing(value)};
+        padding-top: ${(theme.spacing as SpacingHelper)(value)};
+        padding-bottom: ${(theme.spacing as SpacingHelper)(value)};
       `;
 
     case 'paddingHorizontal':
       if (typeof value !== 'number') return css``;
       return css`
-        padding-left: ${theme.spacing(value)};
-        padding-right: ${theme.spacing(value)};
+        padding-left: ${(theme.spacing as SpacingHelper)(value)};
+        padding-right: ${(theme.spacing as SpacingHelper)(value)};
       `;
 
     case 'color':
@@ -67,7 +68,7 @@ export const setPropertyBreakpoint = ({
       return css`
         ${formatProperty({ prefix, property })}: ${get(theme.colors, value) ||
           (isPlainObject(get(theme, value))
-            ? get(theme, value)[theme.colorMode]
+            ? get(theme, value)[theme.colorMode as ColorMode]
             : get(theme, value)) ||
           value};
       `;
@@ -110,7 +111,7 @@ export const setPropertyBreakpoint = ({
       return css`
         ${formatProperty({ prefix, property })}: ${value === 'unset'
           ? 'unset'
-          : theme.spacing(Number(value))};
+          : (theme.spacing as SpacingHelper)(Number(value))};
       `;
 
     case 'display':

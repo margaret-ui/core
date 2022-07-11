@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { SpacingHelper } from '../../types';
 import { ContainerProps } from './types';
 
 const Container = styled.div<ContainerProps>`
@@ -8,12 +9,12 @@ const Container = styled.div<ContainerProps>`
   width: ${({ theme }) => theme.container?.sizes?.default};
   margin-left: auto;
   margin-right: auto;
-  padding: ${({ theme }) => theme.spacing(1)};
+  padding: ${({ theme }) => (theme.spacing as SpacingHelper)(1)};
 
   ${({ theme }) =>
     theme?.media?.tablet &&
     `
-      padding: ${theme.spacing(2)};
+      padding: ${(theme.spacing as SpacingHelper)(2)};
     `};
 
   ${({ size, theme }) =>
