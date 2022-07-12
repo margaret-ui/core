@@ -11,7 +11,7 @@ export type ButtonProps = {
   rightIcon?: ReactNode;
   disabled?: boolean;
   children?: ReactNode;
-  onClick?: Function;
+  onClick?: any;
 };
 
 export type ButtonTheme = {
