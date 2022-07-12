@@ -1,5 +1,11 @@
 # @margaret-ui/core
 
+## 0.1.7
+
+### Patch Changes
+
+- [`66923f0`](https://github.com/margaret-ui/core/commit/66923f06fcc185f8b7f783d29455b4aaef8aa87f) Thanks [@cynthiahenaff](https://github.com/cynthiahenaff)! - Add bare size for button
+
 ## 0.1.6
 
 ### Patch Changes
