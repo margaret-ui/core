@@ -1,13 +1,12 @@
 import { FC } from 'react';
 import ButtonReset from './ButtonReset';
 import styled, { css } from 'styled-components';
-import { Stack } from '../../components';
+import { Stack } from '../../components/Stack';
 import { ButtonProps } from './types';
 import { spacing } from '../../ui/utils';
 
-const ButtonWrapper = styled(ButtonReset)<ButtonProps>`
+const ButtonWrapper = styled(Stack)<ButtonProps>`
   position: relative;
-  display: flex;
   white-space: nowrap;
   line-height: 1;
   height: fit-content;
@@ -109,14 +108,15 @@ const Button: FC<ButtonProps> = ({
   disabled,
   variant = 'solid',
   size = 'default',
+  onClick,
 }) => (
-  <ButtonWrapper disabled={disabled} variant={variant} size={size}>
-    <Stack gap={1}>
+  <ButtonReset onClick={onClick}>
+    <ButtonWrapper disabled={disabled} variant={variant} size={size} gap={1}>
       {Boolean(leftIcon) && <span>{leftIcon}</span>}
       <div>{children}</div>
       {Boolean(rightIcon) && <span>{rightIcon}</span>}
-    </Stack>
-  </ButtonWrapper>
+    </ButtonWrapper>
+  </ButtonReset>
 );
 
 export default Button;

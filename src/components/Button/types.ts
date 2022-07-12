@@ -6,11 +6,12 @@ import {
 
 export type ButtonProps = {
   variant?: 'solid' | 'outline' | 'ghost' | 'link' | string;
-  size?: 'small' | 'default' | 'large';
+  size?: 'bare' | 'small' | 'default' | 'large';
   leftIcon?: ReactNode;
   rightIcon?: ReactNode;
   disabled?: boolean;
   children?: ReactNode;
+  onClick?: Function;
 };
 
 export type ButtonTheme = {
@@ -141,6 +142,12 @@ export type ButtonTheme = {
     };
   };
   sizes: {
+    bare: {
+      paddingVertical?: ResponsiveSpacing | undefined;
+      paddingHorizontal?: ResponsiveSpacing | undefined;
+      minWidth?: string | number;
+      fontSize?: string | number;
+    };
     small: {
       paddingVertical?: ResponsiveSpacing | undefined;
       paddingHorizontal?: ResponsiveSpacing | undefined;

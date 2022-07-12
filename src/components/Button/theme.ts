@@ -84,6 +84,11 @@ export const buttonTheme: ButtonTheme = {
     },
   },
   sizes: {
+    bare: {
+      paddingVertical: 0,
+      paddingHorizontal: 0,
+      fontSize: '1rem',
+    },
     small: {
       paddingVertical: 0.5,
       paddingHorizontal: 0.75,
