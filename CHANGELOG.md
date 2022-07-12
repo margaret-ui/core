@@ -1,5 +1,11 @@
 # @margaret-ui/core
 
+## 0.1.8
+
+### Patch Changes
+
+- [`9cedf85`](https://github.com/margaret-ui/core/commit/9cedf853c87cc44bbbd0a561030f86f662937094) Thanks [@cynthiahenaff](https://github.com/cynthiahenaff)! - Fix type on button component
+
 ## 0.1.7
 
 ### Patch Changes
