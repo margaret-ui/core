@@ -1,15 +1,20 @@
 import { FC } from 'react';
-import ButtonReset from './ButtonReset';
 import styled, { css } from 'styled-components';
-import { Stack } from '../../components/Stack';
 import { ButtonProps } from './types';
 import { spacing } from '../../ui/utils';
+import { injectLayoutHelpers } from '../Box';
+import { injectButtonResetStyles } from './utils';
+import { injectStackHelpers } from '../Stack';
 
-const ButtonWrapper = styled(Stack)<ButtonProps>`
+const ButtonWrapper = styled.button<ButtonProps>`
   position: relative;
   white-space: nowrap;
   line-height: 1;
   height: fit-content;
+
+  ${injectLayoutHelpers}
+  ${injectButtonResetStyles}
+  ${injectStackHelpers}
 
   ${({ variant, theme }) =>
     variant &&
@@ -108,15 +113,19 @@ const Button: FC<ButtonProps> = ({
   disabled,
   variant = 'solid',
   size = 'default',
-  onClick,
+  ...props
 }) => (
-  <ButtonReset onClick={onClick}>
-    <ButtonWrapper disabled={disabled} variant={variant} size={size} gap={1}>
-      {Boolean(leftIcon) && <span>{leftIcon}</span>}
-      <div>{children}</div>
-      {Boolean(rightIcon) && <span>{rightIcon}</span>}
-    </ButtonWrapper>
-  </ButtonReset>
+  <ButtonWrapper
+    disabled={disabled}
+    variant={variant}
+    size={size}
+    gap={1}
+    {...props}
+  >
+    {Boolean(leftIcon) && <span>{leftIcon}</span>}
+    {Boolean(leftIcon) || Boolean(rightIcon) ? <div>{children}</div> : children}
+    {Boolean(rightIcon) && <span>{rightIcon}</span>}
+  </ButtonWrapper>
 );
 
 export default Button;

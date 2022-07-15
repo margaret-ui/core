@@ -52,7 +52,9 @@ const App = () => {
         </Avatar.Group>
         <Stack gap={2} paddingTop={2}>
           <Button>Hello</Button>
-          <Button variant="outline">Hello</Button>
+          <Button variant="outline" as="a" href="/hello">
+            Hello
+          </Button>
           <Button variant="ghost">Hello</Button>
           <Button variant="link">Hello</Button>
         </Stack>
