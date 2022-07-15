@@ -30,7 +30,31 @@ export const GlobalVars = createGlobalStyle`
         palette: theme.ui as ColorPaletteWrapper,
         prefix: 'ui',
       })}
-  }
+
+    ${({ theme }) =>
+      injectPalette({
+        palette: theme.fontStacks as ColorPaletteWrapper,
+        prefix: 'fonts',
+      })}
+
+    ${({ theme }) =>
+      injectPalette({
+        palette: Object.entries(theme.breakpoints || {}).reduce(
+          (breakpoints: any, [breakpoint, value]) => {
+            breakpoints[breakpoint as string] = `${value / 16}rem`;
+            return breakpoints;
+          },
+          {},
+        ) as any,
+        prefix: 'breakpoint',
+      })}
+
+    ${({ theme }) =>
+      injectPalette({
+        palette: theme.borderRadius as ColorPaletteWrapper,
+        prefix: 'border-radius',
+      })}
+}
 `;
 
 export type MargaretProviderProps = {

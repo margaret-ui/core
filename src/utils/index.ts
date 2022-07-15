@@ -151,6 +151,12 @@ export const setPropertyBreakpoint = ({
       `;
 
     case 'fontFamily':
+      return css`
+        ${formatProperty({ prefix, property })}: ${theme?.fontStacks?.[
+          theme?.fontStyles?.[value]?.fontStack
+        ] || value};
+      `;
+
     case 'fontStretch':
     case 'fontStyle':
     case 'fontVariant':
