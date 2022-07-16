@@ -3,8 +3,9 @@ import {
   ResponsiveSpacing,
   ResponsiveAlignItemsOrJustifyContent,
 } from '../../types';
+import { StackProps } from '../Stack';
 
-export type ButtonProps = {
+export type ButtonProps = StackProps & {
   variant?: 'solid' | 'outline' | 'ghost' | 'link' | string;
   size?: 'bare' | 'small' | 'default' | 'large';
   leftIcon?: ReactNode;

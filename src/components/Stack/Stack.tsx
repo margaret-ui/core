@@ -8,42 +8,14 @@ import {
 } from 'react';
 import styled from 'styled-components';
 import { injectLayoutHelpers, injectVisuallyHiddenHelper } from '../Box';
-import { generateAligns, generateStackMargin } from './utils';
-import { setProperty } from '../../utils';
 import { generateResponsiveDividerDirectionFromResponsiveFlexDirection } from '../Divider';
 import { StackBaseProps, StackProps } from './types';
+import { injectStackHelpers } from './utils';
 
 const StackBase = styled.div<StackBaseProps>`
-  display: flex;
-  list-style-type: none;
-
   ${injectLayoutHelpers}
   ${injectVisuallyHiddenHelper}
-
-  ${({ gap, theme, direction }) =>
-    gap !== undefined &&
-    generateStackMargin({
-      theme,
-      gap,
-      direction: direction || 'row',
-    })}
-
-  ${({ theme, direction }) =>
-    direction &&
-    setProperty({
-      theme,
-      property: 'Direction',
-      value: direction,
-      prefix: 'flex',
-    })}
-
-  ${({ alignX, direction, theme }) =>
-    alignX !== undefined &&
-    generateAligns({ value: alignX, direction, theme, property: 'alignX' })}
-
-  ${({ alignY, direction, theme }) =>
-    alignY !== undefined &&
-    generateAligns({ value: alignY, direction, theme, property: 'alignY' })}
+  ${injectStackHelpers}
 `;
 
 const Stack: FC<StackProps> = ({

@@ -10,6 +10,7 @@ import {
 } from 'lodash-es';
 import { setProperty } from '../../utils';
 import { Breakpoint, ResponsiveFlexDirection } from '../../types';
+import { StackProps } from './types';
 
 export const generateAlign = ({
   value,
@@ -278,3 +279,33 @@ export const hasFlexGapSupport = () => {
 
   return isSupported;
 };
+
+export const injectStackHelpers = css<StackProps>`
+  display: flex;
+  list-style-type: none;
+
+  ${({ gap, theme, direction }) =>
+    gap !== undefined &&
+    generateStackMargin({
+      theme,
+      gap,
+      direction: direction || 'row',
+    })}
+
+  ${({ theme, direction }) =>
+    direction &&
+    setProperty({
+      theme,
+      property: 'Direction',
+      value: direction,
+      prefix: 'flex',
+    })}
+
+  ${({ alignX, direction, theme }) =>
+    alignX !== undefined &&
+    generateAligns({ value: alignX, direction, theme, property: 'alignX' })}
+
+  ${({ alignY, direction, theme }) =>
+    alignY !== undefined &&
+    generateAligns({ value: alignY, direction, theme, property: 'alignY' })}
+`;
