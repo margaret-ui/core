@@ -1,5 +1,11 @@
 # @margaret-ui/core
 
+## 0.1.9
+
+### Patch Changes
+
+- [`5c7e6a2`](https://github.com/margaret-ui/core/commit/5c7e6a29f00314b185f1a2e45439c6205843fa19) Thanks [@Uptip](https://github.com/Uptip)! - fix button layout props & typography font families
+
 ## 0.1.8
 
 ### Patch Changes
