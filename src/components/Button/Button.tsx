@@ -113,13 +113,18 @@ const Button: FC<ButtonProps> = ({
   disabled,
   variant = 'solid',
   size = 'default',
+  direction = 'row',
+  gap = 1,
+  alignY = 'center',
   ...props
 }) => (
   <ButtonWrapper
     disabled={disabled}
     variant={variant}
     size={size}
-    gap={1}
+    gap={gap}
+    direction={direction}
+    alignY={alignY}
     {...props}
   >
     {Boolean(leftIcon) && <span>{leftIcon}</span>}
