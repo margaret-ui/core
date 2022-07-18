@@ -1,5 +1,11 @@
 # @margaret-ui/core
 
+## 0.1.10
+
+### Patch Changes
+
+- [`34af32c`](https://github.com/margaret-ui/core/commit/34af32c60b43610bfbca848e2a28fd233d234747) Thanks [@Uptip](https://github.com/Uptip)! - fix crash when setting buttons alignY
+
 ## 0.1.9
 
 ### Patch Changes
