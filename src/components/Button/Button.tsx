@@ -4,7 +4,7 @@ import { ButtonProps } from './types';
 import { spacing } from '../../ui/utils';
 import { injectLayoutHelpers } from '../Box';
 import { injectButtonResetStyles } from './utils';
-import { injectStackHelpers } from '../Stack';
+import { injectStackHelpers, Stack } from '../Stack';
 
 const ButtonWrapper = styled.button<ButtonProps>`
   position: relative;
@@ -12,7 +12,6 @@ const ButtonWrapper = styled.button<ButtonProps>`
   line-height: 1;
   height: fit-content;
 
-  ${injectLayoutHelpers}
   ${injectButtonResetStyles}
   ${injectStackHelpers}
 
@@ -73,12 +72,12 @@ const ButtonWrapper = styled.button<ButtonProps>`
   ${({ size, theme }) =>
     size &&
     `
-    padding: ${spacing(theme.button?.sizes?.[size]?.paddingVertical)} ${spacing(
-      theme.button?.sizes?.[size]?.paddingHorizontal,
-    )};
-    min-width: ${theme.button?.sizes?.[size]?.minWidth};
-    font-size: ${theme.button?.sizes?.[size]?.fontSize};
-  `}
+      padding: ${spacing(
+        theme.button?.sizes?.[size]?.paddingVertical,
+      )} ${spacing(theme.button?.sizes?.[size]?.paddingHorizontal)};
+      min-width: ${theme.button?.sizes?.[size]?.minWidth};
+      font-size: ${theme.button?.sizes?.[size]?.fontSize};
+    `}
 
   ${({ disabled, theme, variant }) =>
     disabled &&
@@ -104,6 +103,8 @@ const ButtonWrapper = styled.button<ButtonProps>`
           'unset'};
       }
     `}
+
+  ${injectLayoutHelpers}
 `;
 
 const Button: FC<ButtonProps> = ({
@@ -127,9 +128,9 @@ const Button: FC<ButtonProps> = ({
     alignY={alignY}
     {...props}
   >
-    {Boolean(leftIcon) && <span>{leftIcon}</span>}
+    {Boolean(leftIcon) && <Stack>{leftIcon}</Stack>}
     {Boolean(leftIcon) || Boolean(rightIcon) ? <div>{children}</div> : children}
-    {Boolean(rightIcon) && <span>{rightIcon}</span>}
+    {Boolean(rightIcon) && <Stack>{rightIcon}</Stack>}
   </ButtonWrapper>
 );
 
