@@ -1,5 +1,11 @@
 # @margaret-ui/core
 
+## 0.1.11
+
+### Patch Changes
+
+- [`e5a47ca`](https://github.com/margaret-ui/core/commit/e5a47ca872fe3f7a976a62a8c32d7f9304874199) Thanks [@Uptip](https://github.com/Uptip)! - allow overriding button theme styles with layout props
+
 ## 0.1.10
 
 ### Patch Changes
