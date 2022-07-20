@@ -54,6 +54,12 @@ export const GlobalVars = createGlobalStyle`
         palette: theme.borderRadius as ColorPaletteWrapper,
         prefix: 'border-radius',
       })}
+
+    ${({ theme }) =>
+      injectPalette({
+        palette: theme.shadows as ColorPaletteWrapper,
+        prefix: 'shadows',
+      })}
 }
 `;
 
