@@ -1,5 +1,11 @@
 # @margaret-ui/core
 
+## 0.1.13
+
+### Patch Changes
+
+- [`aa76acf`](https://github.com/margaret-ui/core/commit/aa76acf5d9e66e92642161e8a254fc9f83bd35e9) Thanks [@Uptip](https://github.com/Uptip)! - add shadows to theme
+
 ## 0.1.12
 
 ### Patch Changes
