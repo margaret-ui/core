@@ -130,5 +130,13 @@ export const theme = {
   container: containerTheme,
   button: buttonTheme,
 
+  shadows: {
+    elevation1: '0 2px 8px var(--colors-shades-100)',
+    elevation2: '0 6px 12px var(--colors-shades-200)',
+    elevation3: '0 12px 24px var(--colors-shades-200)',
+    elevation4:
+      '0 12px 24px var(--colors-shades-200), 0 24px 48px var(--colors-shades-200)',
+  },
+
   ...typographyTheme,
 };

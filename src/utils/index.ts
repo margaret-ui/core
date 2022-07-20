@@ -86,6 +86,25 @@ export const setPropertyBreakpoint = ({
         ${formatProperty({ prefix, property })}: ${theme.borderRadius?.[value]};
       `;
 
+    case 'boxShadow':
+      return css`
+        ${formatProperty({ prefix, property })}: ${theme.shadows?.[value] ||
+          value};
+      `;
+
+    case 'textShadow':
+      if (isPlainObject(theme?.fontStyles?.[value])) {
+        return css`
+          ${formatProperty({ prefix, property })}: ${theme?.fontStyles?.[
+            value
+          ]?.[`${prefix}${property}`]};
+        `;
+      }
+      return css`
+        ${formatProperty({ prefix, property })}: ${theme.shadows?.[value] ||
+          value};
+      `;
+
     case 'margin':
     case 'marginTop':
     case 'marginRight':
@@ -166,7 +185,6 @@ export const setPropertyBreakpoint = ({
     case 'fontVariant':
     case 'fontWeight':
     case 'textDecoration':
-    case 'textShadow':
     case 'textTransform':
     case 'letterSpacing':
       if (isPlainObject(theme?.fontStyles?.[value])) {
