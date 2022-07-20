@@ -1,5 +1,11 @@
 # @margaret-ui/core
 
+## 0.1.12
+
+### Patch Changes
+
+- [#29](https://github.com/margaret-ui/core/pull/29) [`b98fbe7`](https://github.com/margaret-ui/core/commit/b98fbe754f9879fe26fb95b7826f8b343e103ef3) Thanks [@Uptip](https://github.com/Uptip)! - add possibility to use margin/padding x/y shortcuts
+
 ## 0.1.11
 
 ### Patch Changes
