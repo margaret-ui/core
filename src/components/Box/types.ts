@@ -14,19 +14,35 @@ export type BoxProps = {
   padding?: ResponsiveSpacing;
   paddingVertical?: ResponsiveSpacing;
   paddingHorizontal?: ResponsiveSpacing;
+  paddingY?: ResponsiveSpacing;
+  paddingX?: ResponsiveSpacing;
   paddingTop?: ResponsiveSpacing;
   paddingRight?: ResponsiveSpacing;
   paddingBottom?: ResponsiveSpacing;
   paddingLeft?: ResponsiveSpacing;
+  paddingBlock?: ResponsiveSpacing;
+  paddingBlockStart?: ResponsiveSpacing;
+  paddingBlockEnd?: ResponsiveSpacing;
+  paddingInline?: ResponsiveSpacing;
+  paddingInlineStart?: ResponsiveSpacing;
+  paddingInlineEnd?: ResponsiveSpacing;
 
   margin?: ResponsiveSpacing;
   marginVertical?: ResponsiveSpacing;
   marginHorizontal?: ResponsiveSpacing;
+  marginY?: ResponsiveSpacing;
+  marginX?: ResponsiveSpacing;
   marginTop?: ResponsiveSpacing;
   marginRight?: ResponsiveSpacing;
   marginBottom?: ResponsiveSpacing;
   marginLeft?: ResponsiveSpacing;
   marginAuto?: ResponsiveSpacing;
+  marginBlock?: ResponsiveSpacing;
+  marginBlockStart?: ResponsiveSpacing;
+  marginBlockEnd?: ResponsiveSpacing;
+  marginInline?: ResponsiveSpacing;
+  marginInlineStart?: ResponsiveSpacing;
+  marginInlineEnd?: ResponsiveSpacing;
 
   gap?: ResponsiveSpacing;
 

@@ -36,6 +36,7 @@ export const setPropertyBreakpoint = ({
       `;
 
     case 'marginVertical':
+    case 'marginY':
       if (typeof value !== 'number') return css``;
       return css`
         margin-top: ${(theme.spacing as SpacingHelper)(value)};
@@ -43,6 +44,7 @@ export const setPropertyBreakpoint = ({
       `;
 
     case 'marginHorizontal':
+    case 'marginX':
       if (typeof value !== 'number') return css``;
       return css`
         margin-left: ${(theme.spacing as SpacingHelper)(value)};
@@ -50,6 +52,7 @@ export const setPropertyBreakpoint = ({
       `;
 
     case 'paddingVertical':
+    case 'paddingY':
       if (typeof value !== 'number') return css``;
       return css`
         padding-top: ${(theme.spacing as SpacingHelper)(value)};
@@ -57,6 +60,7 @@ export const setPropertyBreakpoint = ({
       `;
 
     case 'paddingHorizontal':
+    case 'paddingX':
       if (typeof value !== 'number') return css``;
       return css`
         padding-left: ${(theme.spacing as SpacingHelper)(value)};
