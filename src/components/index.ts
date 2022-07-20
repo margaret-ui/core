@@ -5,3 +5,4 @@ export * from './Container';
 export * from './Divider';
 export * from './Stack';
 export * from './Typography';
+export * from './VisuallyHidden';
