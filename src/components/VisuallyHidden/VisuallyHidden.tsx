@@ -1,7 +1,8 @@
 import { FC } from 'react';
-import * as RadixVisuallyHidden from '@radix-ui/react-visually-hidden';
-import { VisuallyHiddenProps } from './types';
+import { Box, BoxProps } from '../Box';
 
-export const VisuallyHidden: FC<VisuallyHiddenProps> = ({ children }) => (
-  <RadixVisuallyHidden.Root>{children}</RadixVisuallyHidden.Root>
+export const VisuallyHidden: FC<BoxProps> = ({ children, ...props }) => (
+  <Box {...props} visuallyHidden>
+    {children}
+  </Box>
 );
