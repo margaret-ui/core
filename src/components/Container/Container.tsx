@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { SpacingHelper } from '../../types';
+import { injectLayoutHelpers } from '../Box';
 import { ContainerProps } from './types';
 
 const Container = styled.div<ContainerProps>`
@@ -22,6 +23,8 @@ const Container = styled.div<ContainerProps>`
     `
       width: ${theme?.container?.sizes?.[size]};
     `};
+
+  ${injectLayoutHelpers}
 `;
 
 export default Container;
