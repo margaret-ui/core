@@ -1,5 +1,11 @@
 # @margaret-ui/core
 
+## 0.1.17
+
+### Patch Changes
+
+- [`cfe85e5`](https://github.com/margaret-ui/core/commit/cfe85e519a4742f2271b6b09b0309d31d806951c) Thanks [@Uptip](https://github.com/Uptip)! - fix path to main & type files
+
 ## 0.1.16
 
 ### Patch Changes
