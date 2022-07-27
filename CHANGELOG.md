@@ -1,5 +1,11 @@
 # @margaret-ui/core
 
+## 0.1.14
+
+### Patch Changes
+
+- [`34cb557`](https://github.com/margaret-ui/core/commit/34cb5570de175a76c49a450f8b1883d04100f856) Thanks [@Uptip](https://github.com/Uptip)! - allow overriding container props
+
 ## 0.1.13
 
 ### Patch Changes
