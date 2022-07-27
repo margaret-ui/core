@@ -87,11 +87,11 @@ const MargaretProvider: FC<MargaretProviderProps> = ({
   return (
     <AppContext.Provider
       value={{
+        colorMode,
         mainNavIsExpanded,
         expandMainNav: handleExpandMainNav,
         collapseMainNav: handleCollapseMainNav,
         toggleMainNav: handleToggleMainNav,
-        colorMode,
         switchColorMode: handleSwitchColorMode,
       }}
     >
