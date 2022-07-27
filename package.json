@@ -1,6 +1,6 @@
 {
   "name": "@margaret-ui/core",
-  "version": "0.1.15",
+  "version": "0.1.16",
   "main": "index.umd.js",
   "module": "index.es.js",
   "types": "index.d.ts",
