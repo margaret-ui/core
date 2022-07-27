@@ -1,5 +1,11 @@
 # @margaret-ui/core
 
+## 0.1.15
+
+### Patch Changes
+
+- [`67a30f0`](https://github.com/margaret-ui/core/commit/67a30f04ce2f60b289f43a5b63dde0b3a06878b7) Thanks [@Uptip](https://github.com/Uptip)! - add declaration file to library output
+
 ## 0.1.14
 
 ### Patch Changes
