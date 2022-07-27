@@ -1,5 +1,11 @@
 # @margaret-ui/core
 
+## 0.1.16
+
+### Patch Changes
+
+- [`6a3e441`](https://github.com/margaret-ui/core/commit/6a3e441b57e95615e066c42cbaead8db1af6f8f4) Thanks [@Uptip](https://github.com/Uptip)! - update path to types in package.json file
+
 ## 0.1.15
 
 ### Patch Changes
