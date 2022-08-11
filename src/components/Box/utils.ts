@@ -11,6 +11,19 @@ export const injectLayoutHelpers = ({ theme, ...props }: BoxProps & any) =>
     'right',
     'bottom',
     'left',
+    'inset',
+    'zIndex',
+
+    'opacity',
+
+    'outline',
+    'outlineColor',
+    'outlineOffset',
+    'outlineStyle',
+
+    'overflow',
+    'overflowX',
+    'overflowY',
 
     'padding',
     'paddingVertical',
@@ -55,6 +68,7 @@ export const injectLayoutHelpers = ({ theme, ...props }: BoxProps & any) =>
     'flexShrink',
     'flexBasis',
     'flexWrap',
+    'flexFlow',
     'order',
     'gap',
 
@@ -62,6 +76,8 @@ export const injectLayoutHelpers = ({ theme, ...props }: BoxProps & any) =>
     'height',
     'minWidth',
     'minHeight',
+    'maxWidth',
+    'maxHeight',
 
     'overflow',
     'overflowX',
@@ -77,6 +93,7 @@ export const injectLayoutHelpers = ({ theme, ...props }: BoxProps & any) =>
     'fontWeight',
 
     'boxShadow',
+    'textShadow',
     'borderRadius',
 
     'gridArea',
@@ -87,6 +104,13 @@ export const injectLayoutHelpers = ({ theme, ...props }: BoxProps & any) =>
 
     'transition',
     'transform',
+
+    'whiteSpace',
+    'wordBreak',
+    'wordWrap',
+    'textOverflow',
+
+    'cursor',
   ] as const).filter(
     property => props[property] !== undefined,
   ) as string[]).map(property =>

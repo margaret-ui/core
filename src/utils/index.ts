@@ -147,6 +147,8 @@ export const setPropertyBreakpoint = ({
     case 'height':
     case 'minWidth':
     case 'minHeight':
+    case 'maxWidth':
+    case 'maxHeight':
     case 'overflow':
     case 'overflowX':
     case 'overflowY':
@@ -155,10 +157,12 @@ export const setPropertyBreakpoint = ({
     case 'transform':
     case 'flex':
     case 'flexDirection':
+    case 'flexFlow':
     case 'flexGrow':
     case 'flexShrink':
     case 'flexBasis':
     case 'flexWrap':
+    case 'opacity':
     case 'order':
     case 'gridColumn':
     case 'gridRow':
@@ -169,6 +173,17 @@ export const setPropertyBreakpoint = ({
     case 'gridTemplateRows':
     case 'gridTemplateColumns':
     case 'gridTemplateAreas':
+    case 'zIndex':
+    case 'inset':
+    case 'outline':
+    case 'outlineColor':
+    case 'outlineOffset':
+    case 'outlineStyle':
+    case 'whiteSpace':
+    case 'wordBreak':
+    case 'wordWrap':
+    case 'textOverflow':
+    case 'cursor':
       return css`
         ${formatProperty({ prefix, property })}: ${value};
       `;
