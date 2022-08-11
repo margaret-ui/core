@@ -124,12 +124,15 @@ export const injectLayoutHelpers = ({ theme, ...props }: BoxProps & any) =>
 export const injectVisuallyHiddenHelper = ({ visuallyHidden }: BoxProps) =>
   visuallyHidden &&
   css`
-    clip: rect(1px, 1px, 1px, 1px) !important;
-    clip-path: inset(50%) !important;
-    height: 1px !important;
+    position: absolute !important;
+    border: 0 !important;
     width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
     margin: -1px !important;
     overflow: hidden !important;
-    padding: 0 !important;
-    position: absolute !important;
+    clip: rect(0, 0, 0, 0) !important;
+    clip-path: inset(50%) !important;
+    white-space: nowrap !important;
+    word-wrap: normal !important;
   `;

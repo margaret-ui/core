@@ -7,6 +7,7 @@ import {
   Container,
   Heading,
   Text,
+  VisuallyHidden,
 } from './components';
 import MargaretProvider from './MargaretProvider';
 
@@ -103,6 +104,11 @@ const App = () => {
             Coucou, coucou, coucou, coucou, coucou, coucou, coucou, coucou,
             coucou, coucou, coucou.
           </Text>
+        </Stack>
+        <Stack>
+          <Button variant="outline" size="small">
+            ❌<VisuallyHidden>Close the modal</VisuallyHidden>
+          </Button>
         </Stack>
       </Container>
     </MargaretProvider>
