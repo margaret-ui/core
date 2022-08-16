@@ -1,5 +1,11 @@
 # @margaret-ui/core
 
+## 0.1.19
+
+### Patch Changes
+
+- [`cb11194`](https://github.com/margaret-ui/core/commit/cb11194c0fec3e00213458cbc79f678506f7de6e) Thanks [@Uptip](https://github.com/Uptip)! - feat: add flex position layout props
+
 ## 0.1.18
 
 ### Patch Changes
