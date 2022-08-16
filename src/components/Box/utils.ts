@@ -25,6 +25,14 @@ export const injectLayoutHelpers = ({ theme, ...props }: BoxProps & any) =>
     'overflowX',
     'overflowY',
 
+    'alignSelf',
+    'alignItems',
+    'justifyContent',
+    'justifySelf',
+    'placeItems',
+    'placeContent',
+    'placeSelf',
+
     'padding',
     'paddingVertical',
     'paddingHorizontal',

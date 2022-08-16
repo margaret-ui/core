@@ -162,6 +162,13 @@ export const setPropertyBreakpoint = ({
     case 'flexShrink':
     case 'flexBasis':
     case 'flexWrap':
+    case 'alignSelf':
+    case 'alignItems':
+    case 'justifyContent':
+    case 'justifySelf':
+    case 'placeItems':
+    case 'placeContent':
+    case 'placeSelf':
     case 'opacity':
     case 'order':
     case 'gridColumn':
