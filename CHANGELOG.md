@@ -1,5 +1,11 @@
 # @margaret-ui/core
 
+## 0.1.18
+
+### Patch Changes
+
+- [`c3a1847`](https://github.com/margaret-ui/core/commit/c3a18478547afbf853620232b847c8760632c66e) Thanks [@Uptip](https://github.com/Uptip)! - feat: add miscellaneous properties to layout props
+
 ## 0.1.17
 
 ### Patch Changes
