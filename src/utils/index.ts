@@ -171,12 +171,17 @@ export const setPropertyBreakpoint = ({
     case 'placeSelf':
     case 'opacity':
     case 'order':
+    case 'grid':
+    case 'gridArea':
     case 'gridColumn':
     case 'gridRow':
-    case 'gridArea':
     case 'gridAutoFlow':
     case 'gridAutoRows':
     case 'gridAutoColumns':
+    case 'gridColumnStart':
+    case 'gridColumnEnd':
+    case 'gridRowStart':
+    case 'gridRowEnd':
     case 'gridTemplateRows':
     case 'gridTemplateColumns':
     case 'gridTemplateAreas':

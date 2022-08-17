@@ -1,5 +1,4 @@
 import { Property } from 'csstype';
-import { ReactNode } from 'react';
 import { ResponsiveSpacing } from '../../types';
 
 export type BoxProps = {
@@ -89,6 +88,14 @@ export type BoxProps = {
   gridColumnEnd?: Property.GridColumnEnd;
   gridRowStart?: Property.GridRowStart;
   gridRowEnd?: Property.GridRowEnd;
+  gridColumn?: Property.GridColumn;
+  gridRow?: Property.GridRow;
+  gridAutoFlow?: Property.GridAutoFlow;
+  gridAutoRows?: Property.GridAutoRows;
+  gridAutoColumns?: Property.GridAutoColumns;
+  gridTemplateRows?: Property.GridTemplateRows;
+  gridTemplateColumns?: Property.GridTemplateColumns;
+  gridTemplateAreas?: Property.GridTemplateAreas;
 
   transition?: Property.Transition;
   transform?: Property.Transform;
