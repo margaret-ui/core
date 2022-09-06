@@ -76,6 +76,7 @@ const ButtonWrapper = styled.button<ButtonProps>`
         theme.button?.sizes?.[size]?.paddingVertical,
       )} ${spacing(theme.button?.sizes?.[size]?.paddingHorizontal)};
       min-width: ${theme.button?.sizes?.[size]?.minWidth};
+      min-height: ${theme.button?.sizes?.[size]?.minHeight};
       font-size: ${theme.button?.sizes?.[size]?.fontSize};
     `}
 

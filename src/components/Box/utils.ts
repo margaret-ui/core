@@ -33,6 +33,9 @@ export const injectLayoutHelpers = ({ theme, ...props }: BoxProps & any) =>
     'placeContent',
     'placeSelf',
 
+    'objectFit',
+    'objectPosition',
+
     'padding',
     'paddingVertical',
     'paddingHorizontal',

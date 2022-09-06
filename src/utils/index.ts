@@ -169,6 +169,8 @@ export const setPropertyBreakpoint = ({
     case 'placeItems':
     case 'placeContent':
     case 'placeSelf':
+    case 'objectFit':
+    case 'objectPosition':
     case 'opacity':
     case 'order':
     case 'grid':
