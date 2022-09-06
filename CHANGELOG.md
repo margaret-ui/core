@@ -1,5 +1,11 @@
 # @margaret-ui/core
 
+## 0.1.20
+
+### Patch Changes
+
+- [`fa285d0`](https://github.com/margaret-ui/core/commit/fa285d0e9bbde4e66ceb7fabeec2c0efd52909ee) Thanks [@Uptip](https://github.com/Uptip)! - feat: add grid box props helpers
+
 ## 0.1.19
 
 ### Patch Changes
