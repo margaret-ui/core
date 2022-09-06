@@ -1,5 +1,11 @@
 # @margaret-ui/core
 
+## 0.1.21
+
+### Patch Changes
+
+- [`872ac81`](https://github.com/margaret-ui/core/commit/872ac81d2451d64c3b7ad2376a521236a8dfa4f2) Thanks [@Uptip](https://github.com/Uptip)! - add object-fit layout helper prop
+
 ## 0.1.20
 
 ### Patch Changes
