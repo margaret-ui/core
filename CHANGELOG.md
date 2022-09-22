@@ -1,5 +1,11 @@
 # @margaret-ui/core
 
+## 0.1.23
+
+### Patch Changes
+
+- [`7835a97`](https://github.com/margaret-ui/core/commit/7835a973dcd4efaa8899049d3f31486a182d35d3) Thanks [@Uptip](https://github.com/Uptip)! - fix: remove duplicate case evaluations
+
 ## 0.1.22
 
 ### Patch Changes
