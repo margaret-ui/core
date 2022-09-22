@@ -69,6 +69,16 @@ export const setPropertyBreakpoint = ({
 
     case 'color':
     case 'backgroundColor':
+    case 'borderBlockColor':
+    case 'borderBlockEndColor':
+    case 'borderBlockStartColor':
+    case 'borderBottomColor':
+    case 'borderInlineColor':
+    case 'borderInlineEndColor':
+    case 'borderInlineStartColor':
+    case 'borderLeftColor':
+    case 'borderRightColor':
+    case 'borderTopColor':
       return css`
         ${formatProperty({ prefix, property })}: ${get(theme.colors, value) ||
           (isPlainObject(get(theme, value))
@@ -83,12 +93,14 @@ export const setPropertyBreakpoint = ({
     case 'borderBottomLeftRadius':
     case 'borderBottomRightRadius':
       return css`
-        ${formatProperty({ prefix, property })}: ${theme.borderRadius?.[value]};
+        ${formatProperty({ prefix, property })}: ${theme.borderRadius?.[
+          value
+        ] ?? value};
       `;
 
     case 'boxShadow':
       return css`
-        ${formatProperty({ prefix, property })}: ${theme.shadows?.[value] ||
+        ${formatProperty({ prefix, property })}: ${theme.shadows?.[value] ??
           value};
       `;
 
@@ -97,11 +109,11 @@ export const setPropertyBreakpoint = ({
         return css`
           ${formatProperty({ prefix, property })}: ${theme?.fontStyles?.[
             value
-          ]?.[`${prefix}${property}`]};
+          ]?.[`${prefix}${property}`] ?? value};
         `;
       }
       return css`
-        ${formatProperty({ prefix, property })}: ${theme.shadows?.[value] ||
+        ${formatProperty({ prefix, property })}: ${theme.shadows?.[value] ??
           value};
       `;
 
@@ -132,8 +144,8 @@ export const setPropertyBreakpoint = ({
     case 'gridColumnGap':
     case 'gap':
       return css`
-        ${formatProperty({ prefix, property })}: ${value === 'unset'
-          ? 'unset'
+        ${formatProperty({ prefix, property })}: ${isNaN(value)
+          ? value
           : (theme.spacing as SpacingHelper)(Number(value))};
       `;
 
@@ -198,6 +210,104 @@ export const setPropertyBreakpoint = ({
     case 'wordWrap':
     case 'textOverflow':
     case 'cursor':
+    case 'clipPath':
+    case 'backgroundOrigin':
+    case 'backgroundPosition':
+    case 'backgroundPositionX':
+    case 'backgroundPositionY':
+    case 'backgroundRepeat':
+    case 'backgroundSize':
+    case 'backdropFilter':
+    case 'backdropVisibility':
+    case 'background':
+    case 'backgroundAttachment':
+    case 'backgroundBlendMode':
+    case 'backgroundClip':
+    case 'accentColor':
+    case 'colorScheme':
+    case 'alignContent':
+    case 'animation':
+    case 'animationDelay':
+    case 'animationDirection':
+    case 'animationDuration':
+    case 'animationFillMode':
+    case 'animationIterationCount':
+    case 'animationName':
+    case 'animationPlayState':
+    case 'animationTimingFunction':
+    case 'appearance':
+    case 'aspectRatio':
+    case 'clipPath':
+    case 'all':
+    case 'border':
+    case 'borderBlock':
+    case 'borderBlockEnd':
+    case 'borderBlockEndStyle':
+    case 'borderBlockEndWidth':
+    case 'borderBlockStart':
+    case 'borderBlockStartStyle':
+    case 'borderBlockStartWidth':
+    case 'borderBlockStyle':
+    case 'borderBlockWidth':
+    case 'borderBottom':
+    case 'borderBottomLeftRadius':
+    case 'borderBottomRightRadius':
+    case 'borderBottomStyle':
+    case 'borderBottomWidth':
+    case 'borderCollapse':
+    case 'borderColor':
+    case 'borderEndEndRadius':
+    case 'borderEndStartRadius':
+    case 'borderImage':
+    case 'borderImageOutset':
+    case 'borderImageRepeat':
+    case 'borderImageSlice':
+    case 'borderImageSource':
+    case 'borderImageWidth':
+    case 'borderInline':
+    case 'borderInlineEnd':
+    case 'borderInlineEndStyle':
+    case 'borderInlineEndWidth':
+    case 'borderInlineStart':
+    case 'borderInlineStartStyle':
+    case 'borderInlineStartWidth':
+    case 'borderInlineStyle':
+    case 'borderInlineWidth':
+    case 'borderLeft':
+    case 'borderLeftStyle':
+    case 'borderLeftWidth':
+    case 'borderRadius':
+    case 'borderRight':
+    case 'borderRightStyle':
+    case 'borderRightWidth':
+    case 'borderSpacing':
+    case 'borderStartEndRadius':
+    case 'borderStartStartRadius':
+    case 'borderStyle':
+    case 'borderTop':
+    case 'borderTopLeftRadius':
+    case 'borderTopRightRadius':
+    case 'borderTopStyle':
+    case 'borderTopWidth':
+    case 'borderWidth':
+    case 'willChange':
+    case 'mask':
+    case 'maskBorder':
+    case 'maskBorderMode':
+    case 'maskBorderOutset':
+    case 'maskBorderRepeat':
+    case 'maskBorderSlice':
+    case 'maskBorderSource':
+    case 'maskBorderWidth':
+    case 'maskClip':
+    case 'maskComposite':
+    case 'maskImage':
+    case 'maskMode':
+    case 'maskOrigin':
+    case 'maskPosition':
+    case 'maskRepeat':
+    case 'maskSize':
+    case 'maskType':
       return css`
         ${formatProperty({ prefix, property })}: ${value};
       `;
@@ -292,6 +402,8 @@ export const setProperty = ({
   theme: DefaultTheme;
   value: any;
 }) => {
+  console.log(property);
+
   if (!isPlainObject(value)) {
     return setPropertyBreakpoint({
       theme,
@@ -300,6 +412,15 @@ export const setProperty = ({
       prefix,
     });
   }
+
+  console.log(
+    setPropertyBreakpoint({
+      theme,
+      value: value!.default,
+      property,
+      prefix,
+    }),
+  );
 
   return css`
     ${setPropertyBreakpoint({
