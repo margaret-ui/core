@@ -1,5 +1,11 @@
 # @margaret-ui/core
 
+## 0.1.24
+
+### Patch Changes
+
+- [`42564bc`](https://github.com/margaret-ui/core/commit/42564bcc609e306b6a05281dcf9e868b7e334592) Thanks [@Uptip](https://github.com/Uptip)! - fix: remove console logs
+
 ## 0.1.23
 
 ### Patch Changes
