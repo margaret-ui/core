@@ -1,5 +1,11 @@
 # @margaret-ui/core
 
+## 0.1.22
+
+### Patch Changes
+
+- [`942e563`](https://github.com/margaret-ui/core/commit/942e5639b6de47854274109007d2b57429dd1b29) Thanks [@Uptip](https://github.com/Uptip)! - feat: add missing layout props
+
 ## 0.1.21
 
 ### Patch Changes
