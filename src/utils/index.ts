@@ -92,6 +92,10 @@ export const setPropertyBreakpoint = ({
     case 'borderTopRightRadius':
     case 'borderBottomLeftRadius':
     case 'borderBottomRightRadius':
+    case 'borderEndEndRadius':
+    case 'borderEndStartRadius':
+    case 'borderStartEndRadius':
+    case 'borderStartStartRadius':
       return css`
         ${formatProperty({ prefix, property })}: ${theme.borderRadius?.[
           value
@@ -237,7 +241,6 @@ export const setPropertyBreakpoint = ({
     case 'animationTimingFunction':
     case 'appearance':
     case 'aspectRatio':
-    case 'clipPath':
     case 'all':
     case 'border':
     case 'borderBlock':
@@ -250,14 +253,11 @@ export const setPropertyBreakpoint = ({
     case 'borderBlockStyle':
     case 'borderBlockWidth':
     case 'borderBottom':
-    case 'borderBottomLeftRadius':
-    case 'borderBottomRightRadius':
     case 'borderBottomStyle':
     case 'borderBottomWidth':
     case 'borderCollapse':
     case 'borderColor':
-    case 'borderEndEndRadius':
-    case 'borderEndStartRadius':
+
     case 'borderImage':
     case 'borderImageOutset':
     case 'borderImageRepeat':
@@ -276,17 +276,12 @@ export const setPropertyBreakpoint = ({
     case 'borderLeft':
     case 'borderLeftStyle':
     case 'borderLeftWidth':
-    case 'borderRadius':
     case 'borderRight':
     case 'borderRightStyle':
     case 'borderRightWidth':
     case 'borderSpacing':
-    case 'borderStartEndRadius':
-    case 'borderStartStartRadius':
     case 'borderStyle':
     case 'borderTop':
-    case 'borderTopLeftRadius':
-    case 'borderTopRightRadius':
     case 'borderTopStyle':
     case 'borderTopWidth':
     case 'borderWidth':
