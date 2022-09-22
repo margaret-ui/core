@@ -397,8 +397,6 @@ export const setProperty = ({
   theme: DefaultTheme;
   value: any;
 }) => {
-  console.log(property);
-
   if (!isPlainObject(value)) {
     return setPropertyBreakpoint({
       theme,
@@ -407,15 +405,6 @@ export const setProperty = ({
       prefix,
     });
   }
-
-  console.log(
-    setPropertyBreakpoint({
-      theme,
-      value: value!.default,
-      property,
-      prefix,
-    }),
-  );
 
   return css`
     ${setPropertyBreakpoint({
