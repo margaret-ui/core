@@ -1,5 +1,11 @@
 # @margaret-ui/core
 
+## 0.1.26
+
+### Patch Changes
+
+- [`b452e2d`](https://github.com/margaret-ui/core/commit/b452e2de5f1779bb7c92b1a53d583da3d07ef5f5) Thanks [@Uptip](https://github.com/Uptip)! - add missing textStyle prop detection
+
 ## 0.1.25
 
 ### Patch Changes
