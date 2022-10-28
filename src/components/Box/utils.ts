@@ -131,6 +131,7 @@ export const injectLayoutHelpers = ({ theme, ...props }: BoxProps & any) =>
     'fontSize',
     'fontStyle',
     'fontStyles',
+    'textStyle',
     'fontWeight',
 
     'boxShadow',
