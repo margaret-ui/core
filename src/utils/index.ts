@@ -311,7 +311,9 @@ export const setPropertyBreakpoint = ({
       return css`
         ${formatProperty({ prefix, property })}: ${theme?.fontStacks?.[
           theme?.fontStyles?.[value]?.fontStack
-        ] || value};
+        ] ||
+          theme?.fontStacks?.[value] ||
+          value};
       `;
 
     case 'fontStretch':
@@ -325,7 +327,7 @@ export const setPropertyBreakpoint = ({
         return css`
           ${formatProperty({ prefix, property })}: ${theme?.fontStyles?.[
             value
-          ]?.[`${prefix}${property}`]};
+          ]?.[`${prefix}${property}`] || value};
         `;
       }
       return css`
@@ -349,6 +351,7 @@ export const setPropertyBreakpoint = ({
       `;
 
     case 'fontStyles':
+    case 'textStyle':
       return css`
         ${[
           'fontFamily',
