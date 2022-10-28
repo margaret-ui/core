@@ -1,5 +1,11 @@
 # @margaret-ui/core
 
+## 0.1.25
+
+### Patch Changes
+
+- [`d132b37`](https://github.com/margaret-ui/core/commit/d132b37b69c3c2b9db2b89a647793810dc7c9afe) Thanks [@Uptip](https://github.com/Uptip)! - add font prop matching
+
 ## 0.1.24
 
 ### Patch Changes
