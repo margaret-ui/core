@@ -17,64 +17,63 @@ const ButtonWrapper = styled.button<ButtonProps>`
 
   ${({ variant, theme }) =>
     variant &&
-    `
-    font-weight: ${theme.button?.variant?.[variant]?.fontWeight};
-    font-size: ${theme.button?.variant?.[variant]?.fontSize};
-    align-items: ${theme.button?.variant?.[variant]?.alignY};
-    justify-content: ${theme.button?.variant?.[variant]?.alignX};
-    transition: ${theme.button?.variant?.[variant]?.transition};
-    border-radius: ${theme.button?.variant?.[variant]?.borderRadius};
+    css`
+      font-weight: ${theme.button?.variant?.[variant]?.fontWeight};
+      font-size: ${theme.button?.variant?.[variant]?.fontSize};
+      align-items: ${theme.button?.variant?.[variant]?.alignY};
+      justify-content: ${theme.button?.variant?.[variant]?.alignX};
+      transition: ${theme.button?.variant?.[variant]?.transition};
+      border-radius: ${theme.button?.variant?.[variant]?.borderRadius};
 
+      box-shadow: ${theme.button?.variant?.[variant]?.boxShadow};
+      background: ${theme.button?.variant?.[variant]?.background};
+      color: ${theme.button?.variant?.[variant]?.color};
+      text-decoration: ${theme.button?.variant?.[variant]?.textDecoration};
 
-    box-shadow: ${theme.button?.variant?.[variant]?.boxShadow};
-    background: ${theme.button?.variant?.[variant]?.background};
-    color: ${theme.button?.variant?.[variant]?.color};
-    text-decoration: ${theme.button?.variant?.[variant]?.textDecoration};
+      &:hover {
+        background: ${theme.button?.variant?.[variant]?.backgroundHover};
+        color: ${theme.button?.variant?.[variant]?.colorHover};
+        box-shadow: ${theme.button?.variant?.[variant]?.boxShadowHover};
+        transform: ${theme.button?.variant?.[variant]?.transformHover};
+        text-decoration: ${theme.button?.variant?.[variant]
+          ?.textDecorationHover};
+      }
 
-    &:hover {
-      background: ${theme.button?.variant?.[variant]?.backgroundHover};
-      color: ${theme.button?.variant?.[variant]?.colorHover};
-      box-shadow: ${theme.button?.variant?.[variant]?.boxShadowHover};
-      transform: ${theme.button?.variant?.[variant]?.transformHover};
-      text-decoration: ${theme.button?.variant?.[variant]?.textDecorationHover};
+      &:focus {
+        background: ${theme.button?.variant?.[variant]?.backgroundFocus};
+        color: ${theme.button?.variant?.[variant]?.colorFocus};
+        box-shadow: ${theme.button?.variant?.[variant]?.boxShadowFocus};
+        transform: ${theme.button?.variant?.[variant]?.transformFocus};
+        text-decoration: ${theme.button?.variant?.[variant]
+          ?.textDecorationFocus};
+      }
 
-    }
-
-    &:focus {
-      background: ${theme.button?.variant?.[variant]?.backgroundFocus};
-      color: ${theme.button?.variant?.[variant]?.colorFocus};
-      box-shadow: ${theme.button?.variant?.[variant]?.boxShadowFocus};
-      transform: ${theme.button?.variant?.[variant]?.transformFocus};
-      text-decoration: ${theme.button?.variant?.[variant]?.textDecorationFocus};
-    }
-
-    &:disabled,
-    &:disabled:hover,
-    &:disabled:focus {
-      cursor: not-allowed;
-      background: ${theme.button?.variant?.[variant]?.backgroundDisabled ||
-        theme.button?.variant?.[variant]?.background ||
-        'unset'};
-      color: ${theme.button?.variant?.[variant]?.colorDisabled ||
-        theme.button?.variant?.[variant]?.color ||
-        'unset'};
-      box-shadow: ${theme.button?.variant?.[variant]?.boxShadowDisabled ||
-        theme.button?.variant?.[variant]?.boxShadow ||
-        'unset'};
-      opacity: ${theme.button?.variant?.[variant]?.opacityDisabled};
-      text-decoration: ${theme.button?.variant?.[variant]
-        ?.textDecorationDisabled ||
-        theme.button?.variant?.[variant]?.textDecoration ||
-        'unset'};
-    }
-  `}
+      &:disabled,
+      &:disabled:hover,
+      &:disabled:focus {
+        cursor: not-allowed;
+        background: ${theme.button?.variant?.[variant]?.backgroundDisabled ||
+          theme.button?.variant?.[variant]?.background ||
+          'unset'};
+        color: ${theme.button?.variant?.[variant]?.colorDisabled ||
+          theme.button?.variant?.[variant]?.color ||
+          'unset'};
+        box-shadow: ${theme.button?.variant?.[variant]?.boxShadowDisabled ||
+          theme.button?.variant?.[variant]?.boxShadow ||
+          'unset'};
+        opacity: ${theme.button?.variant?.[variant]?.opacityDisabled};
+        text-decoration: ${theme.button?.variant?.[variant]
+          ?.textDecorationDisabled ||
+          theme.button?.variant?.[variant]?.textDecoration ||
+          'unset'};
+      }
+    `}
 
   ${({ size, theme }) =>
     size &&
-    `
-      padding: ${spacing(
-        theme.button?.sizes?.[size]?.paddingVertical,
-      )} ${spacing(theme.button?.sizes?.[size]?.paddingHorizontal)};
+    css`
+      padding: ${spacing(theme.button?.sizes?.[size]?.paddingVertical)}
+        ${spacing(theme.button?.sizes?.[size]?.paddingHorizontal)};
       min-width: ${theme.button?.sizes?.[size]?.minWidth};
       min-height: ${theme.button?.sizes?.[size]?.minHeight};
       font-size: ${theme.button?.sizes?.[size]?.fontSize};

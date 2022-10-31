@@ -11,7 +11,7 @@ export const Text: StyledComponent<
   BoxProps,
   any
 > = styled.p.attrs<BoxProps>(({ theme, ...props }) => ({
-  fontStyles:
+  textStyle:
     props.fontFamily ||
     props.fontSize ||
     props.fontStretch ||
@@ -23,8 +23,11 @@ export const Text: StyledComponent<
     props.textDecoration ||
     props.textShadow ||
     props.letterSpacing
-      ? props.fontStyles
-      : props.fontStyles || theme?.defaultStylesMapping?.[props.as] || 'body',
+      ? props.textStyle || props.fontStyles
+      : props.textStyle ||
+        props.fontStyles ||
+        theme?.defaultStylesMapping?.[props.as] ||
+        'body',
 }))<BoxProps>`
   margin-top: 0;
   margin-bottom: 0;
@@ -39,7 +42,10 @@ export const Heading: StyledComponent<
   BoxProps,
   any
 > = styled(Text).attrs<BoxProps>(({ theme, ...props }) => ({
-  fontStyles: props.fontStyles || theme?.defaultStylesMapping?.[props.as],
+  textStyle:
+    props.textStyle ||
+    props.fontStyles ||
+    theme?.defaultStylesMapping?.[props.as],
 }))<BoxProps>``;
 
 Heading.defaultProps = {

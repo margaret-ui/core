@@ -79,6 +79,7 @@ export type BoxProps = {
   textTransform?: Property.TextTransform | any;
   textShadow?: Property.TextShadow | any;
   fontStyles?: any;
+  textStyle?: any;
 
   boxShadow?: Property.BoxShadow | string;
   borderRadius?: Property.BorderRadius | string;

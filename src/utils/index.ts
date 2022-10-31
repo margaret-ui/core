@@ -257,7 +257,6 @@ export const setPropertyBreakpoint = ({
     case 'borderBottomWidth':
     case 'borderCollapse':
     case 'borderColor':
-
     case 'borderImage':
     case 'borderImageOutset':
     case 'borderImageRepeat':

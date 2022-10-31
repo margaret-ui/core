@@ -1,4 +1,4 @@
-import { useState, FC } from 'react';
+import { useState, FC, ReactNode } from 'react';
 import {
   ThemeProvider,
   createGlobalStyle,
@@ -60,12 +60,13 @@ export const GlobalVars = createGlobalStyle`
         palette: theme.shadows as ColorPaletteWrapper,
         prefix: 'shadows',
       })}
-}
+  }
 `;
 
 export type MargaretProviderProps = {
   theme?: DefaultTheme;
   colors?: ColorsOverride;
+  children?: ReactNode;
 };
 
 const MargaretProvider: FC<MargaretProviderProps> = ({
