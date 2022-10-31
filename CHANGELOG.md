@@ -1,5 +1,11 @@
 # @margaret-ui/core
 
+## 0.1.27
+
+### Patch Changes
+
+- [`80a2e4e`](https://github.com/margaret-ui/core/commit/80a2e4e46695ca0a86266a739d8cde47791eb688) Thanks [@Uptip](https://github.com/Uptip)! - fix provider typing; fix textStyle prop handling
+
 ## 0.1.26
 
 ### Patch Changes
