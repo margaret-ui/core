@@ -1,5 +1,11 @@
 # @margaret-ui/core
 
+## 0.1.28
+
+### Patch Changes
+
+- [`54c79be`](https://github.com/margaret-ui/core/commit/54c79beda1f79fb701aae85cc800110cef1d8dba) Thanks [@Uptip](https://github.com/Uptip)! - fix color override key typings
+
 ## 0.1.27
 
 ### Patch Changes
