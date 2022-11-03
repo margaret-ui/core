@@ -74,7 +74,7 @@ export type ThemeFontStacks = {
 export type ColorPalette =
   | string
   | {
-      [key: string]: string;
+      [key: string | number]: string;
     };
 
 export type ColorPaletteWrapper = {
