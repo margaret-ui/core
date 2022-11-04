@@ -5,10 +5,11 @@ export type BoxProps = {
   display?: Property.Display;
 
   position?: Property.Position;
-  top?: Property.Position;
-  right?: Property.Position;
-  bottom?: Property.Position;
-  left?: Property.Position;
+  top?: Property.Top;
+  right?: Property.Right;
+  bottom?: Property.Bottom;
+  left?: Property.Left;
+  inset?: Property.Inset;
 
   padding?: ResponsiveSpacing;
   paddingVertical?: ResponsiveSpacing;

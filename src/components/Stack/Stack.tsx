@@ -5,6 +5,7 @@ import {
   useMemo,
   cloneElement,
   ReactElement,
+  forwardRef,
 } from 'react';
 import styled from 'styled-components';
 import { injectLayoutHelpers, injectVisuallyHiddenHelper } from '../Box';
@@ -18,40 +19,37 @@ const StackBase = styled.div<StackBaseProps>`
   ${injectStackHelpers}
 `;
 
-const Stack: FC<StackProps> = ({
-  children,
-  divider,
-  direction = 'row',
-  ...props
-}) => {
-  const childrenArray = Children.toArray(children);
-  const hasDivider = Boolean(divider);
+const Stack: FC<StackProps> = forwardRef(
+  ({ children, divider, direction = 'row', ...props }, ref) => {
+    const childrenArray = Children.toArray(children);
+    const hasDivider = Boolean(divider);
 
-  const dividerDirection = useMemo(() => {
-    return generateResponsiveDividerDirectionFromResponsiveFlexDirection(
-      direction,
+    const dividerDirection = useMemo(() => {
+      return generateResponsiveDividerDirectionFromResponsiveFlexDirection(
+        direction,
+      );
+    }, [direction]);
+
+    const augmentedDivider = useMemo(() => {
+      if (!divider) {
+        return null;
+      }
+      return cloneElement(divider as ReactElement, {
+        direction: dividerDirection,
+      });
+    }, [dividerDirection]);
+
+    return (
+      <StackBase direction={direction} {...props} ref={ref}>
+        {childrenArray.map((child, index) => (
+          <Fragment key={index}>
+            {child}
+            {hasDivider && index < childrenArray.length - 1 && augmentedDivider}
+          </Fragment>
+        ))}
+      </StackBase>
     );
-  }, [direction]);
-
-  const augmentedDivider = useMemo(() => {
-    if (!divider) {
-      return null;
-    }
-    return cloneElement(divider as ReactElement, {
-      direction: dividerDirection,
-    });
-  }, [dividerDirection]);
-
-  return (
-    <StackBase direction={direction} {...props}>
-      {childrenArray.map((child, index) => (
-        <Fragment key={index}>
-          {child}
-          {hasDivider && index < childrenArray.length - 1 && augmentedDivider}
-        </Fragment>
-      ))}
-    </StackBase>
-  );
-};
+  },
+);
 
 export default Stack;
