@@ -1,5 +1,11 @@
 # @margaret-ui/core
 
+## 0.1.29
+
+### Patch Changes
+
+- [`d3768b4`](https://github.com/margaret-ui/core/commit/d3768b4bcc209720e6037ca633bbc7574a358471) Thanks [@Uptip](https://github.com/Uptip)! - add ref forwarding to stack component
+
 ## 0.1.28
 
 ### Patch Changes
