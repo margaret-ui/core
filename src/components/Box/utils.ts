@@ -109,6 +109,8 @@ export const layoutProps = [
   'flexBasis',
   'flexWrap',
   'flexFlow',
+  'flexDirection',
+  'direction',
   'order',
   'gap',
 
