@@ -1,5 +1,11 @@
 # @margaret-ui/core
 
+## 0.1.31
+
+### Patch Changes
+
+- [`08fe945`](https://github.com/margaret-ui/core/commit/08fe945d11c450ef97ceec51d831cba4a82ad06f) Thanks [@Uptip](https://github.com/Uptip)! - add missing style props typings
+
 ## 0.1.30
 
 ### Patch Changes
