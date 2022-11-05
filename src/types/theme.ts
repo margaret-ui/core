@@ -28,8 +28,9 @@ export type ResponsiveSize =
 export type Spacing = number;
 export type ResponsiveSpacing =
   | number
+  | string
   | {
-      [key in Breakpoint]?: number;
+      [key in Breakpoint]?: number | string;
     };
 
 export type FlexDirection = Property.FlexDirection;
