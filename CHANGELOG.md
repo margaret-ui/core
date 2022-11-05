@@ -1,5 +1,11 @@
 # @margaret-ui/core
 
+## 0.1.33
+
+### Patch Changes
+
+- [`1436f29`](https://github.com/margaret-ui/core/commit/1436f295d927a3ff94cb20990fe4e952cf9be39d) Thanks [@Uptip](https://github.com/Uptip)! - add missing direction props to layout props
+
 ## 0.1.32
 
 ### Patch Changes
