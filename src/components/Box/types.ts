@@ -494,9 +494,9 @@ export type BoxProps = {
     | Property.BackdropFilter
     | { [key in Breakpoint]?: Property.BackdropFilter | string }
     | string;
-  backdropVisibility?:
-    | Property.BackdropVisibility
-    | { [key in Breakpoint]?: Property.BackdropVisibility | string }
+  backfaceVisibility?:
+    | Property.BackfaceVisibility
+    | { [key in Breakpoint]?: Property.BackfaceVisibility | string }
     | string;
   backgroundAttachment?:
     | Property.BackgroundAttachment

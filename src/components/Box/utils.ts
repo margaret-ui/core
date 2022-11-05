@@ -101,7 +101,7 @@ export const layoutProps = [
   'backgroundSize',
 
   'backdropFilter',
-  'backdropVisibility',
+  'backfaceVisibility',
 
   'flex',
   'flexGrow',

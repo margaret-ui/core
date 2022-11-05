@@ -222,7 +222,7 @@ export const setPropertyBreakpoint = ({
     case 'backgroundRepeat':
     case 'backgroundSize':
     case 'backdropFilter':
-    case 'backdropVisibility':
+    case 'backfaceVisibility':
     case 'background':
     case 'backgroundAttachment':
     case 'backgroundBlendMode':
