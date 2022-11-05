@@ -1,5 +1,11 @@
 # @margaret-ui/core
 
+## 0.1.30
+
+### Patch Changes
+
+- [`a51410c`](https://github.com/margaret-ui/core/commit/a51410c24a9460ece80477b324ef4c248f956279) Thanks [@Uptip](https://github.com/Uptip)! - prevent passing down layout props to DOM elements
+
 ## 0.1.29
 
 ### Patch Changes
