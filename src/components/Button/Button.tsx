@@ -2,11 +2,14 @@ import { FC } from 'react';
 import styled, { css } from 'styled-components';
 import { ButtonProps } from './types';
 import { spacing } from '../../ui/utils';
-import { injectLayoutHelpers } from '../Box';
+import { injectLayoutHelpers, layoutProps } from '../Box';
 import { injectButtonResetStyles } from './utils';
 import { injectStackHelpers, Stack } from '../Stack';
 
-const ButtonWrapper = styled.button<ButtonProps>`
+const ButtonWrapper = styled.button.withConfig({
+  shouldForwardProp: (prop, defaultValidatorFn) =>
+    !layoutProps.includes(prop) && defaultValidatorFn(prop),
+})<ButtonProps>`
   position: relative;
   white-space: nowrap;
   line-height: 1;

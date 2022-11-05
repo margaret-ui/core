@@ -7,6 +7,7 @@ import styled, {
 import { DividerProps } from './types';
 import { BreakpointDividerDirection, DividerDirection } from './utils';
 import { Breakpoint } from '../../types';
+import { layoutProps } from '../Box';
 
 const generateResponsiveBorder = ({
   theme,
@@ -59,9 +60,14 @@ const generateResponsiveBorder = ({
   `;
 };
 
-const Divider = styled.div.attrs({
-  role: 'separator',
-})<DividerProps>`
+const Divider = styled.div
+  .withConfig({
+    shouldForwardProp: (prop, defaultValidatorFn) =>
+      !layoutProps.includes(prop) && defaultValidatorFn(prop),
+  })
+  .attrs({
+    role: 'separator',
+  })<DividerProps>`
   border: none;
   border-width: 0;
   border-style: solid;

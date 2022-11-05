@@ -8,12 +8,19 @@ import {
   forwardRef,
 } from 'react';
 import styled from 'styled-components';
-import { injectLayoutHelpers, injectVisuallyHiddenHelper } from '../Box';
+import {
+  injectLayoutHelpers,
+  injectVisuallyHiddenHelper,
+  layoutProps,
+} from '../Box';
 import { generateResponsiveDividerDirectionFromResponsiveFlexDirection } from '../Divider';
 import { StackBaseProps, StackProps } from './types';
 import { injectStackHelpers } from './utils';
 
-const StackBase = styled.div<StackBaseProps>`
+const StackBase = styled.div.withConfig({
+  shouldForwardProp: (prop, defaultValidatorFn) =>
+    !layoutProps.includes(prop) && defaultValidatorFn(prop),
+})<StackBaseProps>`
   ${injectLayoutHelpers}
   ${injectVisuallyHiddenHelper}
   ${injectStackHelpers}

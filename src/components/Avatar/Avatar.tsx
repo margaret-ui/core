@@ -3,8 +3,12 @@ import styled, { css } from 'styled-components';
 import { AvatarProps, AvatarGroupProps } from './types';
 import AvatarGroup from './AvatarGroup';
 import { getInitials } from './utils';
+import { layoutProps } from '../Box';
 
-const Wrapper = styled.span<AvatarProps>`
+const Wrapper = styled.span.withConfig({
+  shouldForwardProp: (prop, defaultValidatorFn) =>
+    !layoutProps.includes(prop) && defaultValidatorFn(prop),
+})<AvatarProps>`
   position: relative;
   display: flex;
   align-items: center;

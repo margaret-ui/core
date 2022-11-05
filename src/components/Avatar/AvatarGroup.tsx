@@ -4,12 +4,16 @@ import Avatar from './Avatar';
 import { AvatarGroupProps, AvatarProps } from './types';
 import { setProperty } from '../../utils';
 import { ResponsiveSpacing } from '../../types';
+import { layoutProps } from '../Box';
 
 type GroupsProps = {
   spacing?: ResponsiveSpacing;
 };
 
-const Groups = styled.div<GroupsProps>`
+const Groups = styled.div.withConfig({
+  shouldForwardProp: (prop, defaultValidatorFn) =>
+    !layoutProps.includes(prop) && defaultValidatorFn(prop),
+})<GroupsProps>`
   position: relative;
   display: flex;
 

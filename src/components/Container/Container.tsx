@@ -1,9 +1,12 @@
 import styled from 'styled-components';
 import { SpacingHelper } from '../../types';
-import { injectLayoutHelpers } from '../Box';
+import { injectLayoutHelpers, layoutProps } from '../Box';
 import { ContainerProps } from './types';
 
-const Container = styled.div<ContainerProps>`
+const Container = styled.div.withConfig({
+  shouldForwardProp: (prop, defaultValidatorFn) =>
+    !layoutProps.includes(prop) && defaultValidatorFn(prop),
+})<ContainerProps>`
   display: flex;
   flex-direction: column;
   max-width: 100%;
