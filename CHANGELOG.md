@@ -1,5 +1,11 @@
 # @margaret-ui/core
 
+## 0.1.32
+
+### Patch Changes
+
+- [`70c8f94`](https://github.com/margaret-ui/core/commit/70c8f948609a7da720fb792388047e2779932419) Thanks [@Uptip](https://github.com/Uptip)! - remove nonexistent css property from styles props
+
 ## 0.1.31
 
 ### Patch Changes
