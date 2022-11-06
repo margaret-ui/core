@@ -1,5 +1,11 @@
 # @margaret-ui/core
 
+## 0.1.34
+
+### Patch Changes
+
+- [`fbb7d36`](https://github.com/margaret-ui/core/commit/fbb7d36f6b9e5e7ac8d633e530b220793e44ca58) Thanks [@Uptip](https://github.com/Uptip)! - add background-image style prop
+
 ## 0.1.33
 
 ### Patch Changes
