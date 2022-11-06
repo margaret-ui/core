@@ -224,6 +224,7 @@ export const setPropertyBreakpoint = ({
     case 'backdropFilter':
     case 'backfaceVisibility':
     case 'background':
+    case 'backgroundImage':
     case 'backgroundAttachment':
     case 'backgroundBlendMode':
     case 'backgroundClip':
