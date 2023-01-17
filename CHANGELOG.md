@@ -1,5 +1,11 @@
 # @margaret-ui/core
 
+## 0.1.35
+
+### Patch Changes
+
+- [`de86bf5`](https://github.com/margaret-ui/core/commit/de86bf5ce5ce6b6231852a5291cd9fd64f22aca9) Thanks [@Uptip](https://github.com/Uptip)! - fix container max size, add container horizontal padding to theme
+
 ## 0.1.34
 
 ### Patch Changes
