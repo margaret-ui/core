@@ -1,5 +1,6 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { SpacingHelper } from '../../types';
+import { setProperty } from '../../utils';
 import { injectLayoutHelpers, layoutProps } from '../Box';
 import { ContainerProps } from './types';
 
@@ -9,25 +10,26 @@ const Container = styled.div.withConfig({
 })<ContainerProps>`
   display: flex;
   flex-direction: column;
-  max-width: 100%;
-  width: ${({ theme }) => theme.container?.sizes?.default};
+  width: 100%;
+  max-width: ${({ theme }) => theme.container?.sizes?.default};
   margin-left: auto;
   margin-right: auto;
-  padding: ${({ theme }) => (theme.spacing as SpacingHelper)(1)};
-
-  ${({ theme }) =>
-    theme.media.tablet`
-      padding: ${(theme.spacing as SpacingHelper)(2)};
-    `};
 
   ${({ size, theme }) =>
     size &&
     theme?.container?.sizes?.[size] &&
     `
-      width: ${theme?.container?.sizes?.[size]};
+      max-width: ${theme?.container?.sizes?.[size]};
     `};
 
   ${injectLayoutHelpers}
+
+  ${({ theme, paddingX, paddingHorizontal }) =>
+    setProperty({
+      property: 'paddingX',
+      theme,
+      value: paddingX || paddingHorizontal || theme?.container?.paddingX,
+    })}
 `;
 
 export default Container;
