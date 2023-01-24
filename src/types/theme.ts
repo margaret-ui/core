@@ -83,8 +83,8 @@ export type ColorPaletteWrapper = {
 };
 
 export type ColorsOverride = {
-  palette: ColorPalette;
-  ui: ColorPalette;
+  palette: ColorPaletteWrapper;
+  ui: ColorPaletteWrapper;
 };
 
 export type TabTheme = {
