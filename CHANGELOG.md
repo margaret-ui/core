@@ -1,5 +1,11 @@
 # @margaret-ui/core
 
+## 0.1.37
+
+### Patch Changes
+
+- [`ec8db2b`](https://github.com/margaret-ui/core/commit/ec8db2b3d9bd8f5e10cf89bb58bb871836472415) Thanks [@Uptip](https://github.com/Uptip)! - add intermediate theme typings
+
 ## 0.1.36
 
 ### Patch Changes
