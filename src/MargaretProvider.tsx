@@ -64,7 +64,7 @@ export const GlobalVars = createGlobalStyle`
 `;
 
 export type MargaretProviderProps = {
-  theme?: DefaultTheme;
+  theme?: Omit<DefaultTheme, 'media' | 'spacing'>;
   colors?: ColorsOverride;
   children?: ReactNode;
 };

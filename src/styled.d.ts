@@ -6,7 +6,6 @@ import {
   ThemeFontStacks,
   ThemeBreakpoints,
   ThemeSizes,
-  ColorMode,
   MediaHelper,
   SpacingHelper,
   ThemeFontSize,
@@ -14,8 +13,6 @@ import {
 
 declare module 'styled-components' {
   export interface DefaultTheme {
-    colorMode?: ColorMode;
-
     borderRadius?: ThemeBorderRadii;
     ui?: any;
     colors?: any;

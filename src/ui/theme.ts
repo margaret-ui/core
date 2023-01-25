@@ -16,10 +16,6 @@ export const theme = {
     full: '999em',
   },
 
-  buttonsDefaultAlignX: 'flex-start',
-  boxShadowColor: 'var(--ui-separator)',
-  boxShadowColorHover: 'var(--ui-separatorDark)',
-
   tabs: {
     margin: '',
     padding: '',
@@ -104,18 +100,6 @@ export const theme = {
     paddingHorizontal: '4px',
     maxWidth: '200px',
   },
-
-  fonts: {
-    title:
-      '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif',
-    body:
-      '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif',
-    ui:
-      '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif',
-  },
-
-  cssLockLowerBreakpoint: 'tablet',
-  cssLockHigherBreakpoint: 'desktop',
 
   breakpoints: {
     desktop: 1200,
