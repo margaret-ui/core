@@ -1,5 +1,11 @@
 # @margaret-ui/core
 
+## 0.2.0
+
+### Minor Changes
+
+- [#58](https://github.com/margaret-ui/core/pull/58) [`f81cf19`](https://github.com/margaret-ui/core/commit/f81cf19ec95340f7fa658854da10061bf2a90d1a) Thanks [@Uptip](https://github.com/Uptip)! - add dropdown & tooltip components
+
 ## 0.1.37
 
 ### Patch Changes
