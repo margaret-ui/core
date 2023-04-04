@@ -1,7 +1,10 @@
 import { Property } from 'csstype';
 import { Responsive, Spacing } from '../../types';
+import { ReactNode } from 'react';
 
 export type BoxProps = {
+  children: ReactNode;
+
   display?: Responsive<Property.Display>;
 
   position?: Responsive<Property.Position>;
