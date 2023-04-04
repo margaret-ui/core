@@ -3,6 +3,7 @@ export * from './Button';
 export * from './Box';
 export * from './Container';
 export * from './Divider';
+export * from './DropdownMenu';
 export * from './Stack';
 export * from './Typography';
 export * from './VisuallyHidden';

@@ -1,9 +1,7 @@
 import { ReactNode } from 'react';
-import {
-  ResponsiveSpacing,
-  ResponsiveAlignItemsOrJustifyContent,
-} from '../../types';
+import { ResponsiveSpacing, Responsive } from '../../types';
 import { StackProps } from '../Stack';
+import { Property } from 'csstype';
 
 export type ButtonProps = StackProps & {
   variant?: 'solid' | 'outline' | 'ghost' | 'link' | string;
@@ -18,16 +16,16 @@ export type ButtonProps = StackProps & {
 export type ButtonTheme = {
   variant: {
     solid: {
-      fontWeight?: string;
-      fontSize?: string | number;
-      borderRadius?: string | number;
-      alignY?: ResponsiveAlignItemsOrJustifyContent;
-      alignX?: ResponsiveAlignItemsOrJustifyContent;
-      transition?: string;
-      background?: string;
-      color?: string;
-      boxShadow?: string;
-      textDecoration?: string;
+      fontWeight?: Responsive<Property.FontWeight | string | number>;
+      fontSize?: Responsive<Property.FontSize | string | number>;
+      borderRadius?: Responsive<Property.BorderRadius | string | number>;
+      alignY?: Responsive<Property.AlignItems | Property.JustifyContent>;
+      alignX?: Responsive<Property.AlignItems | Property.JustifyContent>;
+      transition?: Responsive<Property.Transition | string>;
+      background?: Responsive<Property.Background | string>;
+      color?: Responsive<Property.Color | string>;
+      boxShadow?: Responsive<Property.BoxShadow | string>;
+      textDecoration?: Responsive<Property.TextDecoration | string>;
 
       backgroundHover?: string;
       colorHover?: string;
@@ -52,8 +50,8 @@ export type ButtonTheme = {
       fontWeight?: string;
       fontSize?: string | number;
       borderRadius?: string | number;
-      alignY?: ResponsiveAlignItemsOrJustifyContent;
-      alignX?: ResponsiveAlignItemsOrJustifyContent;
+      alignY?: Responsive<Property.AlignItems | Property.JustifyContent>;
+      alignX?: Responsive<Property.AlignItems | Property.JustifyContent>;
       transition?: string;
       background?: string;
       color?: string;
@@ -83,8 +81,8 @@ export type ButtonTheme = {
       fontWeight?: string;
       fontSize?: string | number;
       borderRadius?: string | number;
-      alignY?: ResponsiveAlignItemsOrJustifyContent;
-      alignX?: ResponsiveAlignItemsOrJustifyContent;
+      alignY?: Responsive<Property.AlignItems | Property.JustifyContent>;
+      alignX?: Responsive<Property.AlignItems | Property.JustifyContent>;
       transition?: string;
       background?: string;
       color?: string;
@@ -114,8 +112,8 @@ export type ButtonTheme = {
       fontWeight?: string;
       fontSize?: string | number;
       borderRadius?: string | number;
-      alignY?: ResponsiveAlignItemsOrJustifyContent;
-      alignX?: ResponsiveAlignItemsOrJustifyContent;
+      alignY?: Responsive<Property.AlignItems | Property.JustifyContent>;
+      alignX?: Responsive<Property.AlignItems | Property.JustifyContent>;
       transition?: string;
       background?: string;
       color?: string;
@@ -142,6 +140,7 @@ export type ButtonTheme = {
       opacityDisabled?: number;
     };
   };
+
   sizes: {
     bare: {
       paddingVertical?: ResponsiveSpacing | undefined;

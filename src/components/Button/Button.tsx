@@ -1,10 +1,30 @@
-import { FC } from 'react';
+import { forwardRef } from 'react';
 import styled, { css } from 'styled-components';
 import { ButtonProps } from './types';
-import { spacing } from '../../ui/utils';
-import { injectLayoutHelpers, layoutProps } from '../Box';
+import { injectLayoutHelpers, layoutProps, paddingProps } from '../Box';
 import { injectButtonResetStyles } from './utils';
 import { injectStackHelpers, Stack } from '../Stack';
+import { setProperty } from '../../utils';
+
+const VARIANT_PROPS = [
+  'fontWeight',
+  'fontSize',
+  'alignY',
+  'alignX',
+  'transition',
+  'borderRadius',
+  'boxShadow',
+  'background',
+  'backgroundColor',
+  'backgroundImage',
+  'border',
+  'color',
+  'textDecoration',
+  'opacity',
+  'cursor',
+];
+
+const SIZE_PROPS = [...paddingProps, 'minWidth', 'minHeight', 'fontSize'];
 
 const ButtonWrapper = styled.button.withConfig({
   shouldForwardProp: (prop, defaultValidatorFn) =>
@@ -21,65 +41,61 @@ const ButtonWrapper = styled.button.withConfig({
   ${({ variant, theme }) =>
     variant &&
     css`
-      font-weight: ${theme.button?.variant?.[variant]?.fontWeight};
-      font-size: ${theme.button?.variant?.[variant]?.fontSize};
-      align-items: ${theme.button?.variant?.[variant]?.alignY};
-      justify-content: ${theme.button?.variant?.[variant]?.alignX};
-      transition: ${theme.button?.variant?.[variant]?.transition};
-      border-radius: ${theme.button?.variant?.[variant]?.borderRadius};
+      ${VARIANT_PROPS.map(property =>
+        setProperty({
+          property,
+          theme,
+          value: theme.button?.variant?.[variant]?.[property],
+        }),
+      )};
 
-      box-shadow: ${theme.button?.variant?.[variant]?.boxShadow};
-      background: ${theme.button?.variant?.[variant]?.background};
-      color: ${theme.button?.variant?.[variant]?.color};
-      text-decoration: ${theme.button?.variant?.[variant]?.textDecoration};
-
-      &:hover {
-        background: ${theme.button?.variant?.[variant]?.backgroundHover};
-        color: ${theme.button?.variant?.[variant]?.colorHover};
-        box-shadow: ${theme.button?.variant?.[variant]?.boxShadowHover};
-        transform: ${theme.button?.variant?.[variant]?.transformHover};
-        text-decoration: ${theme.button?.variant?.[variant]
-          ?.textDecorationHover};
+      &:hover:not(:disabled):not([disabled]) {
+        ${VARIANT_PROPS.map(property =>
+          setProperty({
+            property,
+            theme,
+            value: theme.button?.variant?.[variant]?.[`${property}Hover`],
+          }),
+        )};
       }
 
-      &:focus {
-        background: ${theme.button?.variant?.[variant]?.backgroundFocus};
-        color: ${theme.button?.variant?.[variant]?.colorFocus};
-        box-shadow: ${theme.button?.variant?.[variant]?.boxShadowFocus};
-        transform: ${theme.button?.variant?.[variant]?.transformFocus};
-        text-decoration: ${theme.button?.variant?.[variant]
-          ?.textDecorationFocus};
+      &:focus-visible:not(:disabled):not([disabled]),
+      &:focus-within:not(:disabled):not([disabled]) {
+        ${VARIANT_PROPS.map(property =>
+          setProperty({
+            property,
+            theme,
+            value: theme.button?.variant?.[variant]?.[`${property}Focus`],
+          }),
+        )};
       }
 
       &:disabled,
       &:disabled:hover,
-      &:disabled:focus {
-        cursor: not-allowed;
-        background: ${theme.button?.variant?.[variant]?.backgroundDisabled ||
-          theme.button?.variant?.[variant]?.background ||
-          'unset'};
-        color: ${theme.button?.variant?.[variant]?.colorDisabled ||
-          theme.button?.variant?.[variant]?.color ||
-          'unset'};
-        box-shadow: ${theme.button?.variant?.[variant]?.boxShadowDisabled ||
-          theme.button?.variant?.[variant]?.boxShadow ||
-          'unset'};
-        opacity: ${theme.button?.variant?.[variant]?.opacityDisabled};
-        text-decoration: ${theme.button?.variant?.[variant]
-          ?.textDecorationDisabled ||
-          theme.button?.variant?.[variant]?.textDecoration ||
-          'unset'};
+      &:disabled:focus,
+      &:disabled:focus-within,
+      &:disabled:focus-visible {
+        ${VARIANT_PROPS.map(property =>
+          setProperty({
+            property,
+            theme,
+            value: theme.button?.variant?.[variant]?.[`${property}Disabled`],
+          }),
+        )};
       }
     `}
+
 
   ${({ size, theme }) =>
     size &&
     css`
-      padding: ${spacing(theme.button?.sizes?.[size]?.paddingVertical)}
-        ${spacing(theme.button?.sizes?.[size]?.paddingHorizontal)};
-      min-width: ${theme.button?.sizes?.[size]?.minWidth};
-      min-height: ${theme.button?.sizes?.[size]?.minHeight};
-      font-size: ${theme.button?.sizes?.[size]?.fontSize};
+      ${SIZE_PROPS.map(property =>
+        setProperty({
+          property,
+          theme,
+          value: theme.button?.sizes?.[size]?.[property],
+        }),
+      )}
     `}
 
   ${({ disabled, theme, variant }) =>
@@ -89,52 +105,56 @@ const ButtonWrapper = styled.button.withConfig({
       &,
       &:hover,
       &:focus {
-        cursor: not-allowed;
-        background: ${theme.button?.variant?.[variant]?.backgroundDisabled ||
-          theme.button?.variant?.[variant]?.background ||
-          'unset'};
-        color: ${theme.button?.variant?.[variant]?.colorDisabled ||
-          theme.button?.variant?.[variant]?.color ||
-          'unset'};
-        box-shadow: ${theme.button?.variant?.[variant]?.boxShadowDisabled ||
-          theme.button?.variant?.[variant]?.boxShadow ||
-          'unset'};
-        opacity: ${theme.button?.variant?.[variant]?.opacityDisabled};
-        text-decoration: ${theme.button?.variant?.[variant]
-          ?.textDecorationDisabled ||
-          theme.button?.variant?.[variant]?.textDecoration ||
-          'unset'};
+        ${VARIANT_PROPS.map(property =>
+          setProperty({
+            property,
+            theme,
+            value: theme.button?.variant?.[variant]?.[`${property}Disabled`],
+          }),
+        )}
       }
     `}
 
   ${injectLayoutHelpers}
 `;
 
-const Button: FC<ButtonProps> = ({
-  children,
-  leftIcon,
-  rightIcon,
-  disabled,
-  variant = 'solid',
-  size = 'default',
-  direction = 'row',
-  gap = 1,
-  alignY = 'center',
-  ...props
-}) => (
-  <ButtonWrapper
-    disabled={disabled}
-    variant={variant}
-    size={size}
-    gap={gap}
-    direction={direction}
-    alignY={alignY}
-    {...props}
-  >
-    {Boolean(leftIcon) && <Stack>{leftIcon}</Stack>}
-    {Boolean(leftIcon) || Boolean(rightIcon) ? <div>{children}</div> : children}
-    {Boolean(rightIcon) && <Stack>{rightIcon}</Stack>}
-  </ButtonWrapper>
+const Button = forwardRef<HTMLButtonElement, ButtonProps & any>(
+  (
+    {
+      children,
+      leftIcon,
+      rightIcon,
+      disabled,
+      variant = 'solid',
+      size = 'default',
+      direction = 'row',
+      gap = 1,
+      alignY = 'center',
+      ...props
+    },
+    ref,
+  ) => {
+    return (
+      <ButtonWrapper
+        disabled={disabled}
+        variant={variant}
+        size={size}
+        gap={gap}
+        direction={direction}
+        alignY={alignY}
+        {...props}
+        ref={ref}
+      >
+        {Boolean(leftIcon) && <Stack>{leftIcon}</Stack>}
+        {Boolean(leftIcon) || Boolean(rightIcon) ? (
+          <div>{children}</div>
+        ) : (
+          children
+        )}
+        {Boolean(rightIcon) && <Stack>{rightIcon}</Stack>}
+      </ButtonWrapper>
+    );
+  },
 );
 
 export default Button;

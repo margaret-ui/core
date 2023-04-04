@@ -1,8 +1,5 @@
-import {
-  Breakpoint,
-  FlexDirection,
-  ResponsiveFlexDirection,
-} from '../../types';
+import { Property } from 'csstype';
+import { Breakpoint, Responsive } from '../../types';
 
 export type DividerDirection = 'horizontal' | 'vertical';
 
@@ -14,7 +11,7 @@ export type ResponsiveDividerDirection = DividerDirection &
   BreakpointDividerDirection;
 
 const generateDividerDirectionFromFlexDirection = (
-  flexDirection: FlexDirection,
+  flexDirection: Property.FlexDirection,
 ): DividerDirection => {
   if (flexDirection === 'column') {
     return 'horizontal';
@@ -24,7 +21,7 @@ const generateDividerDirectionFromFlexDirection = (
 };
 
 export const generateResponsiveDividerDirectionFromResponsiveFlexDirection = (
-  flexDirection: ResponsiveFlexDirection,
+  flexDirection: Responsive<Property.FlexDirection>,
 ): ResponsiveDividerDirection => {
   if (typeof flexDirection === 'string') {
     return generateDividerDirectionFromFlexDirection(flexDirection);
@@ -34,7 +31,7 @@ export const generateResponsiveDividerDirectionFromResponsiveFlexDirection = (
     (acc, breakpoint) => ({
       ...acc,
       [breakpoint]: generateDividerDirectionFromFlexDirection(
-        flexDirection[breakpoint as Breakpoint] as FlexDirection,
+        flexDirection[breakpoint as Breakpoint] as Property.FlexDirection,
       ),
     }),
     {},

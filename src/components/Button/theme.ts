@@ -17,13 +17,14 @@ export const buttonTheme: ButtonTheme = {
       colorHover: 'var(--colors-white)',
 
       backgroundFocus: 'var(--ui-primary-light)',
+      boxShadowFocus: 'outlinePrimary',
 
       opacityDisabled: 0.4,
     },
     outline: {
       fontWeight: '600',
       fontSize: '18px',
-      borderRadius: '30px',
+      borderRadius: 'default',
       alignY: 'center',
       alignX: 'center',
       transition: 'background 150ms ease',
@@ -36,7 +37,8 @@ export const buttonTheme: ButtonTheme = {
 
       backgroundFocus: '',
       colorFocus: '',
-      boxShadowFocus: '',
+      boxShadowFocus:
+        '0 0 0 2px var(--ui-primary), var(--shadows-primary-outline)',
 
       opacityDisabled: 0.4,
     },
