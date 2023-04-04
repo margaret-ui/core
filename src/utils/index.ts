@@ -79,6 +79,8 @@ export const setPropertyBreakpoint = ({
     case 'borderLeftColor':
     case 'borderRightColor':
     case 'borderTopColor':
+    case 'fill':
+    case 'stroke':
       return css`
         ${formatProperty({ prefix, property })}: ${get(theme.colors, value) ||
           (isPlainObject(get(theme, value))

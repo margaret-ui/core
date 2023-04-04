@@ -4,6 +4,7 @@ import { AvatarProps, AvatarGroupProps } from './types';
 import AvatarGroup from './AvatarGroup';
 import { getInitials } from './utils';
 import { layoutProps } from '../Box';
+import { setProperty } from '../../utils';
 
 const Wrapper = styled.span.withConfig({
   shouldForwardProp: (prop, defaultValidatorFn) =>
@@ -39,7 +40,11 @@ const Wrapper = styled.span.withConfig({
     shape &&
     theme?.avatar?.shape?.[shape] &&
     css`
-      border-radius: ${theme?.avatar?.shape?.[shape]};
+      ${setProperty({
+        theme,
+        property: 'borderRadius',
+        value: theme?.avatar?.shape?.[shape],
+      })}
     `}
 
     ${({ zIndex }) =>

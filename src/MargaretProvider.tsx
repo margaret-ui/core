@@ -61,6 +61,14 @@ export const GlobalVars = createGlobalStyle`
         prefix: 'shadows',
       })}
   }
+
+  :root {
+    box-sizing: border-box;
+  }
+
+  *, *:before, *:after {
+    box-sizing: inherit;
+  }
 `;
 
 export type MargaretProviderProps = {

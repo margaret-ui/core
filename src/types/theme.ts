@@ -18,14 +18,11 @@ export enum Fonts {
   Ui = 'ui',
 }
 
-export type Size = string | number;
-export type ResponsiveSize =
-  | Size
-  | {
-      [key in Breakpoint]?: Size;
-    };
+export type Responsive<T> = T | { [key in Breakpoint]?: T };
 
+export type Size = string | number;
 export type Spacing = number;
+
 export type ResponsiveSpacing =
   | number
   | string
@@ -33,24 +30,11 @@ export type ResponsiveSpacing =
       [key in Breakpoint]?: number | string;
     };
 
-export type FlexDirection = Property.FlexDirection;
-export type BreakpointDirection = {
-  [key in Breakpoint]?: FlexDirection;
-};
-export type ResponsiveFlexDirection = FlexDirection | BreakpointDirection;
-
 export type CSSValue = string | number;
 export type BreakpointCSSValue = {
   [key in Breakpoint]?: CSSValue;
 };
 export type ResponsiveCSSValue = CSSValue | BreakpointCSSValue;
-
-export type ResponsiveAlignItemsOrJustifyContent =
-  | Property.AlignItems
-  | Property.JustifyContent
-  | {
-      [key in Breakpoint]?: string;
-    };
 
 export type ThemeBorderRadii = {
   [key: string]: string;
@@ -88,14 +72,14 @@ export type ColorsOverride = {
 };
 
 export type TabTheme = {
-  direction: ResponsiveFlexDirection;
-  alignX: ResponsiveFlexDirection;
-  padding: ResponsiveSize;
+  direction: Responsive<Property.FlexDirection>;
+  alignX: Responsive<Property.AlignItems | Property.JustifyContent>;
+  padding: Responsive<Size>;
   fontWeight: Property.FontWeight;
   fontSize: Property.FontSize;
   borderRadius: string;
-  minWidth: ResponsiveSize;
-  maxWidth: ResponsiveSize;
+  minWidth: Responsive<Size>;
+  maxWidth: Responsive<Size>;
   whiteSpace: Property.WhiteSpace;
 
   background: string;
@@ -118,8 +102,8 @@ export type TabTheme = {
 export type TabsTheme = {
   margin: Size;
   padding: Size;
-  alignY: ResponsiveAlignItemsOrJustifyContent;
-  alignX: ResponsiveAlignItemsOrJustifyContent;
+  alignY: Responsive<Property.AlignItems | Property.JustifyContent>;
+  alignX: Responsive<Property.AlignItems | Property.JustifyContent>;
   tab: TabTheme;
 };
 

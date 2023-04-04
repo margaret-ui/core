@@ -9,7 +9,7 @@ import {
   upperFirst,
 } from 'lodash-es';
 import { setProperty } from '../../utils';
-import { Breakpoint, ResponsiveFlexDirection } from '../../types';
+import { Breakpoint, Responsive } from '../../types';
 import { StackProps } from './types';
 
 export const generateAlign = ({
@@ -83,15 +83,19 @@ export const generateAligns = ({
   theme,
   property,
 }: {
-  value: any;
-  direction: any;
+  value: Responsive<Property.AlignItems | Property.JustifyContent>;
+  direction: Responsive<Property.FlexDirection>;
   theme: DefaultTheme;
   property: 'alignX' | 'alignY';
 }) => {
-  const correctedValue = isPlainObject(value) ? value : { default: value };
-  const correctedDirection = isPlainObject(direction)
+  const correctedValue = (isPlainObject(value)
+    ? value
+    : { default: value }) as any;
+  const correctedDirection = (isPlainObject(direction)
     ? direction
-    : { default: direction };
+    : { default: direction }) as {
+    [key in Breakpoint]: Property.FlexDirection;
+  };
 
   return css`
     ${generateAlign({
@@ -148,7 +152,7 @@ export const generateStackMargin = ({
 }: {
   theme: DefaultTheme;
   gap: any;
-  direction: ResponsiveFlexDirection;
+  direction: Responsive<Property.FlexDirection>;
 }) => {
   if (hasFlexGapSupport()) {
     return setProperty({
@@ -303,9 +307,19 @@ export const injectStackHelpers = css<StackProps>`
 
   ${({ alignX, direction, theme }) =>
     alignX !== undefined &&
-    generateAligns({ value: alignX, direction, theme, property: 'alignX' })}
+    generateAligns({
+      value: alignX,
+      direction: direction as Responsive<Property.FlexDirection>,
+      theme,
+      property: 'alignX',
+    })}
 
   ${({ alignY, direction, theme }) =>
     alignY !== undefined &&
-    generateAligns({ value: alignY, direction, theme, property: 'alignY' })}
+    generateAligns({
+      value: alignY,
+      direction: direction as Responsive<Property.FlexDirection>,
+      theme,
+      property: 'alignY',
+    })}
 `;

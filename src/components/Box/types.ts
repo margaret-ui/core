@@ -1,644 +1,246 @@
 import { Property } from 'csstype';
-import { Breakpoint, ResponsiveSpacing } from '../../types';
+import { Responsive, Spacing } from '../../types';
 
 export type BoxProps = {
-  display?: Property.Display | { [key in Breakpoint]?: Property.Display };
+  display?: Responsive<Property.Display>;
 
-  position?: Property.Position | { [key in Breakpoint]?: Property.Position };
-  top?: Property.Top | { [key in Breakpoint]?: Property.Top };
-  right?: Property.Right | { [key in Breakpoint]?: Property.Right };
-  bottom?: Property.Bottom | { [key in Breakpoint]?: Property.Bottom };
-  left?: Property.Left | { [key in Breakpoint]?: Property.Left };
-  inset?: Property.Inset | { [key in Breakpoint]?: Property.Inset };
+  position?: Responsive<Property.Position>;
+  top?: Responsive<Property.Top>;
+  right?: Responsive<Property.Right>;
+  bottom?: Responsive<Property.Bottom>;
+  left?: Responsive<Property.Left>;
+  inset?: Responsive<Property.Inset>;
 
-  border?: Property.Border | { [key in Breakpoint]?: Property.Border };
-  borderBlock?:
-    | Property.BorderBlock
-    | { [key in Breakpoint]?: Property.BorderBlock };
-  borderBlockColor?:
-    | Property.BorderBlockColor
-    | { [key in Breakpoint]?: Property.BorderBlockColor };
-  borderBlockEnd?:
-    | Property.BorderBlockEnd
-    | { [key in Breakpoint]?: Property.BorderBlockEnd };
-  borderBlockEndColor?:
-    | Property.BorderBlockEndColor
-    | { [key in Breakpoint]?: Property.BorderBlockEndColor };
-  borderBlockEndStyle?:
-    | Property.BorderBlockEndStyle
-    | { [key in Breakpoint]?: Property.BorderBlockEndStyle };
-  borderBlockEndWidth?:
-    | Property.BorderBlockEndWidth
-    | { [key in Breakpoint]?: Property.BorderBlockEndWidth };
-  borderBlockStart?:
-    | Property.BorderBlockStart
-    | { [key in Breakpoint]?: Property.BorderBlockStart };
-  borderBlockStartColor?:
-    | Property.BorderBlockStartColor
-    | { [key in Breakpoint]?: Property.BorderBlockStartColor };
-  borderBlockStartStyle?:
-    | Property.BorderBlockStartStyle
-    | { [key in Breakpoint]?: Property.BorderBlockStartStyle };
-  borderBlockStartWidth?:
-    | Property.BorderBlockStartWidth
-    | { [key in Breakpoint]?: Property.BorderBlockStartWidth };
-  borderBlockStyle?:
-    | Property.BorderBlockStyle
-    | { [key in Breakpoint]?: Property.BorderBlockStyle };
-  borderBlockWidth?:
-    | Property.BorderBlockWidth
-    | { [key in Breakpoint]?: Property.BorderBlockWidth };
-  borderBottom?:
-    | Property.BorderBottom
-    | { [key in Breakpoint]?: Property.BorderBottom };
-  borderBottomColor?:
-    | Property.BorderBottomColor
-    | { [key in Breakpoint]?: Property.BorderBottomColor };
-  borderBottomLeftRadius?:
-    | Property.BorderBottomLeftRadius
-    | { [key in Breakpoint]?: Property.BorderBottomLeftRadius };
-  borderBottomRightRadius?:
-    | Property.BorderBottomRightRadius
-    | { [key in Breakpoint]?: Property.BorderBottomRightRadius };
-  borderBottomStyle?:
-    | Property.BorderBottomStyle
-    | { [key in Breakpoint]?: Property.BorderBottomStyle };
-  borderBottomWidth?:
-    | Property.BorderBottomWidth
-    | { [key in Breakpoint]?: Property.BorderBottomWidth };
-  borderCollapse?:
-    | Property.BorderCollapse
-    | { [key in Breakpoint]?: Property.BorderCollapse };
-  borderColor?:
-    | Property.BorderColor
-    | { [key in Breakpoint]?: Property.BorderColor };
-  borderEndEndRadius?:
-    | Property.BorderEndEndRadius
-    | { [key in Breakpoint]?: Property.BorderEndEndRadius };
-  borderEndStartRadius?:
-    | Property.BorderEndStartRadius
-    | { [key in Breakpoint]?: Property.BorderEndStartRadius };
-  borderImage?:
-    | Property.BorderImage
-    | { [key in Breakpoint]?: Property.BorderImage };
-  borderImageOutset?:
-    | Property.BorderImageOutset
-    | { [key in Breakpoint]?: Property.BorderImageOutset };
-  borderImageRepeat?:
-    | Property.BorderImageRepeat
-    | { [key in Breakpoint]?: Property.BorderImageRepeat };
-  borderImageSlice?:
-    | Property.BorderImageSlice
-    | { [key in Breakpoint]?: Property.BorderImageSlice };
-  borderImageSource?:
-    | Property.BorderImageSource
-    | { [key in Breakpoint]?: Property.BorderImageSource };
-  borderImageWidth?:
-    | Property.BorderImageWidth
-    | { [key in Breakpoint]?: Property.BorderImageWidth };
-  borderInline?:
-    | Property.BorderInline
-    | { [key in Breakpoint]?: Property.BorderInline };
-  borderInlineColor?:
-    | Property.BorderInlineColor
-    | { [key in Breakpoint]?: Property.BorderInlineColor };
-  borderInlineEnd?:
-    | Property.BorderInlineEnd
-    | { [key in Breakpoint]?: Property.BorderInlineEnd };
-  borderInlineEndColor?:
-    | Property.BorderInlineEndColor
-    | { [key in Breakpoint]?: Property.BorderInlineEndColor };
-  borderInlineEndStyle?:
-    | Property.BorderInlineEndStyle
-    | { [key in Breakpoint]?: Property.BorderInlineEndStyle };
-  borderInlineEndWidth?:
-    | Property.BorderInlineEndWidth
-    | { [key in Breakpoint]?: Property.BorderInlineEndWidth };
-  borderInlineStart?:
-    | Property.BorderInlineStart
-    | { [key in Breakpoint]?: Property.BorderInlineStart };
-  borderInlineStartColor?:
-    | Property.BorderInlineStartColor
-    | { [key in Breakpoint]?: Property.BorderInlineStartColor };
-  borderInlineStartStyle?:
-    | Property.BorderInlineStartStyle
-    | { [key in Breakpoint]?: Property.BorderInlineStartStyle };
-  borderInlineStartWidth?:
-    | Property.BorderInlineStartWidth
-    | { [key in Breakpoint]?: Property.BorderInlineStartWidth };
-  borderInlineStyle?:
-    | Property.BorderInlineStyle
-    | { [key in Breakpoint]?: Property.BorderInlineStyle };
-  borderInlineWidth?:
-    | Property.BorderInlineWidth
-    | { [key in Breakpoint]?: Property.BorderInlineWidth };
-  borderLeft?:
-    | Property.BorderLeft
-    | { [key in Breakpoint]?: Property.BorderLeft };
-  borderLeftColor?:
-    | Property.BorderLeftColor
-    | { [key in Breakpoint]?: Property.BorderLeftColor };
-  borderLeftStyle?:
-    | Property.BorderLeftStyle
-    | { [key in Breakpoint]?: Property.BorderLeftStyle };
-  borderLeftWidth?:
-    | Property.BorderLeftWidth
-    | { [key in Breakpoint]?: Property.BorderLeftWidth };
-  borderRight?:
-    | Property.BorderRight
-    | { [key in Breakpoint]?: Property.BorderRight };
-  borderRightColor?:
-    | Property.BorderRightColor
-    | { [key in Breakpoint]?: Property.BorderRightColor };
-  borderRightStyle?:
-    | Property.BorderRightStyle
-    | { [key in Breakpoint]?: Property.BorderRightStyle };
-  borderRightWidth?:
-    | Property.BorderRightWidth
-    | { [key in Breakpoint]?: Property.BorderRightWidth };
-  borderSpacing?:
-    | Property.BorderSpacing
-    | { [key in Breakpoint]?: Property.BorderSpacing };
-  borderStartEndRadius?:
-    | Property.BorderStartEndRadius
-    | { [key in Breakpoint]?: Property.BorderStartEndRadius };
-  borderStartStartRadius?:
-    | Property.BorderStartStartRadius
-    | { [key in Breakpoint]?: Property.BorderStartStartRadius };
-  borderStyle?:
-    | Property.BorderStyle
-    | { [key in Breakpoint]?: Property.BorderStyle };
-  borderTop?: Property.BorderTop | { [key in Breakpoint]?: Property.BorderTop };
-  borderTopColor?:
-    | Property.BorderTopColor
-    | { [key in Breakpoint]?: Property.BorderTopColor };
-  borderTopLeftRadius?:
-    | Property.BorderTopLeftRadius
-    | { [key in Breakpoint]?: Property.BorderTopLeftRadius };
-  borderTopRightRadius?:
-    | Property.BorderTopRightRadius
-    | { [key in Breakpoint]?: Property.BorderTopRightRadius };
-  borderTopStyle?:
-    | Property.BorderTopStyle
-    | { [key in Breakpoint]?: Property.BorderTopStyle };
-  borderTopWidth?:
-    | Property.BorderTopWidth
-    | { [key in Breakpoint]?: Property.BorderTopWidth };
-  borderWidth?:
-    | Property.BorderWidth
-    | { [key in Breakpoint]?: Property.BorderWidth };
+  border?: Responsive<Property.Border>;
+  borderBlock?: Responsive<Property.BorderBlock>;
+  borderBlockColor?: Responsive<Property.BorderBlockColor>;
+  borderBlockEnd?: Responsive<Property.BorderBlockEnd>;
+  borderBlockEndColor?: Responsive<Property.BorderBlockEndColor>;
+  borderBlockEndStyle?: Responsive<Property.BorderBlockEndStyle>;
+  borderBlockEndWidth?: Responsive<Property.BorderBlockEndWidth>;
+  borderBlockStart?: Responsive<Property.BorderBlockStart>;
+  borderBlockStartColor?: Responsive<Property.BorderBlockStartColor>;
+  borderBlockStartStyle?: Responsive<Property.BorderBlockStartStyle>;
+  borderBlockStartWidth?: Responsive<Property.BorderBlockStartWidth>;
+  borderBlockStyle?: Responsive<Property.BorderBlockStyle>;
+  borderBlockWidth?: Responsive<Property.BorderBlockWidth>;
+  borderBottom?: Responsive<Property.BorderBottom>;
+  borderBottomColor?: Responsive<Property.BorderBottomColor>;
+  borderBottomLeftRadius?: Responsive<Property.BorderBottomLeftRadius>;
+  borderBottomRightRadius?: Responsive<Property.BorderBottomRightRadius>;
+  borderBottomStyle?: Responsive<Property.BorderBottomStyle>;
+  borderBottomWidth?: Responsive<Property.BorderBottomWidth>;
+  borderCollapse?: Responsive<Property.BorderCollapse>;
+  borderColor?: Responsive<Property.BorderColor>;
+  borderEndEndRadius?: Responsive<Property.BorderEndEndRadius>;
+  borderEndStartRadius?: Responsive<Property.BorderEndStartRadius>;
+  borderImage?: Responsive<Property.BorderImage>;
+  borderImageOutset?: Responsive<Property.BorderImageOutset>;
+  borderImageRepeat?: Responsive<Property.BorderImageRepeat>;
+  borderImageSlice?: Responsive<Property.BorderImageSlice>;
+  borderImageSource?: Responsive<Property.BorderImageSource>;
+  borderImageWidth?: Responsive<Property.BorderImageWidth>;
+  borderInline?: Responsive<Property.BorderInline>;
+  borderInlineColor?: Responsive<Property.BorderInlineColor>;
+  borderInlineEnd?: Responsive<Property.BorderInlineEnd>;
+  borderInlineEndColor?: Responsive<Property.BorderInlineEndColor>;
+  borderInlineEndStyle?: Responsive<Property.BorderInlineEndStyle>;
+  borderInlineEndWidth?: Responsive<Property.BorderInlineEndWidth>;
+  borderInlineStart?: Responsive<Property.BorderInlineStart>;
+  borderInlineStartColor?: Responsive<Property.BorderInlineStartColor>;
+  borderInlineStartStyle?: Responsive<Property.BorderInlineStartStyle>;
+  borderInlineStartWidth?: Responsive<Property.BorderInlineStartWidth>;
+  borderInlineStyle?: Responsive<Property.BorderInlineStyle>;
+  borderInlineWidth?: Responsive<Property.BorderInlineWidth>;
+  borderLeft?: Responsive<Property.BorderLeft>;
+  borderLeftColor?: Responsive<Property.BorderLeftColor>;
+  borderLeftStyle?: Responsive<Property.BorderLeftStyle>;
+  borderLeftWidth?: Responsive<Property.BorderLeftWidth>;
+  borderRight?: Responsive<Property.BorderRight>;
+  borderRightColor?: Responsive<Property.BorderRightColor>;
+  borderRightStyle?: Responsive<Property.BorderRightStyle>;
+  borderRightWidth?: Responsive<Property.BorderRightWidth>;
+  borderSpacing?: Responsive<Property.BorderSpacing>;
+  borderStartEndRadius?: Responsive<Property.BorderStartEndRadius>;
+  borderStartStartRadius?: Responsive<Property.BorderStartStartRadius>;
+  borderStyle?: Responsive<Property.BorderStyle>;
+  borderTop?: Responsive<Property.BorderTop>;
+  borderTopColor?: Responsive<Property.BorderTopColor>;
+  borderTopLeftRadius?: Responsive<Property.BorderTopLeftRadius>;
+  borderTopRightRadius?: Responsive<Property.BorderTopRightRadius>;
+  borderTopStyle?: Responsive<Property.BorderTopStyle>;
+  borderTopWidth?: Responsive<Property.BorderTopWidth>;
+  borderWidth?: Responsive<Property.BorderWidth>;
 
-  padding?: ResponsiveSpacing;
-  paddingVertical?: ResponsiveSpacing;
-  paddingHorizontal?: ResponsiveSpacing;
-  paddingY?: ResponsiveSpacing;
-  paddingX?: ResponsiveSpacing;
-  paddingTop?: ResponsiveSpacing;
-  paddingRight?: ResponsiveSpacing;
-  paddingBottom?: ResponsiveSpacing;
-  paddingLeft?: ResponsiveSpacing;
-  paddingBlock?: ResponsiveSpacing;
-  paddingBlockStart?: ResponsiveSpacing;
-  paddingBlockEnd?: ResponsiveSpacing;
-  paddingInline?: ResponsiveSpacing;
-  paddingInlineStart?: ResponsiveSpacing;
-  paddingInlineEnd?: ResponsiveSpacing;
+  padding?: Responsive<Spacing>;
+  paddingVertical?: Responsive<Spacing>;
+  paddingHorizontal?: Responsive<Spacing>;
+  paddingY?: Responsive<Spacing>;
+  paddingX?: Responsive<Spacing>;
+  paddingTop?: Responsive<Spacing>;
+  paddingRight?: Responsive<Spacing>;
+  paddingBottom?: Responsive<Spacing>;
+  paddingLeft?: Responsive<Spacing>;
+  paddingBlock?: Responsive<Spacing>;
+  paddingBlockStart?: Responsive<Spacing>;
+  paddingBlockEnd?: Responsive<Spacing>;
+  paddingInline?: Responsive<Spacing>;
+  paddingInlineStart?: Responsive<Spacing>;
+  paddingInlineEnd?: Responsive<Spacing>;
 
-  margin?: ResponsiveSpacing;
-  marginVertical?: ResponsiveSpacing;
-  marginHorizontal?: ResponsiveSpacing;
-  marginY?: ResponsiveSpacing;
-  marginX?: ResponsiveSpacing;
-  marginTop?: ResponsiveSpacing;
-  marginRight?: ResponsiveSpacing;
-  marginBottom?: ResponsiveSpacing;
-  marginLeft?: ResponsiveSpacing;
-  marginAuto?: ResponsiveSpacing;
-  marginBlock?: ResponsiveSpacing;
-  marginBlockStart?: ResponsiveSpacing;
-  marginBlockEnd?: ResponsiveSpacing;
-  marginInline?: ResponsiveSpacing;
-  marginInlineStart?: ResponsiveSpacing;
-  marginInlineEnd?: ResponsiveSpacing;
+  margin?: Responsive<Spacing>;
+  marginVertical?: Responsive<Spacing>;
+  marginHorizontal?: Responsive<Spacing>;
+  marginY?: Responsive<Spacing>;
+  marginX?: Responsive<Spacing>;
+  marginTop?: Responsive<Spacing>;
+  marginRight?: Responsive<Spacing>;
+  marginBottom?: Responsive<Spacing>;
+  marginLeft?: Responsive<Spacing>;
+  marginAuto?: Responsive<Spacing>;
+  marginBlock?: Responsive<Spacing>;
+  marginBlockStart?: Responsive<Spacing>;
+  marginBlockEnd?: Responsive<Spacing>;
+  marginInline?: Responsive<Spacing>;
+  marginInlineStart?: Responsive<Spacing>;
+  marginInlineEnd?: Responsive<Spacing>;
 
-  gap?: ResponsiveSpacing;
+  gap?: Responsive<Spacing>;
 
   color?: string;
   backgroundColor?: string;
   background?: string;
   backgroundImage?: string;
 
-  flex?: Property.Flex | { [key in Breakpoint]?: Property.Flex };
-  flexGrow?: Property.FlexGrow | { [key in Breakpoint]?: Property.FlexGrow };
-  flexShrink?:
-    | Property.FlexShrink
-    | { [key in Breakpoint]?: Property.FlexShrink };
-  flexBasis?: Property.FlexBasis | { [key in Breakpoint]?: Property.FlexBasis };
-  flexWrap?: Property.FlexWrap | { [key in Breakpoint]?: Property.FlexWrap };
-  order?: Property.Order | { [key in Breakpoint]?: Property.Order };
+  flex?: Responsive<Property.Flex>;
+  flexGrow?: Responsive<Property.FlexGrow>;
+  flexShrink?: Responsive<Property.FlexShrink>;
+  flexBasis?: Responsive<Property.FlexBasis>;
+  flexWrap?: Responsive<Property.FlexWrap>;
+  order?: Responsive<Property.Order>;
 
-  width?: Property.Width | { [key in Breakpoint]?: Property.Width };
-  height?: Property.Height | { [key in Breakpoint]?: Property.Height };
-  minWidth?: Property.MinWidth | { [key in Breakpoint]?: Property.MinWidth };
-  minHeight?: Property.MinHeight | { [key in Breakpoint]?: Property.MinHeight };
+  width?: Responsive<Property.Width>;
+  height?: Responsive<Property.Height>;
+  minWidth?: Responsive<Property.MinWidth>;
+  minHeight?: Responsive<Property.MinHeight>;
 
-  overflow?: Property.Overflow | { [key in Breakpoint]?: Property.Overflow };
-  overflowX?: Property.Overflow | { [key in Breakpoint]?: Property.Overflow };
-  overflowY?: Property.Overflow | { [key in Breakpoint]?: Property.Overflow };
+  overflow?: Responsive<Property.Overflow>;
+  overflowX?: Responsive<Property.Overflow>;
+  overflowY?: Responsive<Property.Overflow>;
 
-  fontFamily?:
-    | Property.FontFamily
-    | { [key in Breakpoint]?: Property.FontFamily }
-    | any;
-  fontStretch?:
-    | Property.FontStretch
-    | { [key in Breakpoint]?: Property.FontStretch }
-    | any;
-  fontVariant?:
-    | Property.FontVariant
-    | { [key in Breakpoint]?: Property.FontVariant }
-    | any;
-  fontWeight?:
-    | Property.FontWeight
-    | { [key in Breakpoint]?: Property.FontWeight }
-    | any;
-  fontStyle?:
-    | Property.FontStyle
-    | { [key in Breakpoint]?: Property.FontStyle }
-    | any;
-  fontSize?:
-    | Property.FontSize
-    | { [key in Breakpoint]?: Property.FontSize }
-    | any;
-  letterSpacing?:
-    | Property.LetterSpacing
-    | { [key in Breakpoint]?: Property.LetterSpacing };
-  lineHeight?:
-    | Property.LineHeight
-    | { [key in Breakpoint]?: Property.LineHeight }
-    | any;
-  textAlign?:
-    | Property.TextAlign
-    | { [key in Breakpoint]?: Property.TextAlign }
-    | any;
-  textDecoration?:
-    | Property.TextDecoration
-    | { [key in Breakpoint]?: Property.TextDecoration }
-    | any;
-  textTransform?:
-    | Property.TextTransform
-    | { [key in Breakpoint]?: Property.TextTransform | any }
-    | any;
-  textShadow?:
-    | Property.TextShadow
-    | { [key in Breakpoint]?: Property.TextShadow | string }
-    | any;
+  fontFamily?: Responsive<Property.FontFamily> | any;
+  fontStretch?: Responsive<Property.FontStretch> | any;
+  fontVariant?: Responsive<Property.FontVariant> | any;
+  fontWeight?: Responsive<Property.FontWeight> | any;
+  fontStyle?: Responsive<Property.FontStyle> | any;
+  fontSize?: Responsive<Property.FontSize> | any;
+  letterSpacing?: Responsive<Property.LetterSpacing>;
+  lineHeight?: Responsive<Property.LineHeight> | any;
+  textAlign?: Responsive<Property.TextAlign> | any;
+  textDecoration?: Responsive<Property.TextDecoration> | any;
+  textTransform?: Responsive<Property.TextTransform> | any;
+  textShadow?: Responsive<Property.TextShadow> | any;
 
   fontStyles?: any;
   textStyle?: any;
 
-  boxShadow?:
-    | Property.BoxShadow
-    | { [key in Breakpoint]?: Property.BoxShadow | string }
-    | string;
-  borderRadius?:
-    | Property.BorderRadius
-    | { [key in Breakpoint]?: Property.BorderRadius | string }
-    | string;
+  boxShadow?: Responsive<Property.BoxShadow> | string;
+  borderRadius?: Responsive<Property.BorderRadius> | string;
 
-  gridArea?: Property.GridArea | { [key in Breakpoint]?: Property.GridArea };
-  gridColumnStart?:
-    | Property.GridColumnStart
-    | { [key in Breakpoint]?: Property.GridColumnStart };
-  gridColumnEnd?:
-    | Property.GridColumnEnd
-    | { [key in Breakpoint]?: Property.GridColumnEnd };
-  gridRowStart?:
-    | Property.GridRowStart
-    | { [key in Breakpoint]?: Property.GridRowStart };
-  gridRowEnd?:
-    | Property.GridRowEnd
-    | { [key in Breakpoint]?: Property.GridRowEnd };
-  gridColumn?:
-    | Property.GridColumn
-    | { [key in Breakpoint]?: Property.GridColumn };
-  gridRow?: Property.GridRow | { [key in Breakpoint]?: Property.GridRow };
-  gridAutoFlow?:
-    | Property.GridAutoFlow
-    | { [key in Breakpoint]?: Property.GridAutoFlow };
-  gridAutoRows?:
-    | Property.GridAutoRows
-    | { [key in Breakpoint]?: Property.GridAutoRows };
-  gridAutoColumns?:
-    | Property.GridAutoColumns
-    | { [key in Breakpoint]?: Property.GridAutoColumns };
-  gridTemplateRows?:
-    | Property.GridTemplateRows
-    | { [key in Breakpoint]?: Property.GridTemplateRows };
-  gridTemplateColumns?:
-    | Property.GridTemplateColumns
-    | { [key in Breakpoint]?: Property.GridTemplateColumns };
-  gridTemplateAreas?:
-    | Property.GridTemplateAreas
-    | { [key in Breakpoint]?: Property.GridTemplateAreas };
+  gridArea?: Responsive<Property.GridArea>;
+  gridColumnStart?: Responsive<Property.GridColumnStart>;
+  gridColumnEnd?: Responsive<Property.GridColumnEnd>;
+  gridRowStart?: Responsive<Property.GridRowStart>;
+  gridRowEnd?: Responsive<Property.GridRowEnd>;
+  gridColumn?: Responsive<Property.GridColumn>;
+  gridRow?: Responsive<Property.GridRow>;
+  gridAutoFlow?: Responsive<Property.GridAutoFlow>;
+  gridAutoRows?: Responsive<Property.GridAutoRows>;
+  gridAutoColumns?: Responsive<Property.GridAutoColumns>;
+  gridTemplateRows?: Responsive<Property.GridTemplateRows>;
+  gridTemplateColumns?: Responsive<Property.GridTemplateColumns>;
+  gridTemplateAreas?: Responsive<Property.GridTemplateAreas>;
 
-  transition?:
-    | Property.Transition
-    | { [key in Breakpoint]?: Property.Transition };
-  transform?: Property.Transform | { [key in Breakpoint]?: Property.Transform };
+  transition?: Responsive<Property.Transition>;
+  transform?: Responsive<Property.Transform>;
 
-  zIndex?:
-    | Property.ZIndex
-    | string
-    | { [key in Breakpoint]?: Property.ZIndex | string };
-
+  zIndex?: Responsive<Property.ZIndex | string>;
   visuallyHidden?: boolean;
 
-  gridGap?:
-    | Property.GridGap
-    | { [key in Breakpoint]?: Property.GridGap | string }
-    | string;
-  gridRowGap?:
-    | Property.GridRowGap
-    | { [key in Breakpoint]?: Property.GridRowGap | string }
-    | string;
-  gridColumnGap?:
-    | Property.GridColumnGap
-    | { [key in Breakpoint]?: Property.GridColumnGap | string }
-    | string;
-  maxWidth?:
-    | Property.MaxWidth
-    | { [key in Breakpoint]?: Property.MaxWidth | string }
-    | string;
-  maxHeight?:
-    | Property.MaxHeight
-    | { [key in Breakpoint]?: Property.MaxHeight | string }
-    | string;
-  flexDirection?:
-    | Property.FlexDirection
-    | { [key in Breakpoint]?: Property.FlexDirection | string }
-    | string;
-  flexFlow?:
-    | Property.FlexFlow
-    | { [key in Breakpoint]?: Property.FlexFlow | string }
-    | string;
-  alignSelf?:
-    | Property.AlignSelf
-    | { [key in Breakpoint]?: Property.AlignSelf | string }
-    | string;
-  alignItems?:
-    | Property.AlignItems
-    | { [key in Breakpoint]?: Property.AlignItems | string }
-    | string;
-  justifyContent?:
-    | Property.JustifyContent
-    | { [key in Breakpoint]?: Property.JustifyContent | string }
-    | string;
-  justifySelf?:
-    | Property.JustifySelf
-    | { [key in Breakpoint]?: Property.JustifySelf | string }
-    | string;
-  placeItems?:
-    | Property.PlaceItems
-    | { [key in Breakpoint]?: Property.PlaceItems | string }
-    | string;
-  placeContent?:
-    | Property.PlaceContent
-    | { [key in Breakpoint]?: Property.PlaceContent | string }
-    | string;
-  placeSelf?:
-    | Property.PlaceSelf
-    | { [key in Breakpoint]?: Property.PlaceSelf | string }
-    | string;
-  objectFit?:
-    | Property.ObjectFit
-    | { [key in Breakpoint]?: Property.ObjectFit | string }
-    | string;
-  objectPosition?:
-    | Property.ObjectPosition
-    | { [key in Breakpoint]?: Property.ObjectPosition | string }
-    | string;
-  opacity?:
-    | Property.Opacity
-    | { [key in Breakpoint]?: Property.Opacity | string }
-    | string;
-  grid?:
-    | Property.Grid
-    | { [key in Breakpoint]?: Property.Grid | string }
-    | string;
-  outline?:
-    | Property.Outline
-    | { [key in Breakpoint]?: Property.Outline | string }
-    | string;
-  outlineColor?:
-    | Property.OutlineColor
-    | { [key in Breakpoint]?: Property.OutlineColor | string }
-    | string;
-  outlineOffset?:
-    | Property.OutlineOffset
-    | { [key in Breakpoint]?: Property.OutlineOffset | string }
-    | string;
-  outlineStyle?:
-    | Property.OutlineStyle
-    | { [key in Breakpoint]?: Property.OutlineStyle | string }
-    | string;
-  whiteSpace?:
-    | Property.WhiteSpace
-    | { [key in Breakpoint]?: Property.WhiteSpace | string }
-    | string;
-  wordBreak?:
-    | Property.WordBreak
-    | { [key in Breakpoint]?: Property.WordBreak | string }
-    | string;
-  wordWrap?:
-    | Property.WordWrap
-    | { [key in Breakpoint]?: Property.WordWrap | string }
-    | string;
-  textOverflow?:
-    | Property.TextOverflow
-    | { [key in Breakpoint]?: Property.TextOverflow | string }
-    | string;
-  cursor?:
-    | Property.Cursor
-    | { [key in Breakpoint]?: Property.Cursor | string }
-    | string;
-  clipPath?:
-    | Property.ClipPath
-    | { [key in Breakpoint]?: Property.ClipPath | string }
-    | string;
-  backgroundOrigin?:
-    | Property.BackgroundOrigin
-    | { [key in Breakpoint]?: Property.BackgroundOrigin | string }
-    | string;
-  backgroundPosition?:
-    | Property.BackgroundPosition
-    | { [key in Breakpoint]?: Property.BackgroundPosition | string }
-    | string;
-  backgroundPositionX?:
-    | Property.BackgroundPositionX
-    | { [key in Breakpoint]?: Property.BackgroundPositionX | string }
-    | string;
-  backgroundPositionY?:
-    | Property.BackgroundPositionY
-    | { [key in Breakpoint]?: Property.BackgroundPositionY | string }
-    | string;
-  backgroundRepeat?:
-    | Property.BackgroundRepeat
-    | { [key in Breakpoint]?: Property.BackgroundRepeat | string }
-    | string;
-  backgroundSize?:
-    | Property.BackgroundSize
-    | { [key in Breakpoint]?: Property.BackgroundSize | string }
-    | string;
-  backdropFilter?:
-    | Property.BackdropFilter
-    | { [key in Breakpoint]?: Property.BackdropFilter | string }
-    | string;
-  backfaceVisibility?:
-    | Property.BackfaceVisibility
-    | { [key in Breakpoint]?: Property.BackfaceVisibility | string }
-    | string;
-  backgroundAttachment?:
-    | Property.BackgroundAttachment
-    | { [key in Breakpoint]?: Property.BackgroundAttachment | string }
-    | string;
-  backgroundBlendMode?:
-    | Property.BackgroundBlendMode
-    | { [key in Breakpoint]?: Property.BackgroundBlendMode | string }
-    | string;
-  backgroundClip?:
-    | Property.BackgroundClip
-    | { [key in Breakpoint]?: Property.BackgroundClip | string }
-    | string;
-  accentColor?:
-    | Property.AccentColor
-    | { [key in Breakpoint]?: Property.AccentColor | string }
-    | string;
-  colorScheme?:
-    | Property.ColorScheme
-    | { [key in Breakpoint]?: Property.ColorScheme | string }
-    | string;
-  alignContent?:
-    | Property.AlignContent
-    | { [key in Breakpoint]?: Property.AlignContent | string }
-    | string;
-  animation?:
-    | Property.Animation
-    | { [key in Breakpoint]?: Property.Animation | string }
-    | string;
-  animationDelay?:
-    | Property.AnimationDelay
-    | { [key in Breakpoint]?: Property.AnimationDelay | string }
-    | string;
-  animationDirection?:
-    | Property.AnimationDirection
-    | { [key in Breakpoint]?: Property.AnimationDirection | string }
-    | string;
-  animationDuration?:
-    | Property.AnimationDuration
-    | { [key in Breakpoint]?: Property.AnimationDuration | string }
-    | string;
-  animationFillMode?:
-    | Property.AnimationFillMode
-    | { [key in Breakpoint]?: Property.AnimationFillMode | string }
-    | string;
-  animationIterationCount?:
-    | Property.AnimationIterationCount
-    | { [key in Breakpoint]?: Property.AnimationIterationCount | string }
-    | string;
-  animationName?:
-    | Property.AnimationName
-    | { [key in Breakpoint]?: Property.AnimationName | string }
-    | string;
-  animationPlayState?:
-    | Property.AnimationPlayState
-    | { [key in Breakpoint]?: Property.AnimationPlayState | string }
-    | string;
-  animationTimingFunction?:
-    | Property.AnimationTimingFunction
-    | { [key in Breakpoint]?: Property.AnimationTimingFunction | string }
-    | string;
-  appearance?:
-    | Property.Appearance
-    | { [key in Breakpoint]?: Property.Appearance | string }
-    | string;
-  aspectRatio?:
-    | Property.AspectRatio
-    | { [key in Breakpoint]?: Property.AspectRatio | string }
-    | string;
-  all?: Property.All | { [key in Breakpoint]?: Property.All | string } | string;
-  willChange?:
-    | Property.WillChange
-    | { [key in Breakpoint]?: Property.WillChange | string }
-    | string;
-  mask?:
-    | Property.Mask
-    | { [key in Breakpoint]?: Property.Mask | string }
-    | string;
-  maskBorder?:
-    | Property.MaskBorder
-    | { [key in Breakpoint]?: Property.MaskBorder | string }
-    | string;
-  maskBorderMode?:
-    | Property.MaskBorderMode
-    | { [key in Breakpoint]?: Property.MaskBorderMode | string }
-    | string;
-  maskBorderOutset?:
-    | Property.MaskBorderOutset
-    | { [key in Breakpoint]?: Property.MaskBorderOutset | string }
-    | string;
-  maskBorderRepeat?:
-    | Property.MaskBorderRepeat
-    | { [key in Breakpoint]?: Property.MaskBorderRepeat | string }
-    | string;
-  maskBorderSlice?:
-    | Property.MaskBorderSlice
-    | { [key in Breakpoint]?: Property.MaskBorderSlice | string }
-    | string;
-  maskBorderSource?:
-    | Property.MaskBorderSource
-    | { [key in Breakpoint]?: Property.MaskBorderSource | string }
-    | string;
-  maskBorderWidth?:
-    | Property.MaskBorderWidth
-    | { [key in Breakpoint]?: Property.MaskBorderWidth | string }
-    | string;
-  maskClip?:
-    | Property.MaskClip
-    | { [key in Breakpoint]?: Property.MaskClip | string }
-    | string;
-  maskComposite?:
-    | Property.MaskComposite
-    | { [key in Breakpoint]?: Property.MaskComposite | string }
-    | string;
-  maskImage?:
-    | Property.MaskImage
-    | { [key in Breakpoint]?: Property.MaskImage | string }
-    | string;
-  maskMode?:
-    | Property.MaskMode
-    | { [key in Breakpoint]?: Property.MaskMode | string }
-    | string;
-  maskOrigin?:
-    | Property.MaskOrigin
-    | { [key in Breakpoint]?: Property.MaskOrigin | string }
-    | string;
-  maskPosition?:
-    | Property.MaskPosition
-    | { [key in Breakpoint]?: Property.MaskPosition | string }
-    | string;
-  maskRepeat?:
-    | Property.MaskRepeat
-    | { [key in Breakpoint]?: Property.MaskRepeat | string }
-    | string;
-  maskSize?:
-    | Property.MaskSize
-    | { [key in Breakpoint]?: Property.MaskSize | string }
-    | string;
-  maskType?:
-    | Property.MaskType
-    | { [key in Breakpoint]?: Property.MaskType | string }
-    | string;
+  gridGap?: Responsive<Property.GridGap | string>;
+  gridRowGap?: Responsive<Property.GridRowGap | string>;
+  gridColumnGap?: Responsive<Property.GridColumnGap | string>;
+
+  maxWidth?: Responsive<Property.MaxWidth | string>;
+  maxHeight?: Responsive<Property.MaxHeight | string>;
+
+  flexDirection?: Responsive<Property.FlexDirection>;
+  flexFlow?: Responsive<Property.FlexFlow>;
+  alignSelf?: Responsive<Property.AlignSelf>;
+  alignItems?: Responsive<Property.AlignItems>;
+  justifyContent?: Responsive<Property.JustifyContent>;
+  justifySelf?: Responsive<Property.JustifySelf>;
+  placeItems?: Responsive<Property.PlaceItems>;
+  placeContent?: Responsive<Property.PlaceContent>;
+  placeSelf?: Responsive<Property.PlaceSelf>;
+  objectFit?: Responsive<Property.ObjectFit>;
+  objectPosition?: Responsive<Property.ObjectPosition>;
+  opacity?: Responsive<Property.Opacity>;
+  grid?: Responsive<Property.Grid>;
+  outline?: Responsive<Property.Outline>;
+  outlineColor?: Responsive<Property.OutlineColor>;
+  outlineOffset?: Responsive<Property.OutlineOffset>;
+  outlineStyle?: Responsive<Property.OutlineStyle>;
+  whiteSpace?: Responsive<Property.WhiteSpace>;
+  wordBreak?: Responsive<Property.WordBreak>;
+  wordWrap?: Responsive<Property.WordWrap>;
+  textOverflow?: Responsive<Property.TextOverflow>;
+  cursor?: Responsive<Property.Cursor>;
+  clipPath?: Responsive<Property.ClipPath>;
+  backgroundOrigin?: Responsive<Property.BackgroundOrigin>;
+  backgroundPosition?: Responsive<Property.BackgroundPosition>;
+  backgroundPositionX?: Responsive<Property.BackgroundPositionX>;
+  backgroundPositionY?: Responsive<Property.BackgroundPositionY>;
+  backgroundRepeat?: Responsive<Property.BackgroundRepeat>;
+  backgroundSize?: Responsive<Property.BackgroundSize>;
+  backdropFilter?: Responsive<Property.BackdropFilter>;
+  backfaceVisibility?: Responsive<Property.BackfaceVisibility>;
+  backgroundAttachment?: Responsive<Property.BackgroundAttachment>;
+  backgroundBlendMode?: Responsive<Property.BackgroundBlendMode>;
+  backgroundClip?: Responsive<Property.BackgroundClip>;
+  accentColor?: Responsive<Property.AccentColor>;
+  colorScheme?: Responsive<Property.ColorScheme>;
+  alignContent?: Responsive<Property.AlignContent>;
+  animation?: Responsive<Property.Animation>;
+  animationDelay?: Responsive<Property.AnimationDelay>;
+  animationDirection?: Responsive<Property.AnimationDirection>;
+  animationDuration?: Responsive<Property.AnimationDuration>;
+  animationFillMode?: Responsive<Property.AnimationFillMode>;
+  animationIterationCount?: Responsive<Property.AnimationIterationCount>;
+  animationName?: Responsive<Property.AnimationName>;
+  animationPlayState?: Responsive<Property.AnimationPlayState>;
+  animationTimingFunction?: Responsive<Property.AnimationTimingFunction>;
+  appearance?: Responsive<Property.Appearance>;
+  aspectRatio?: Responsive<Property.AspectRatio>;
+  all?: Responsive<Property.All>;
+  willChange?: Responsive<Property.WillChange>;
+  mask?: Responsive<Property.Mask>;
+  maskBorder?: Responsive<Property.MaskBorder>;
+  maskBorderMode?: Responsive<Property.MaskBorderMode>;
+  maskBorderOutset?: Responsive<Property.MaskBorderOutset>;
+  maskBorderRepeat?: Responsive<Property.MaskBorderRepeat>;
+  maskBorderSlice?: Responsive<Property.MaskBorderSlice>;
+  maskBorderSource?: Responsive<Property.MaskBorderSource>;
+  maskBorderWidth?: Responsive<Property.MaskBorderWidth>;
+  maskClip?: Responsive<Property.MaskClip>;
+  maskComposite?: Responsive<Property.MaskComposite>;
+  maskImage?: Responsive<Property.MaskImage>;
+  maskMode?: Responsive<Property.MaskMode>;
+  maskOrigin?: Responsive<Property.MaskOrigin>;
+  maskPosition?: Responsive<Property.MaskPosition>;
+  maskRepeat?: Responsive<Property.MaskRepeat>;
+  maskSize?: Responsive<Property.MaskSize>;
+  maskType?: Responsive<Property.MaskType>;
 
   as?: any;
 };
