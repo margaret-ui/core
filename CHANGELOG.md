@@ -1,5 +1,11 @@
 # @margaret-ui/core
 
+## 0.2.2
+
+### Patch Changes
+
+- [`43f4009`](https://github.com/margaret-ui/core/commit/43f40098b764df839b46e9e93bb19268196f90d6) Thanks [@Uptip](https://github.com/Uptip)! - fix marginAuto prop type, add style prop types to box props
+
 ## 0.2.1
 
 ### Patch Changes
