@@ -1,5 +1,11 @@
 # @margaret-ui/core
 
+## 0.2.1
+
+### Patch Changes
+
+- [`fcf5af5`](https://github.com/margaret-ui/core/commit/fcf5af599fbeb58b48025c99467c799145af8eb6) Thanks [@Uptip](https://github.com/Uptip)! - add missing children stack props type
+
 ## 0.2.0
 
 ### Minor Changes
